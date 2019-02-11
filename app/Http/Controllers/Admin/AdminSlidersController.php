@@ -106,12 +106,13 @@ class AdminSlidersController extends Controller
 		
 		DB::table('sliders_images')->insert([
 				'sliders_title'  		 =>   $request->sliders_title,
+				'sliders_html_text'  	 =>   $request->sliders_html_text,
 				'date_added'	 		 =>   date('Y-m-d H:i:s'),
 				'sliders_image'			 =>	  $uploadImage,
 				'sliders_url'	 		 =>   $sliders_url,
 				'status'	 			 =>   $request->status,
 				'expires_date'			 =>	  $expiryDateFormate,
-				'type'					 =>	  $request->type,
+				'sliders_group'			 =>	  $request->sliders_group,
 				'languages_id'			 =>	  $request->languages_id
 				]);
 										
@@ -180,12 +181,13 @@ class AdminSlidersController extends Controller
 		$countryUpdate = DB::table('sliders_images')->where('sliders_id', $request->id)->update([
 					'date_status_change'	 =>   date('Y-m-d H:i:s'),
 					'sliders_title'  		 =>   $request->sliders_title,
+					'sliders_html_text'  	 =>   $request->sliders_html_text,
 					'date_added'	 		 =>   date('Y-m-d H:i:s'),
 					'sliders_image'			 =>	  $uploadImage,
 					'sliders_url'	 		 =>   $sliders_url,
 					'status'	 			 =>   $request->status,
 					'expires_date'			 =>	  $expiryDateFormate,
-					'type'					 =>	  $request->type,
+					'sliders_group'			 =>	  $request->sliders_group,
 					'languages_id'			 =>	  $request->languages_id
 					]);
 				

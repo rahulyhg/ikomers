@@ -63,6 +63,14 @@
                                     <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">{{ trans('labels.SliderTitletext') }}</span>
                                   </div>
                                 </div>
+
+                                <div class="form-group">
+                                  <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Text') }} </label>
+                                  <div class="col-sm-10 col-md-4">
+                                    {!! Form::textarea('sliders_html_text', '', array('class'=>'form-control','id'=>'sliders_html_text')) !!}
+                                    <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">{{ trans('labels.SliderTexttext') }}</span>
+                                  </div>
+                                </div>
                                 
                                 <div class="form-group">
                                   <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Image') }}</label>
@@ -74,6 +82,20 @@
                                 </div>
                                 
                                 <div class="form-group">
+                                  <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Group') }}</label>
+                                  <div class="col-sm-10 col-md-4">
+                                      <select class="form-control" name="sliders_group" id="bannerType">
+                                          <option value="feature">Feature</option>
+                                          <option value="homepage">Homepage</option>
+                                          <option value="logo">Logo</option>
+                                          <option value="feature-logo">Feature Logo</option>
+                                      </select>
+                                        <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
+                                      {{ trans('labels.ChooseSliderToAsscociateWith') }}</span>
+                                  </div>
+                                </div>
+                                
+                                {{-- <div class="form-group">
                                   <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Type') }}</label>
                                   <div class="col-sm-10 col-md-4">
                                       <select class="form-control" name="type" id="bannerType">
@@ -86,7 +108,7 @@
                                       <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
                                       {{ trans('labels.ChooseSliderToAsscociateWith') }}</span>
                                   </div>
-                                </div>
+                                </div> --}}
                                 
                                 <!--<div class="form-group slider-link">
                                   <label for="name" class="col-sm-2 col-md-3 control-label">Sliders Link </label>
@@ -95,7 +117,7 @@
                                   </div>
                                 </div>-->
                                 
-                                <div class="form-group categoryContent">
+                                {{-- <div class="form-group categoryContent">
                                   <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Categories') }}</label>
                                   <div class="col-sm-10 col-md-4">
                                       <select class="form-control" name="categories_id" id="categories_id">
@@ -119,14 +141,12 @@
                                       <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
                                       {{ trans('labels.ProductsSliderText') }}</span>
                                   </div>
-                                </div>
-                                
-                                
-                                
+                                </div> --}}
+                      
                                 <div class="form-group">
                                   <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.ExpiryDate') }}</label>
                                   <div class="col-sm-10 col-md-4">
-                                    <input readonly class="form-control datepicker field-validate" type="text" name="expires_date" value="">
+                                    <input readonly class="form-control datepicker" type="text" name="expires_date" value="">
                                     <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
                                     {{ trans('labels.ExpiryDateSlider') }}</span>
                                   </div>

@@ -70,8 +70,30 @@
                                     <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">{{ trans('labels.SliderTitletext') }}</span>
                                   </div>
                                 </div>
-                                
+
                                 <div class="form-group">
+                                  <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Text') }} </label>
+                                  <div class="col-sm-10 col-md-4">
+                                    {!! Form::textarea('sliders_html_text', $result['sliders'][0]->sliders_html_text, array('class'=>'form-control field-validate','id'=>'sliders_html_text')) !!}
+                                    <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">{{ trans('labels.SliderTexttext') }}</span>
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Group') }}</label>
+                                  <div class="col-sm-10 col-md-4">
+                                      <select class="form-control" name="sliders_group" id="bannerType">
+                                          <option value="feature" @if($result['sliders'][0]->sliders_group=='feature') selected @endif>Feature</option>
+                                          <option value="homepage" @if($result['sliders'][0]->sliders_group=='homepage') selected @endif>Homepage</option>
+                                          <option value="logo" @if($result['sliders'][0]->sliders_group=='logo') selected @endif>Logo</option>
+                                          <option value="feature-logo" @if($result['sliders'][0]->sliders_group=='feature-logo') selected @endif>Feature Logo</option>
+                                      </select>
+                                        <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
+                                      {{ trans('labels.ChooseSliderToAsscociateWith') }}</span>
+                                  </div>
+                                </div>
+                              
+                                {{-- <div class="form-group">
                                   <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Categories') }}</label>
                                   <div class="col-sm-10 col-md-4">
                                       <select class="form-control" name="type" id="bannerType">
@@ -85,7 +107,7 @@
                                        <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
                                       {{ trans('labels.ChooseSliderToAsscociateWith') }}</span>
                                   </div>
-                                </div>
+                                </div> --}}
                                 
                                 <!--<div class="form-group slider-link">
                                   <label for="name" class="col-sm-2 col-md-3 control-label">Banners Link </label>
@@ -94,7 +116,7 @@
                                   </div>
                                 </div>-->
                                 
-                                <div class="form-group categoryContent" @if($result['sliders'][0]->type!='category') style="display: none" @endif >
+                                {{-- <div class="form-group categoryContent" @if($result['sliders'][0]->type!='category') style="display: none" @endif >
                                   <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Categories') }}</label>
                                   <div class="col-sm-10 col-md-4">
                                       <select class="form-control" name="categories_id" id="categories_id">
@@ -118,7 +140,7 @@
                                      <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
                                       {{ trans('labels.ProductsSliderText') }}</span>
                                   </div>
-                                </div>
+                                </div> --}}
                                 
                                 <div class="form-group">
                                   <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Image') }}</label>

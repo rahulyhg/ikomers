@@ -21,8 +21,15 @@ header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Autho
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/', function () {
+	return redirect('/home');
+});
+Route::group(['namespace' => 'Frontend'], function () {
 
-
+	Route::get('/home', 'HomeController@index')->name('home');
+	Route::get('/products', 'ProductController@index')->name('products');
+	
+});
 
 /*
 |--------------------------------------------------------------------------

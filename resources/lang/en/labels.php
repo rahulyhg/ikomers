@@ -482,6 +482,8 @@ return [
 	'DeleteTaxClassText' => 'Are you sure you want to delete this tax class?',
 	'LastModified' => 'Last Modified',
 	'Title' => 'Title',
+	'Text' => 'Text Content',
+	'Group' => 'Group',
 	'TaxClasses' => 'TaxClasses',
 	'TaxClassTitleText' => 'Enter Tax class. i.e:  Sales Tax etc',
 	'TaxClassDescriptionText' => 'Enter Tax class description.',
@@ -820,6 +822,8 @@ return [
 	'Lines' => 'Lines',
 	'Ripple' => 'Ripple',
 	'Spiral' => 'Spiral',
+	'Merk' => 'Merk',
+	'Color' => 'Color',
 	
 	'NewProductDuration' => 'New Product Duration',
 	'NewProductDurationText' => 'Please enter in days. e.g: 20. Newly will appear in product card on home shop & product detail page.',
@@ -1058,6 +1062,8 @@ return [
 	
 	'alertSettingUpdateMessage'=>'Alert setting has been updated successfully!',
 	
+	'SupportApplication' => 'Endless comes packed with content for education and entertainment to use both online and offline',
+
 	//create user notification 
 	'userThankYou'=>'Thank You!',
 	'welcomeemailtext'=>'Welcome to ',
@@ -1124,7 +1130,7 @@ return [
 	'feature'=>'Feature',
 	'featureText'=>'Show feature products',
 	
-	'link_Sliders'=>'Slider Images',
+	'link_Sliders'=>'Slider and Images',
 	
 	'ListingSliders'=>'Listing Sliders',
 	
@@ -1151,12 +1157,13 @@ return [
 	'AddSliderText' => 'Add Slider Text',
 	
 	'SliderTitletext'=>'Enter title of slider',
+	'SliderTexttext'=>'Enter text of slider',
 	
 	'ImageSliderText'=>'Please upload slider image.',
 	
 	'AddSliderImageText'=>'AddSliderImageText',
 	
-	'ChooseSliderToAsscociateWith'=>'Choose a category to associate with this slide.',
+	'ChooseSliderToAsscociateWith'=>'Choose a group to associate with this slide or image.',
 	
 	'SliderAddedMessage'=>'New image slide has been added successfully!',
 	

@@ -155,7 +155,7 @@
          
         @if(session('website_setting_view')==1 or auth()->guard('admin')->user()->adminType=='1')
         
-        @if($web_setting[67]->value=='1')
+        {{-- @if($web_setting[67]->value=='1') --}}
         <li class="treeview {{ Request::is('admin/sliders') ? 'active' : '' }} {{ Request::is('admin/addsliderimage') ? 'active' : '' }} {{ Request::is('admin/editslide/*') ? 'active' : '' }} {{ Request::is('admin/webpages') ? 'active' : '' }}  {{ Request::is('admin/addwebpage') ? 'active' : '' }}  {{ Request::is('admin/editwebpage/*') ? 'active' : '' }} {{ Request::is('admin/websettings') ? 'active' : '' }} {{ Request::is('admin/webthemes') ? 'active' : '' }} {{ Request::is('admin/customstyle') ? 'active' : '' }} {{ Request::is('admin/constantbanners') ? 'active' : '' }} {{ Request::is('admin/addconstantbanner') ? 'active' : '' }} {{ Request::is('admin/editconstantbanner/*') ? 'active' : '' }}" >
           <a href="#">
             <i class="fa fa-gears" aria-hidden="true"></i>
@@ -176,7 +176,7 @@
             <li class="{{ Request::is('admin/websettings') ? 'active' : '' }}"><a href="{{ URL::to('admin/websettings')}}"><i class="fa fa-circle-o"></i> {{ trans('labels.link_setting') }}</a></li>
           </ul>
         </li>
-        @endif
+        {{-- @endif --}}
         
          @endif
         @if(session('application_setting_view')==1 or auth()->guard('admin')->user()->adminType=='1')
