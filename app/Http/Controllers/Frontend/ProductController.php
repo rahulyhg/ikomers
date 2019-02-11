@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     //
     function index(){
-        $products = Product::getProducts()->orderBy('products.products_id', 'DESC')->paginate(40);
+        $products = Product::getProducts()->orderBy('products.products_id', 'DESC')->paginate(30);
         $manufacturers = Manufacturer::getManufacturers()->get();
         $product_options = Product::getOptionValue('colors')->get();
         //dd($product_options);

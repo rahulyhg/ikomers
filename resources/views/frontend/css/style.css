@@ -3857,6 +3857,25 @@ border-bottom: 1px solid #e5e3db;
 	background: none;
 }
 
+/* pagination */
+.pagination > li > a, .pagination > li > span {
+	color: #ff6633;
+    text-decoration: none;
+    background-color: transparent;
+	border: none;
+	margin: 0;
+	border-radius: 6px;
+}
+.pagination > li > a:hover {
+	background-color: #fce6de;
+	border-color: #fce6de;
+	color: #ff6633;
+}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+	background-color: #ff6633;
+	border-color: #ff6633;
+}
+
 /*-- //treeview --*/
 .css-treeview {
     border: 1px solid #ff6633;

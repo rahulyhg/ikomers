@@ -84,8 +84,12 @@
                     @endforeach
                 </div>
                 <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        @include('frontend.common.pagination', ['paginator' => $products])
+                    </div>
+                </div>
             </div>
-
             <div class="clearfix"></div>
 
         </div>
