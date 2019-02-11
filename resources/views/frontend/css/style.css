@@ -2341,6 +2341,9 @@ button.w3view-cart a{
 	color: #ff6633;
 	margin: 10px 0;
 }
+.btn-view-product:hover {
+	background-color: #ff6633;
+}
 .info-product-price {
    margin: 10px 0;
 }
