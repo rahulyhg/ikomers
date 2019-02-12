@@ -6,13 +6,25 @@
             <div class="container">
                 <ul class="pull-right">
                     <li class='hidden-xs'> <a href="#"> Track order </a></li>
-                                
-                    <li> <a href='login.html'> Sign in </a></li>
-                    <li class='hidden-xs'> <a href='registration.html'> Sign up </a></li>
-                    
+                    @if (Auth::guest())
+                      <li> <a href='login'> Sign in </a></li>
+                      <li class='hidden-xs'> <a href='register'> Sign up </a></li>
+                    @endif
                     <li class='hidden-xs'>		
-                        <button class="w3view-cart" type="submit" name="submit" value=""><a href="your-cart.html"> Items in Cart</a></button>                
+                        <a href="{{URL::to('cart')}}"><strong>{{ Cart::count() }}</strong> Items in Cart</a>
                     </li>
+                    @if (Auth::user())
+                      <li> 
+                          <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                      </li>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          {{ csrf_field() }}
+                      </form>
+                    @endif
                 </ul>
             </div>
         </div>

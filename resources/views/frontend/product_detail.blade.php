@@ -80,30 +80,25 @@
                             </div>
                             
                     </div>
-            
-                    <form action="" method="post">
                         <div class="col-md-6 single-right-left simpleCart_shelfItem">
                             
+                            <form action="{{ URL::to('cart') }}" method="POST">
                             <div class="product-attr">
                                 <h4>{{ trans('labels.Price') }} :</h4>
                                 <p><span class="item_price"> {{ $currency }} </span> {{ $product->products_price }}</p>
                                 <h4>{{ trans('labels.Quantity') }} :</h4>
                                 <div class="form-group m-t-10" style="width:100px">
-                                    <input type="number" value="1" min="1" name="product_qty" class="form-control">
+                                    <input type="number" value="1" min="1" name="qty" class="form-control">
                                 </div>
                             </div>
             
                             <div class="">
                                 <div class="row">
                                     <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-                                        <button class="btn btn-buy-product btn-block" type="submit" name="add_cart">
-                                            Buy now
-                                        </button>
+                                            <button class="btn btn-buy-product btn-block" type="submit" name="buy" value="1">Buy now</button>
                                     </div>
                                     <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-                                        <button class="btn btn-view-product btn-block" type="submit" name="add_wishlist">
-                                            Add to Cart
-                                        </button>
+                                            <button class="btn btn-view-product btn-block" type="submit">Add to Cart</button>
                                     </div>
                                     <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
                                         <button class="btn btn-wishlist-product btn-block" type="submit" name="add_wishlist">
@@ -112,6 +107,12 @@
                                     </div>
                                 </div>
                             </div>
+
+                            {!! csrf_field() !!}
+                            <input type="hidden" name="id" value="{{ $product->products_id }}">
+                            <input type="hidden" name="name" value="{{ $product->products_name }}">
+                            <input type="hidden" name="price" value="{{ $product->products_price }}">
+                            </form>
                             <ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
                                 <li class="share">share on : </li>
                                 <li>
@@ -140,7 +141,6 @@
                                 </li>
                             </ul>
                         </div>
-                    </form>
             
                     <div class="clearfix"> </div>
                 </div>
@@ -166,83 +166,49 @@
                     </div>
                     <!--//tab_one-->
                     <div class="tab2">
-
-                        <div class="single_page_agile_its_w3ls">
-                            <div class="bootstrap-tab-text-grids">
-                                <div class="bootstrap-tab-text-grid">
-                                    <div class="bootstrap-tab-text-grid-left">
-                                        <img src="images/t1.jpg" alt=" ">
-                                    </div>
-                                    <div class="bootstrap-tab-text-grid-right">
-                                        <ul>
-                                            <li><a href="#">Admin</a></li>
-                                            <li><a href="#"><i class="fa fa-reply-all" aria-hidden="true"></i> Reply</a></li>
-                                        </ul>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget.Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit.</p>
-                                    </div>
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <div class="add-review">
-                                    <h4>add a review</h4>
-                                    <form action="#" method="post">
-                                        <input type="text" name="Name" required="Name">
-                                        <input type="email" name="Email" required="Email">
-                                        <textarea name="Message" required=""></textarea>
-                                        <input type="submit" value="SEND">
-                                    </form>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="tab3">
-
-                        <div class="single_page_agile_its_w3ls">
-                            <h6>SIZE GUIDE</h6>
-                            <div class="container">
-                                <div class="row">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>EURO</th>
-                                                <th>CM</th>
-                                                <th>UK</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>39</td>
-                                                <td>25.5</td>
-                                                <td>8</td>
-                                            </tr>
-                                            <tr>
-                                                <td>40</td>
-                                                <td>26</td>
-                                                <td>8.5</td>
-                                            </tr>
-                                            <tr>
-                                                <td>41</td>
-                                                <td>26.5</td>
-                                                <td>9</td>
-                                            </tr>
-                                            <tr>
-                                                <td>42</td>
-                                                <td>27</td>
-                                                <td>9.5</td>
-                                            </tr>
-                                            <tr>
-                                                <td>43</td>
-                                                <td>27.5</td>
-                                                <td>10</td>
-                                            </tr>
-                                            <tr>
-                                                <td>44</td>
-                                                <td>28</td>
-                                                <td>10.5</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                        <div class="container">
+                            <div class="row">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>EURO</th>
+                                            <th>CM</th>
+                                            <th>UK</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>39</td>
+                                            <td>25.5</td>
+                                            <td>8</td>
+                                        </tr>
+                                        <tr>
+                                            <td>40</td>
+                                            <td>26</td>
+                                            <td>8.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>41</td>
+                                            <td>26.5</td>
+                                            <td>9</td>
+                                        </tr>
+                                        <tr>
+                                            <td>42</td>
+                                            <td>27</td>
+                                            <td>9.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>43</td>
+                                            <td>27.5</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>44</td>
+                                            <td>28</td>
+                                            <td>10.5</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

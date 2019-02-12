@@ -181,6 +181,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
+
     ],
 
     /*
@@ -233,7 +235,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
 		'Theme' => Karlomikus\Theme\Facade\Theme::class,
 		'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
     ],
 
 ];
