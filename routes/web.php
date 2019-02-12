@@ -27,7 +27,10 @@ Route::get('/', function () {
 Route::group(['namespace' => 'Frontend'], function () {
 
 	Route::get('/home', 'HomeController@index')->name('home');
-	Route::get('/products', 'ProductController@index')->name('products');
+
+	//Product
+	Route::get('/products', 'ProductController@index')->name('product');
+	Route::get('/product/{slug}', 'ProductController@detail')->name('product.detail');
 	
 });
 

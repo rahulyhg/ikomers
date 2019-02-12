@@ -824,6 +824,9 @@ return [
 	'Spiral' => 'Spiral',
 	'Merk' => 'Merk',
 	'Color' => 'Color',
+	'Prices' => 'Prices',
+	'Quantity' => 'Quantity',
+	'OtherProduct' => "You might also like these products",
 	
 	'NewProductDuration' => 'New Product Duration',
 	'NewProductDurationText' => 'Please enter in days. e.g: 20. Newly will appear in product card on home shop & product detail page.',

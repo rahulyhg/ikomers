@@ -61,6 +61,12 @@ body a {
 .m-t-20 {
 	margin-top: 20px;
 }
+.m-t-30 {
+	margin-top: 30px;
+}
+.m-t-40 {
+	margin-top: 40px;
+}
 .p-0 {
 	padding: 0 !important;
 }
@@ -1275,7 +1281,7 @@ h4.shippingform{
 
 /**blankenheim**/
 .dottedline-bheim{
-	border-bottom:1px dotted #333333;
+	border-bottom:2px solid #aaa;
 	padding-bottom:15px;
 	margin-top:8em;
 }
@@ -1288,10 +1294,11 @@ h4.shippingform{
 	margin-top:11px;
 }	
 
-	.single-top-left {
-    margin-left:11%;
-    width: 34%;
-	}
+.single-top-left {
+	margin-left:11%;
+	width: 34%;
+}
+
 /**blankenheim**/
 
 figure.effect-roxy img {
@@ -2336,10 +2343,37 @@ button.w3view-cart a{
 	height: 224px;
 	object-fit: cover;
 }
+.product-attr {
+	color: #ff6633 !important;
+}
+.product-attr p {
+	font-weight: bold;
+	color: #ff6633 !important;
+}
 .btn-view-product {
 	border: 1px solid #ff6633;
 	color: #ff6633;
 	margin: 10px 0;
+	text-transform: uppercase;
+}
+.btn-buy-product {
+	background: #ff6633;
+	color: #fff;
+	margin: 10px 0;
+	text-transform: uppercase;
+}
+.btn-wishlist-product {
+	background: #fc3657;
+	color: #fff;
+	margin: 10px 0;
+	text-transform: uppercase;
+}
+.thumb-image {
+	max-width: 240px;
+    padding: 0 24px;
+}
+.thumb-image:hover {
+	cursor: pointer;
 }
 .btn-view-product:hover {
 	background-color: #ff6633;
@@ -2357,6 +2391,10 @@ button.w3view-cart a{
 	color: #fff;
     margin-left: 10px;
     letter-spacing: 1px;
+}
+hr {
+	border-width: 2px;
+	border-color: #ccc;
 }
 .yes-marg{
 	margin-top:30px;
@@ -2538,7 +2576,7 @@ ul.multi-column-dropdown li a:hover{
 
 .coupons,.banner-bootom-w3-agileits,.new_arrivals_agile_w3ls_info{
    padding:2em 0;
-   /* background-color: #ebebeb; */
+   background-color: #ebebeb;
 }
 .w3layouts_mail_grid {
     padding: 0 1em;
@@ -4096,6 +4134,23 @@ font-weight: 300;
 }
 /*-- //men-wear --*/
 /*-- single-page --*/
+.flex-viewport {
+	border: none !important;
+}
+#carousel .slides {
+	width: 100%!important;
+	text-align: center;
+}
+#carousel .slides li {
+	 display: inline-block!important; 
+	*display: inline!important; 
+	float: none!important;
+}
+.flexslider .slides img {
+	max-height: 400px; /*maximum height for all slides*/
+	object-fit: contain;
+    margin: 0 auto; /*centering images in the container*/
+}
 .single-right-left h3 {
     text-transform: capitalize;
     font-size: 23px;
@@ -4289,7 +4344,6 @@ color: #000;
 .single_page_agile_its_w3ls h6 {
     font-size: 1.2em;
     text-transform: uppercase;
-    font-weight: 700;
     letter-spacing: 1px;
     color: #292929;
 	margin-bottom:0.5em;

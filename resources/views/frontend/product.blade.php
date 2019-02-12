@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="banner-bootom-w3-agileits">
+    <div class="m-t-30">
         <div class="container">
             <div class="col-md-3 products-left">
                 <div class="sidebar-menu">
@@ -72,10 +72,10 @@
                 <div class="row-eq-height">
                     @foreach ($products as $item)
                         <div class="col-md-4 item-product">
-                            <a href=""><img src="{{ asset($item->products_image) }}" alt="" class="img-responsive"></a>
+                            <a href="{{ route('product.detail', ['slug' => $item->products_slug]) }}"><img src="{{ asset($item->products_image) }}" alt="" class="img-responsive"></a>
                             <div class="item-info-product ">
-                                <a href="single.html" class="btn btn-block btn-view-product">{{ strtoupper('Quick View') }}</a>
-                                <h4><a href="single.html">{{ ucwords(trans(strtolower($item->products_name))) }}</a></h4>
+                                <a href="{{ route('product.detail', ['slug' => $item->products_slug]) }}" class="btn btn-block btn-view-product">{{ strtoupper('Quick View') }}</a>
+                                <h4><a href="{{ route('product.detail', ['slug' => $item->products_slug]) }}">{{ ucwords(trans(strtolower($item->products_name))) }}</a></h4>
                                 <div class="info-product-price">
                                     <span class="item_price">{{ $item->products_price }}</span>
                                 </div>
