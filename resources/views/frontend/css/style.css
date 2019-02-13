@@ -172,6 +172,50 @@ label{
     margin: 0 auto;
     width: 90%;
 }
+.header-img-about img {
+    width: 100%;
+    object-fit: cover;
+}
+.header-text-about {
+	position: absolute;
+	top: 4em;
+}
+.header-text-about h5 {
+	font-size: 4.2em !important;
+	text-transform: unset !important;
+	color: #ff6633 !important;
+}
+.header-text-about p {
+	font-size: 1.5em !important;
+	text-transform: unset !important;
+	color: #ff6633 !important;
+	line-height: unset !important;
+}
+.text-primary {
+	color: #ff6633 !important;
+}
+.text-yellow {
+	color: #f2c368 !important;
+}
+.text-white {
+	color: #fff !important;
+}
+.about-grid img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+.about-grid .row-grid {
+	min-height:680px;
+	max-height:680px;
+}
+.row-grid-content {
+	padding: 14em 10em;
+}
+.about-grid img.img-avatar {
+	max-width: 82px;
+	max-height: 82px;
+}
 /*-- //header --*/
 .social-nav {
     padding: 0;

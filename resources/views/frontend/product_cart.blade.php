@@ -85,7 +85,12 @@
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
                         <h6 id="totalSummary" data-total="">{{ Cart::total() }}</h6>
-                    </div>	
+                    </div>
+                    @if (Cart::count())
+                        <div class="col-md-12 m-t-20">
+                            <button class="btn btn-block btn-buy-product btn-lg">Continue Payment</button>
+                        </div>
+                    @endif	
                 </div>
             
             </div><!-- box Ends -->

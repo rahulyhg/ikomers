@@ -39,7 +39,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 	Route::resource('/cart', 'CartController', ['only' => ['index', 'store', 'update', 'destroy']]);
 
 	//About
-	Route::get('/about', 'AboutContoller@index')->name('about');
+	Route::get('/about', 'AboutController@index')->name('about');
 	
 });
 

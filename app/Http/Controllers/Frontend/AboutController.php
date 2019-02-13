@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class AboutController extends Controller
 {
     //
+    function index() {
+        return view('frontend.about');
+    }
 }
