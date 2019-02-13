@@ -6,13 +6,25 @@
             <div class="container">
                 <ul class="pull-right">
                     <li class='hidden-xs'> <a href="#"> Track order </a></li>
-                                
-                    <li> <a href='login.html'> Sign in </a></li>
-                    <li class='hidden-xs'> <a href='registration.html'> Sign up </a></li>
-                    
+                    @if (Auth::guest())
+                      <li> <a href='login'> Sign in </a></li>
+                      <li class='hidden-xs'> <a href='register'> Sign up </a></li>
+                    @endif
                     <li class='hidden-xs'>		
-                        <button class="w3view-cart" type="submit" name="submit" value=""><a href="your-cart.html"> Items in Cart</a></button>                
+                        <a href="{{URL::to('cart')}}"><strong>{{ Cart::count() }}</strong> Items in Cart</a>
                     </li>
+                    @if (Auth::user())
+                      <li> 
+                          <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                      </li>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          {{ csrf_field() }}
+                      </form>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -50,8 +62,8 @@
                         <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                           <ul class="nav navbar-nav menu__list">
                             <li class="active menu__item menu__item--current"><a class="menu__link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a></li>
-                            <li class=" menu__item"><a class="menu__link" href="{{ route('products') }}">Endless Products</a></li>
-                            <li class=" menu__item"><a class="menu__link" href="about-blankenheim.html">About</a></li>
+                            <li class=" menu__item"><a class="menu__link" href="{{ route('product') }}">Endless Products</a></li>
+                            <li class=" menu__item"><a class="menu__link" href="{{ route('about') }}">About</a></li>
                             <li class=" menu__item"><a class="menu__link" href="gallery.html">Gallery</a></li>
                             <li class=" menu__item"><a class="menu__link" href="http://blog.blankenheim.id">FAQ</a></li>
                             <li class=" menu__item"><a class="menu__link" href="contact-blankenheim.html">Contact</a></li>

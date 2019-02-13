@@ -62,7 +62,7 @@
 		});
 
 		$(window).scroll(function() {
-			if ($(this).scrollTop()>160)
+			if ($(this).scrollTop()>1)
 			{
 				$('.menubawah').fadeOut(300);
 			}

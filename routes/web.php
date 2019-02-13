@@ -21,13 +21,25 @@ header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Autho
 | and give it the controller to call when that URI is requested.
 |
 */
+
+Auth::routes();
+
 Route::get('/', function () {
 	return redirect('/home');
 });
 Route::group(['namespace' => 'Frontend'], function () {
 
 	Route::get('/home', 'HomeController@index')->name('home');
-	Route::get('/products', 'ProductController@index')->name('products');
+
+	//Product
+	Route::get('/products', 'ProductController@index')->name('product');
+	Route::get('/product/{slug}', 'ProductController@detail')->name('product.detail');
+
+	//Cart
+	Route::resource('/cart', 'CartController', ['only' => ['index', 'store', 'update', 'destroy']]);
+
+	//About
+	Route::get('/about', 'AboutController@index')->name('about');
 	
 });
 
@@ -851,4 +863,3 @@ Route::group(['namespace' => 'App', 'prefix'=>'app'], function () {
 	
 
 });
-
