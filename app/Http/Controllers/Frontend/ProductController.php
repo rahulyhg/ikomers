@@ -23,7 +23,8 @@ class ProductController extends Controller
         $product = Product::getProduct($slug);
         $product_images = Product::getProductImages($slug);
         $currency = Setting::getAttr('currency_symbol');
+        $products = Product::getProducts()->orderBy('products.products_id', 'RAND()')->take(4)->get();
         //dd($product_images);
-        return view('frontend.product_detail', compact('product', 'product_images', 'currency'));
+        return view('frontend.product_detail', compact('product', 'product_images', 'products', 'currency'));
     }
 }

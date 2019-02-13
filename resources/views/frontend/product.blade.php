@@ -69,7 +69,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="col-md-9 products-right" id="Products">
-                <div class="row-eq-height">
+                <div class="row">
                     @foreach ($products as $item)
                         <div class="col-md-4 item-product">
                             <a href="{{ route('product.detail', ['slug' => $item->products_slug]) }}"><img src="{{ asset($item->products_image) }}" alt="" class="img-responsive"></a>

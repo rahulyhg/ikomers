@@ -228,6 +228,23 @@
         <div class="single-page ">
             <div class="single_page_agile_its_w3ls centerheim ">
                 <h6>{{ trans('labels.OtherProduct') }}</h6>
+                <div class="row row-eq-height m-t-50">
+                    @foreach ($products as $item)
+                        <div class="col-md-3 item-product">
+                            <div class="other-product">
+                                <a href="{{ route('product.detail', ['slug' => $item->products_slug]) }}"><img src="{{ asset($item->products_image) }}" alt="" class="img-responsive"></a>
+                                <div class="item-info-product">
+                                    <h4 class="m-t-30"><a href="{{ route('product.detail', ['slug' => $item->products_slug]) }}">{{ ucwords(trans(strtolower($item->products_name))) }}</a></h4>
+                                    <div class="m-t-50">
+                                        <div class="seemore">
+                                            see more
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>

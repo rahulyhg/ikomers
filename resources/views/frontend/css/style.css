@@ -138,7 +138,8 @@ label{
     text-align: center;
     color: #fff;
     font-size: 12px;
-    padding: 0 8px;
+	padding: 0 8px;
+	margin-bottom: 6px;
     letter-spacing: 1px;
     border-right: 1px solid #ff6633;
 }
@@ -2335,6 +2336,10 @@ button.w3view-cart a{
     text-decoration: none;
     /* font-weight: 600; */
 }
+.item-product {
+	display: flex;
+	flex-direction: column;
+}
 .item-product:hover {
 	cursor: pointer;
 }
@@ -2382,7 +2387,14 @@ button.w3view-cart a{
 	background-color: #ff6633;
 }
 .info-product-price {
-   margin: 10px 0;
+	margin: 10px 0;
+}
+.seemore {
+	position: absolute;
+    left: 0;
+    right: 0;
+	bottom: 0;
+	margin: 14px 0;
 }
 .info-product-price span {
     color: #000;
@@ -2394,6 +2406,18 @@ button.w3view-cart a{
 	color: #fff;
     margin-left: 10px;
     letter-spacing: 1px;
+}
+.other-product {
+	border: 1px dotted #ccc;
+    border-radius: 6px;
+	padding: 0 24px;
+	height: 100%;
+}
+.row.row-eq-height {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
 }
 hr {
 	border-width: 2px;
