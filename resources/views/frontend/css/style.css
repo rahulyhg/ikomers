@@ -2902,21 +2902,17 @@ h3.tittle {
     padding: 0.5em 1em 0.5em 0.5em;
     border: 0;
     width: 100%;
-    border: 1px solid #000;
-    background: none;
+	border: 1px solid #cdcdc5;
+	border-radius: 4px;
+    background: #cdcdc5;
     -webkit-appearance: none;
     outline: none;
 }
-.contact-form input[type="submit"] {
+.contact-form button {
     border: none;
     padding: 0.8em 2.5em;
     font-size: 15px;
     outline: none;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 1px;
-    background: #ff6633;
-    color: #333333;
 }
 .contact-right p {
     text-transform: uppercase;
