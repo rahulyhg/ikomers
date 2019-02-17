@@ -32,8 +32,8 @@
                                 <p>{{ $row->options->has('size') ? $row->options->size : '' }}</p>
                             </td>
                             <td class="text-center"><?php echo $row->qty; ?></td>
-                            <td>{{ $row->price }}</td>
-                            <td>{{ $row->total }}</td>
+                            <td>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ $row->price }}</td>
+                            <td>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ $row->total }}</td>
                             <td>
                                  <form action="{{ URL::to('cart', ['id' => $row->rowId]) }}" method="POST">
                                     {!! csrf_field() !!}
@@ -71,7 +71,7 @@
                         <h5>Order Subtotal</h5>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
-                        <h5> {{Cart::subtotal()}} </h5>
+                        <h5>{{ App\Models\Setting::getAttr('currency_symbol') }} {{Cart::subtotal()}} </h5>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
                         <h5>Shipping Cost</h5>
@@ -84,11 +84,11 @@
                         <h6>Total</h6>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
-                        <h6 id="totalSummary" data-total="">{{ Cart::total() }}</h6>
+                        <h6 id="totalSummary" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} {{ Cart::total() }}</h6>
                     </div>
                     @if (Cart::count())
                         <div class="col-md-12 m-t-20">
-                            <button class="btn btn-block btn-buy-product btn-lg">Continue Payment</button>
+                            <a href="{{ route('checkout') }}" class="btn btn-block btn-buy-product btn-lg">Checkout</a>
                         </div>
                     @endif	
                 </div>

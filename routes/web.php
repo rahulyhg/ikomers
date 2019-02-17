@@ -38,10 +38,14 @@ Route::group(['namespace' => 'Frontend'], function () {
 	//Cart
 	Route::resource('/cart', 'CartController', ['only' => ['index', 'store', 'update', 'destroy']]);
 
+	//Checkout
+	Route::get('/checkout', 'CheckoutController@index')->name('checkout');
+
 	//About
 	Route::get('/about', 'AboutController@index')->name('about');
 
 	Route::get('/gallery', 'GalleryController@index')->name('gallery');
+
 	Route::get('/contact', 'ContactController@index')->name('contact');
 	
 });
