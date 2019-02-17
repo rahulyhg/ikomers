@@ -156,10 +156,10 @@
 <div class="container">
   <div class="gallery">
       <figure class="gallery__item gallery__item--1">
-          <img src="{{ asset('resources/assets/images/galleries/1.jpg') }}" alt="Gallery image 1" class="gallery__img">
+          <img src="{{ asset('resources/assets/images/galleries/1.JPG') }}" alt="Gallery image 1" class="gallery__img">
       </figure>
       <figure class="gallery__item gallery__item--2">
-          <img src="{{ asset('resources/assets/images/galleries/2.jpg') }}" alt="Gallery image 2" class="gallery__img">
+          <img src="{{ asset('resources/assets/images/galleries/2.JPG') }}" alt="Gallery image 2" class="gallery__img">
       </figure>
       <figure class="gallery__item gallery__item--3">
           <img src="{{ asset('resources/assets/images/galleries/3.jpeg') }}" alt="Gallery image 3" class="gallery__img">
@@ -168,19 +168,19 @@
           <img src="{{ asset('resources/assets/images/galleries/4.jpeg') }}" alt="Gallery image 4" class="gallery__img">
       </figure>
       <figure class="gallery__item gallery__item--5">
-          <img src="{{ asset('resources/assets/images/galleries/5.jpg') }}" alt="Gallery image 5" class="gallery__img">
+          <img src="{{ asset('resources/assets/images/galleries/5.JPG') }}" alt="Gallery image 5" class="gallery__img">
       </figure>
       <figure class="gallery__item gallery__item--6">
           <img src="{{ asset('resources/assets/images/galleries/6.jpeg') }}" alt="Gallery image 6" class="gallery__img">
       </figure>
       <figure class="gallery__item gallery__item--7">
-          <img src="{{ asset('resources/assets/images/galleries/7.jpg') }}" alt="Gallery image 6" class="gallery__img">
+          <img src="{{ asset('resources/assets/images/galleries/7.JPG') }}" alt="Gallery image 6" class="gallery__img">
       </figure>
       <figure class="gallery__item gallery__item--8">
-          <img src="{{ asset('resources/assets/images/galleries/8.jpg') }}" alt="Gallery image 6" class="gallery__img">
+          <img src="{{ asset('resources/assets/images/galleries/8.JPG') }}" alt="Gallery image 6" class="gallery__img">
       </figure>
       <figure class="gallery__item gallery__item--9">
-          <img src="{{ asset('resources/assets/images/galleries/9.jpg') }}" alt="Gallery image 6" class="gallery__img">
+          <img src="{{ asset('resources/assets/images/galleries/9.JPG') }}" alt="Gallery image 6" class="gallery__img">
       </figure>
       <figure class="gallery__item gallery__item--10">
           <img src="{{ asset('resources/assets/images/galleries/10.jpeg') }}" alt="Gallery image 6" class="gallery__img">
