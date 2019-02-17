@@ -64,9 +64,9 @@
                             <li class="active menu__item menu__item--current"><a class="menu__link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a></li>
                             <li class=" menu__item"><a class="menu__link" href="{{ route('product') }}">Endless Products</a></li>
                             <li class=" menu__item"><a class="menu__link" href="{{ route('about') }}">About</a></li>
-                            <li class=" menu__item"><a class="menu__link" href="gallery.html">Gallery</a></li>
-                            <li class=" menu__item"><a class="menu__link" href="http://blog.blankenheim.id">FAQ</a></li>
-                            <li class=" menu__item"><a class="menu__link" href="contact-blankenheim.html">Contact</a></li>
+                            <li class=" menu__item"><a class="menu__link" href="{{ route('gallery') }}">Gallery</a></li>
+                            <li class=" menu__item"><a class="menu__link" href="">FAQ</a></li>
+                            <li class=" menu__item"><a class="menu__link" href="{{ route('contact') }}">Contact</a></li>
                           </ul>
                         </div>
                       </div>

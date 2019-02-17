@@ -40,6 +40,9 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 	//About
 	Route::get('/about', 'AboutController@index')->name('about');
+
+	Route::get('/gallery', 'GalleryController@index')->name('gallery');
+	Route::get('/contact', 'ContactController@index')->name('contact');
 	
 });
 
