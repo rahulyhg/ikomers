@@ -95,15 +95,13 @@
                             <div class="">
                                 <div class="row">
                                     <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-                                            <button class="btn btn-buy-product btn-block" type="submit" name="buy" value="1">Buy now</button>
+                                        <button class="btn btn-buy-product btn-block" type="submit" name="buy" value="1">Buy now</button>
                                     </div>
                                     <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-                                            <button class="btn btn-view-product btn-block" type="submit">Add to Cart</button>
+                                        <button class="btn btn-view-product btn-block" type="submit">Add to Cart</button>
                                     </div>
                                     <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-                                        <button class="btn btn-wishlist-product btn-block" type="submit" name="add_wishlist">
-                                            Wishlist
-                                        </button>
+                                        <button class="btn btn-wishlist-product btn-block" type="submit" name="add_wishlist">Wishlist</button>
                                     </div>
                                 </div>
                             </div>
@@ -168,47 +166,21 @@
                     <div class="tab2">
                         <div class="container">
                             <div class="row">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>EURO</th>
-                                            <th>CM</th>
-                                            <th>UK</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>39</td>
-                                            <td>25.5</td>
-                                            <td>8</td>
-                                        </tr>
-                                        <tr>
-                                            <td>40</td>
-                                            <td>26</td>
-                                            <td>8.5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>41</td>
-                                            <td>26.5</td>
-                                            <td>9</td>
-                                        </tr>
-                                        <tr>
-                                            <td>42</td>
-                                            <td>27</td>
-                                            <td>9.5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>43</td>
-                                            <td>27.5</td>
-                                            <td>10</td>
-                                        </tr>
-                                        <tr>
-                                            <td>44</td>
-                                            <td>28</td>
-                                            <td>10.5</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="col-md-12 single_page_agile_its_w3ls">
+                                    <ul class="desc_product">
+                                        <li>Endless Operating System (in Indonesian)</li>
+                                        <li>50,000 pages of Encyclopedia without the need for the Internet</li>
+                                        <li>Hundreds of Education Videos for Elementary-Middle School-High School Lessons without internet</li>
+                                        <li>Ms-Office compatibility without the need for license fees</li>
+                                        <li>Educational applications in the form of subject topics: Biology, Physics, Geography, History, Social Sciences, and Astronomy without the need for internet</li>
+                                        <li>Dozens of educational games</li>
+                                        <li>Complete Multimedia Application (GIMP, Inkscape, Video Editor, VLC Video player, Photo Editor, etc.)</li>
+                                        <li>Do not need Anti Virus</li>
+                                        <li>Equipped with an application center with hundreds of free Apps</li>
+                                        <li>Complete social media (FB / Twitter / Instagram / Skype / Email / WA)</li>
+                                        <li>Already have hundreds of drivers for printers and scanners, just plug and print / scan</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -237,7 +209,7 @@
                                     <h4 class="m-t-30"><a href="{{ route('product.detail', ['slug' => $item->products_slug]) }}">{{ ucwords(trans(strtolower($item->products_name))) }}</a></h4>
                                     <div class="m-t-50">
                                         <div class="seemore">
-                                            see more
+                                            <a href="{{ route('product.detail', ['slug' => $item->products_slug]) }}">see more</a>
                                         </div>
                                     </div>
                                 </div>

@@ -930,6 +930,34 @@ h4.shippingform{
 
 /**header muntjul**/
 /*-- headerheim --*/
+ul.desc_product, ul.desc_product li {
+    margin: 0;
+    padding: 0;
+}
+
+ul.desc_product {
+	display: table;
+	text-indent:-1.8em; 
+}
+
+ul.desc_product li {
+    list-style: none;
+    display: table-row;
+}
+
+ul.desc_product li::before {
+	content: "";
+    display: table-cell;
+    text-align: right;
+    padding-right: .3em;
+    line-height: 1em;
+    width: .8em;
+    height: .8em;
+	background-color: #ff6633;
+	display: inline-block;
+    margin: .25em .5em 0;
+    border-radius: 50%;
+}
 .headerheim {
     background: #ff6633;
 	margin-bottom:11px;
@@ -2433,12 +2461,13 @@ button.w3view-cart a{
 .info-product-price {
 	margin: 10px 0;
 }
-.seemore {
+.seemore a {
 	position: absolute;
     left: 0;
     right: 0;
 	bottom: 0;
 	margin: 14px 0;
+	color: #ff6633;
 }
 .info-product-price span {
     color: #000;

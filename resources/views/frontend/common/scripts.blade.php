@@ -18,6 +18,21 @@
 	}
 </script>
 
+<script>
+$(function(){
+    var current = window.location.href;
+    $('li.menu__item a').each(function(){
+        var $this = $(this);
+		// if the current path is like this link, make it active
+		
+		console.log(current);
+        if($this.attr('href') === current){
+			$this.parents('.menu__item').addClass('active menu__item--current')
+        }
+    })
+})
+</script>
+
 	<!-- //cart-js --> 
 <!-- script for responsive tabs -->						
 <script src="{!! asset('resources/views/frontend/js/easy-responsive-tabs.js') !!}"></script>
