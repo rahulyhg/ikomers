@@ -44,7 +44,7 @@
         <!-- //header -->
             <div class="container menubawah">
                 <div class="top_nav_left">
-                    <a href="index.html"><img src="{!! asset('resources/views/frontend/images/logo/endless.png') !!}" class="img-responsive"/></a>
+                  <a href="{{ route('home') }}"><img src="{!! asset('resources/views/frontend/images/logo/endless.png') !!}" class="img-responsive"/></a>
                 </div>
                 <div class="top_nav_right">
                     <nav class="navbar navbar-default">
@@ -61,12 +61,12 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                           <ul class="nav navbar-nav menu__list">
-                            <li class="active menu__item menu__item--current"><a class="menu__link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a></li>
-                            <li class=" menu__item"><a class="menu__link" href="{{ route('product') }}">Endless Products</a></li>
-                            <li class=" menu__item"><a class="menu__link" href="{{ route('about') }}">About</a></li>
-                            <li class=" menu__item"><a class="menu__link" href="{{ route('gallery') }}">Gallery</a></li>
-                            <li class=" menu__item"><a class="menu__link" href="">FAQ</a></li>
-                            <li class=" menu__item"><a class="menu__link" href="{{ route('contact') }}">Contact</a></li>
+                            <li class="menu__item"><a class="menu__link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a></li>
+                            <li class="menu__item"><a class="menu__link" href="{{ route('product') }}">Endless Products</a></li>
+                            <li class="menu__item"><a class="menu__link" href="{{ route('about') }}">About</a></li>
+                            <li class="menu__item"><a class="menu__link" href="{{ route('gallery') }}">Gallery</a></li>
+                            <li class="menu__item"><a class="menu__link" href="">FAQ</a></li>
+                            <li class="menu__item"><a class="menu__link" href="{{ route('contact') }}">Contact</a></li>
                           </ul>
                         </div>
                       </div>

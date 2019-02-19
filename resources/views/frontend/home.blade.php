@@ -34,11 +34,11 @@
                         <img src="{{ asset($product->products_image) }}" class="img-feature" alt="">
                         <h4>{{ ucwords(trans(strtolower($product->products_name))) }}</h4>
                         <p>{{$product->products_price}}</p>
-                        <p>see more</p>
+                        <p><a href="{{ route('product.detail', $product->products_slug) }}">see more</a></p>
                     </div>
                 @endforeach
                 <div class="col-md-12 text-center">
-                    <a class="hvr-outline-out button2 btn" href="">Shop Now </a>
+                    <a class="hvr-outline-out button2 btn" href="{{ route('product') }}">Shop Now </a>
                 </div>
             </div>
         </div>  
