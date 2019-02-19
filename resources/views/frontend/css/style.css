@@ -434,7 +434,7 @@ i.fa.fa-shopping-bag.top_logo_agile_bag {
 }
 /* Icons */
 .footer-bottom a {
-
+    color: #333333;
 }
 
 /* pop-up text */
@@ -1524,11 +1524,11 @@ ul.social-nav.model-3d-0.footer-social.w3_agile_social.two {
 }
 .w3-address-right h6{
 	color: #333;
-	padding-top: 4px;
     font-size: 0.9em;
     margin: 0;
     font-weight: 600;
-    letter-spacing: 1px;
+	letter-spacing: 1px;
+	line-height: normal;
 }
 .w3-address-right p{
     margin: 1em 0 0 0;

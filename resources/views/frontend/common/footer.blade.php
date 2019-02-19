@@ -33,7 +33,7 @@
                 <div class="w3layouts_mail_grid_left2">
                     <h3>CUSTOMER SUPPORT</h3>
                     <p></p>
-                    <p>we provide online customer support from Monday to Saturday 08.00 a.m untill 17.00 p.m</p>
+                    <p>we provide online customer support from Monday to Saturday 08.00 a.m until 17.00 p.m</p>
                     <p></p>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                         <i class="fa fa-instagram" aria-hidden="true"></i>
                     </div>
                     <div class="w3-address-right">
-                        <h6>{{ App\Models\Setting::getAttr('phone_no') }}</h6>
+                        <a href="https://www.instagram.com/endlessindonesia/" target="_blank"><h6>Endless Indonesia</h6></a>
                     </div>
                 </div>
                 <div class="w3-address-grid">
@@ -74,7 +74,7 @@
                         <i class="fa fa-facebook" aria-hidden="true"></i>
                     </div>
                     <div class="w3-address-right">
-                        <h6>{{ App\Models\Setting::getAttr('contact_us_email') }}</h6>
+                        <a href="https://web.facebook.com/EndlessIndonesia" target="_blank"><h6>Endless Computers</h6></a>
                     </div>
                 </div>
 
@@ -85,12 +85,12 @@
                 <div class="col-md-4 sign-gd">
                     <h4>Information </h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about-blankenheim.html">About</a></li>
-                        <li><a href="how-to-buy.html">How to buy</a></li>
-                        <li><a href="faq-blankenheim.html">FAQ</a></li>
-                        <li><a href="payment-confirmation.html">Payment confirmation</a></li>
-                        <li><a href="track-my-order.html">Track your order</a></li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
+                        <li><a href="{{ route('about') }}">About</a></li>
+                        <li><a href="{{ route('home') }}">How to buy</a></li>
+                        <li><a href="{{ route('home') }}">FAQ</a></li>
+                        <li><a href="{{ route('home') }}">Payment confirmation</a></li>
+                        <li><a href="{{ route('home') }}">Track your order</a></li>
                     </ul>
                 </div>
 
