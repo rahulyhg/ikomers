@@ -130,41 +130,4 @@
         </div>
     </div>
 </div> 
-
-<div class="container-fluid about-grid">
-    <div class="row row-eq-height row-grid">
-        <div class="col-md-6 row-grid-content" style="background:url({{ asset('resources/views/frontend/images/oren.png') }})">
-            <h3 class="text-yellow">"Access The World Without Limits"</h3>
-            <p class="m-t-20 text-white">Around the world, there are still around 5 billion people who have not been touched by computers. Therefore, we make educational computers for everyone.</p>
-            <div class="col-md-12 m-t-50 text-center">
-                <img class="img-avatar" src="{{ asset('resources/views/frontend/images/about-matt.png') }}" alt="">
-                <p class="m-t-10 text-white"><strong>Matt Dalio</strong></p>
-                <p class="m-t-10 text-white">CEO and Founder Endless OS</p>
-            </div>
-        </div>
-        <div class="col-md-6 p-0">
-            <img src="{{ asset('resources/views/frontend/images/about-2.jpeg') }}" alt=" " class="img-responsive" />
-        </div>
-    </div>
-    <div class="row row-eq-height row-grid">
-        <div class="col-md-6 p-0">
-            <img src="{{ asset('resources/views/frontend/images/about-1.jpg') }}" alt=" " class="img-responsive" />
-        </div>
-        <div class="col-md-6 row-grid-content" style="background:url({{ asset('resources/views/frontend/images/putih.png') }})">
-            <h3 class="text-primary">"All -in-One Solution For Everyone"</h3>
-            <p class="m-t-20">The rapid development of technology has given positive impact on Indonesian education. 
-                    Education sector is urged to apply technology in many aspects, including curriculum, teaching and learning activities, and many more. One of the examples is providing learning materials through video online.</p>
-            <div class="col-md-12 m-t-50 text-center">
-                <img class="img-avatar" src="{{ asset('resources/views/frontend/images/about-paul.png') }}" alt="">
-                <p class="m-t-10"><strong>Paul Soegianto</strong></p>
-                <p class="m-t-10">Indonesia Country Manager Endless OS</p>
-            </div>
-        </div>
-    </div>
-    <div class="row" style="margin-top:-50px;">
-        <div class="col-md-12 p-0">
-            
-        </div>
-    </div>
-</div>
 @endsection
