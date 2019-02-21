@@ -37,6 +37,9 @@ body a {
 .bg-paint_b .feature-product {
 	margin-top: 6rem;
 }
+.feature-product a, .feature-product h4, .feature-product p {
+	color: #ff6633 !important;
+}
 .bg-paint_b h1 {
 	padding-top: 5rem;
 	color: #fff;
@@ -2430,6 +2433,10 @@ button.w3view-cart a{
 	font-weight: bold;
 	color: #ff6633 !important;
 }
+.btn-orange {
+	background: #ff6633;
+	color: #fff;
+}
 .btn-view-product {
 	border: 1px solid #ff6633;
 	color: #ff6633;
@@ -2543,6 +2550,45 @@ a.single-item{
 .sale-w3ls h6 span {
     color: #080808;
 }
+.filter-faq {
+	position: absolute;
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50%;
+    height: 30%;
+    margin: auto;
+}
+.filter-faq h1 {
+	color: #fff;
+	font-size: 3em;
+}
+.faq-accordion .panel, .faq-accordion .panel-heading, .panel-group .panel-heading + .panel-collapse > .panel-body, .panel-group .panel-heading + .panel-collapse > .list-group {
+	border: none;
+	box-shadow: none;
+	background: none;
+}
+.faq-accordion .panel-heading {
+	color: #ff6633;
+	padding: 8px 0;
+}
+ul.list-faq {
+	margin: 0;
+	padding: 0;
+}
+ul.list-faq li {
+	list-style: none;
+	padding: 6px 0;
+}
+ul.list-faq li a {
+	display: block;
+	color: #cdcdc5;
+}
+ul.list-faq li a.active {
+	color: #ff6633;
+}
+
 /*-- //sale --*/
 /*-- login --*/
 .modal-header {

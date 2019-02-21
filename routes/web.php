@@ -46,9 +46,15 @@ Route::group(['namespace' => 'Frontend'], function () {
 	//About
 	Route::get('/about', 'AboutController@index')->name('about');
 
+	//Gallery
 	Route::get('/gallery', 'GalleryController@index')->name('gallery');
 
+	//Contact
 	Route::get('/contact', 'ContactController@index')->name('contact');
+
+	//How to buy
+	Route::get('/faq', 'FAQController@index')->name('faq');
+	Route::get('/how-to-buy', 'FAQController@howToBuy')->name('how-to-buy');
 	
 });
 

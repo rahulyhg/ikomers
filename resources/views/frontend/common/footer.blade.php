@@ -87,8 +87,8 @@
                     <ul>
                         <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('about') }}">About</a></li>
-                        <li><a href="{{ route('home') }}">How to buy</a></li>
-                        <li><a href="{{ route('home') }}">FAQ</a></li>
+                        <li><a href="{{ route('how-to-buy') }}">How to buy</a></li>
+                        <li><a href="{{ route('faq') }}">FAQ</a></li>
                         <li><a href="{{ route('home') }}">Payment confirmation</a></li>
                         <li><a href="{{ route('home') }}">Track your order</a></li>
                     </ul>
