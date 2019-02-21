@@ -65,7 +65,7 @@
                             <li class="menu__item"><a class="menu__link" href="{{ route('product') }}">Endless Products</a></li>
                             <li class="menu__item"><a class="menu__link" href="{{ route('about') }}">About</a></li>
                             <li class="menu__item"><a class="menu__link" href="{{ route('gallery') }}">Gallery</a></li>
-                            <li class="menu__item"><a class="menu__link" href="">FAQ</a></li>
+                            <li class="menu__item"><a class="menu__link" href="{{ route('faq') }}">FAQ</a></li>
                             <li class="menu__item"><a class="menu__link" href="{{ route('contact') }}">Contact</a></li>
                           </ul>
                         </div>
