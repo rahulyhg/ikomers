@@ -42,6 +42,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 	Route::get('/checkout', 'CheckoutController@index')->name('checkout');
 	Route::post('/checkout', 'CheckoutController@checkout')->name('post.checkout');
 	Route::get('/payment', 'CheckoutController@index')->name('payment');
+	Route::get('/payment-confirmation', 'PaymentController@index')->name('payment-confirmation');
 
 	//About
 	Route::get('/about', 'AboutController@index')->name('about');
