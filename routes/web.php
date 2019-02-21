@@ -33,6 +33,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 	//Product
 	Route::get('/products', 'ProductController@index')->name('product');
+	Route::get('/products/search/', 'ProductController@filterProduct')->name('product.filter');
 	Route::get('/product/{slug}', 'ProductController@detail')->name('product.detail');
 
 	//Cart

@@ -27,8 +27,10 @@
             
                     <div class="panel-collapse collapse-data">
                         <div class="input-group m-t-10">
-                            <input type="text" class="form-control borderfilter" id="dev-table-filter" data-action="filter" data-filters="#dev-p-cats" placeholder="Filter Product Categories">
-                            <a class="input-group-addon"> <i class="fa fa-search"></i> </a>
+                            <input type="text" name="product" class="form-control" value="{{ $search }}" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-orange" type="submit" name="search"> <i class="fa fa-search"></i> </button>
+                            </span>
                         </div>
                         <div class="panel-body m-t-10 scroll-menu">
                             <ul class="nav nav-pills nav-stacked category-menu" id="dev-p-cats">
@@ -37,7 +39,10 @@
                                     <li class="checkbox checkbox-primary">
                                         <a>
                                             <label>
-                                                <input type="checkbox" value="1" name="p_cat" class="get_p_cat" id="p_cat">
+                                                <?php
+                                                $checked = in_array($item->manufacturers_name, $selected_filter) ? 'checked="checked"' : '';
+                                                ?>
+                                                <input type="checkbox" value="{{ $item->manufacturers_name }}" {{ $checked }} name="merk">
                                                 <span class="catnamebheim">
                                                     {{ $item->manufacturers_name }}
                                                 </span>
@@ -54,7 +59,10 @@
                                     <li class="checkbox checkbox-primary">
                                         <a>
                                             <label>
-                                                <input type="checkbox" value="1" name="p_cat" class="get_p_cat" id="p_cat">
+                                                <?php
+                                                $checked = in_array($item->options_values_name, $selected_filter) ? 'checked="checked"' : '';
+                                                ?>
+                                                <input type="checkbox" value="{{ $item->options_values_name }}" {{ $checked }} name="color">
                                                 <span class="catnamebheim">
                                                     {{ $item->options_values_name }}
                                                 </span>
@@ -77,7 +85,7 @@
                                 <a href="{{ route('product.detail', ['slug' => $item->products_slug]) }}" class="btn btn-block btn-view-product">{{ strtoupper('Quick View') }}</a>
                                 <h4><a href="{{ route('product.detail', ['slug' => $item->products_slug]) }}">{{ ucwords(trans(strtolower($item->products_name))) }}</a></h4>
                                 <div class="info-product-price">
-                                    <span class="item_price">{{ $item->products_price }}</span>
+                                    <span class="item_price">{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($item->products_price) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -95,4 +103,39 @@
         </div>
     </div>
 
+@endsection
+
+@section('addscript')
+
+<script>
+$(function(){
+    $("input").change(function () { 
+        var whereSearch = "";
+        var search = $("input[name='product']").val();
+        if(search) {
+            whereSearch = "product="+search;
+        }
+
+        var merk = [];
+        var whereMerk = "";
+        $.each($("input[name='merk']:checked"), function(){            
+            merk.push($(this).val());
+        });
+        if(merk.length > 0) {
+            whereMerk = "merk="+merk;
+        }
+
+        var color = [];
+        var whereColor = "";
+        $.each($("input[name='color']:checked"), function(){            
+            color.push($(this).val());
+        });
+        if(color.length > 0) {
+            whereColor = "color="+color;
+        }
+        
+        window.location.href = "{{ route('product.filter') }}?"+whereSearch+"&"+whereMerk+"&"+whereColor;
+    });
+});
+</script>    
 @endsection

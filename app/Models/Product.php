@@ -47,6 +47,46 @@ class Product extends Model
 		return $product->distinct()->first();
     }
 
+    protected function getProductsFilter($search, $merk, $color) {
+        $language_id = '1';
+        $data = \DB::table('products')
+			->leftJoin('products_description','products_description.products_id','=','products.products_id')
+			->LeftJoin('manufacturers', function ($join) {
+				$join->on('manufacturers.manufacturers_id', '=', 'products.manufacturers_id');
+			 })
+			->LeftJoin('specials', function ($join) {
+				$join->on('specials.products_id', '=', 'products.products_id')->where('status', '=', '1');
+             })
+            ->LeftJoin('products_attributes', 'products.products_id', '=', 'products_attributes.products_id')
+            ->LeftJoin('products_options_values', 'products_attributes.options_values_id', '=', 'products_options_values.products_options_values_id');
+            
+            $data->where('products_name', 'like', '%'.$search.'%');
+
+            if($merk != null) {
+                $arr_merk = explode(',', $merk);
+                $data->where(function ($data) use ($arr_merk){
+                    foreach($arr_merk as $whereMerk) {
+                        $data->orWhere('manufacturers.manufacturers_name', $whereMerk);    
+                    }
+               });
+                
+            }
+            if($color != null) {
+                $arr_color = explode(',', $color);
+                
+                $data->where(function ($data) use ($arr_color){
+                    foreach($arr_color as $whereColor) {
+                        $data->orWhere('products_options_values.products_options_values_name', $whereColor);    
+                    }
+               });
+                
+            }
+            $data->select('products.*','products_description.*', 'specials.specials_id', 'manufacturers.*', 'specials.products_id as special_products_id', 'specials.specials_new_products_price as specials_products_price', 'specials.specials_date_added as specials_date_added', 'specials.specials_last_modified as specials_last_modified', 'specials.expires_date')
+            ->distinct()->where('products_description.language_id','=', $language_id);
+        //dd($data);
+        return $data;
+    }
+
     protected function getProductImages($slug) {
         $language_id = '1';
         $product = \DB::table('products')->where('products.products_slug','=', $slug)->first();

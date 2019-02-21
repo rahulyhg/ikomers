@@ -85,7 +85,7 @@
                             <form action="{{ URL::to('cart') }}" method="POST">
                             <div class="product-attr">
                                 <h4>{{ trans('labels.Price') }} :</h4>
-                                <p><span class="item_price"> {{ $currency }} </span> {{ $product->products_price }}</p>
+                                <p><span class="item_price"> {{ $currency }} </span> {{ number_format($product->products_price) }}</p>
                                 <h4>{{ trans('labels.Quantity') }} :</h4>
                                 <div class="form-group m-t-10" style="width:100px">
                                     <input type="number" value="1" min="1" name="qty" class="form-control">
