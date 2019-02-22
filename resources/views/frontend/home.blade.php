@@ -6,13 +6,13 @@
     <div class="bg-paint">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-md-offset-4">
+                <div class="col-md-3 col-md-offset-4 text-center">
                     <img class="img-responsive" src="{{ asset('resources/views/frontend/images/logo/endless.png') }}" alt="">
                 </div>
             </div>
             <div class="row feature-box">
                 @foreach ($features as $item)
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-4 col-sm-6 text-center">
                         <img src="{{ asset($item->sliders_image) }}" class="img-feature" alt="">
                         <h4>{{ $item->sliders_title }}</h4>
                         <p>{{ $item->sliders_html_text }}</p>
@@ -30,7 +30,7 @@
             </div>
             <div class="row feature-product">
                 @foreach ($products as $key => $product)
-                    <div class="col-md-4 text-center">
+                    <div class="col-lg-4 col-md-6 text-center">
                         <img src="{{ asset($product->products_image) }}" class="img-feature" alt="">
                         <h4>{{ ucwords(trans(strtolower($product->products_name))) }}</h4>
                         <p>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($product->products_price) }}</p>
@@ -65,14 +65,14 @@
             
             <div class="col-md-8 col-md-offset-2">
                 @foreach ($banner_apps as $item)
-                    <div class="col-md-2 text-center">
+                    <div class="col-md-2 col-xs-6 col-sm-4 text-center">
                         {{-- <h1>{{ $item['sliders_title'] }}</h1> --}}
                         <img src="{{ asset($item['sliders_image']) }}" width="84" alt="">
                         <p>{{ $item['sliders_title'] }}</p>
                     </div>
                 @endforeach
             </div>
-
+            <div class="clearfix"></div>
             <div class="col-md-12 text-center m-t-50">
                 <h4>{{ trans('labels.SupportApplication') }}</span></h4>
                 <a class="m-t-50 hvr-outline-out button2 btn" href="">Shop Now </a>
