@@ -52,16 +52,16 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="panel-body m-t-10 scroll-menu">
+                        {{-- <div class="panel-body m-t-10 scroll-menu">
                             <ul class="nav nav-pills nav-stacked category-menu" id="dev-p-cats">
                                 <h3>{{ trans('Color') }}</h3>
                                 @foreach ($product_options as $item)
                                     <li class="checkbox checkbox-primary">
                                         <a>
                                             <label>
-                                                <?php
-                                                $checked = in_array($item->options_values_name, $selected_filter) ? 'checked="checked"' : '';
-                                                ?>
+                                                
+                                                //$checked = in_array($item->options_values_name, $selected_filter) ? 'checked="checked"' : '';
+                                                
                                                 <input type="checkbox" value="{{ $item->options_values_name }}" {{ $checked }} name="color">
                                                 <span class="catnamebheim">
                                                     {{ $item->options_values_name }}
@@ -71,7 +71,7 @@
                                     </li>
                                 @endforeach
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="clearfix"></div>
