@@ -33,6 +33,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 	//Product
 	Route::get('/products', 'ProductController@index')->name('product');
+	Route::get('/products/search/', 'ProductController@filterProduct')->name('product.filter');
 	Route::get('/product/{slug}', 'ProductController@detail')->name('product.detail');
 
 	//Cart
@@ -42,6 +43,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 	Route::get('/checkout', 'CheckoutController@index')->name('checkout');
 	Route::post('/checkout', 'CheckoutController@checkout')->name('post.checkout');
 	Route::get('/payment', 'CheckoutController@index')->name('payment');
+	Route::get('/payment-confirmation', 'PaymentController@index')->name('payment-confirmation');
 
 	//About
 	Route::get('/about', 'AboutController@index')->name('about');

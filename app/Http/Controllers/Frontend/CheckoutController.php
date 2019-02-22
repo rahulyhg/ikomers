@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Cart;
+use Carbon\Carbon;
 
 class CheckoutController extends Controller
 {
@@ -21,10 +22,28 @@ class CheckoutController extends Controller
     public function checkout(Request $request) {
         $input = $request->all();
 
-        dd(Cart::content());
+        $chart = Cart::content();
 
         $order = Order::insert([
+            //customer
             'customers_name' => $input['customers_firstname']." ".$input['customers_lastname'],
+            'customers_street_address' => $input['delivery_street_address'],
+            'customers_suburb' => $input['delivery_suburb'],
+            'customers_city' => $input['delivery_city'],
+            'customers_state' => $input['delivery_state'],
+            'customers_postcode' => $input['delivery_postcode'],
+            'customers_telephone' => $input['delivery_phone'],
+
+            //billing
+            'billing_name' => $input['customers_firstname']." ".$input['customers_lastname'],
+            'billing_street_address' => $input['delivery_street_address'],
+            'billing_suburb' => $input['delivery_suburb'],
+            'billing_city' => $input['delivery_city'],
+            'billing_state' => $input['delivery_state'],
+            'billing_postcode' => $input['delivery_postcode'],
+            'billing_phone' => $input['delivery_phone'],
+            
+            //delivery
             'delivery_name' => $input['customers_firstname']." ".$input['customers_lastname'],
             'delivery_street_address' => $input['delivery_street_address'],
             'delivery_suburb' => $input['delivery_suburb'],
@@ -32,11 +51,44 @@ class CheckoutController extends Controller
             'delivery_state' => $input['delivery_state'],
             'delivery_postcode' => $input['delivery_postcode'],
             'delivery_phone' => $input['delivery_phone'],
+
+            'order_price' => Cart::total(2, '.', ''),
+            
             'email' => $input['email'],
         ]);
 
-        //$order = DB::table('orders_products')->insert();
+        $order = Order::orderBy('orders_id', 'DESC')->first();
+
+        $order_history = \DB::table('orders_status_history')->insert([
+            'orders_id' => $order->orders_id,
+            'orders_status_id' => '1',
+            'date_added' => Carbon::now()->toDateString()
+        ]);
+
         
+        foreach($chart as $item) {
+            $order_product = \DB::table('orders_products')->insert([
+                'orders_id' => $order->orders_id,
+                'products_id' => $item->id,
+                'products_name' => $item->name,
+                'products_price' => $item->price,
+                'products_quantity' => $item->qty,
+                'final_price' => $item->total
+            ]);
+
+            $order_product = \DB::table('orders_products')->orderBy('orders_products_id', 'DESC')->first();
+
+            $order_product_attr = \DB::table('orders_products_attributes')->insert([
+                'orders_id' => $order->orders_id,
+                'orders_products_id' => $order_product->orders_products_id,
+                'products_id' => $item->id,
+                'products_options' => '',
+                'products_options_values' => '',
+                'options_values_price' => '',
+                'price_prefix' => ''
+            ]);
+        }
+        Cart::destroy();
         return redirect('payment');
     }
 }

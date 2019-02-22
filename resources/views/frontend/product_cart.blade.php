@@ -10,7 +10,7 @@
 
 <div class="m-t-30">
     <div class="container">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -32,8 +32,8 @@
                                 <p>{{ $row->options->has('size') ? $row->options->size : '' }}</p>
                             </td>
                             <td class="text-center"><?php echo $row->qty; ?></td>
-                            <td>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ $row->price }}</td>
-                            <td>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ $row->total }}</td>
+                            <td>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($row->price) }}</td>
+                            <td>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($row->total) }}</td>
                             <td>
                                  <form action="{{ URL::to('cart', ['id' => $row->rowId]) }}" method="POST">
                                     {!! csrf_field() !!}
@@ -48,7 +48,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-md-3"><!-- col-md-3 Starts -->
+        <div class="col-md-4"><!-- col-md-3 Starts -->
 
             <div class="box" id="order-summary"><!-- box Starts -->
             

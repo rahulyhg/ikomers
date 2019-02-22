@@ -85,7 +85,7 @@
                             <form action="{{ URL::to('cart') }}" method="POST">
                             <div class="product-attr">
                                 <h4>{{ trans('labels.Price') }} :</h4>
-                                <p><span class="item_price"> {{ $currency }} </span> {{ $product->products_price }}</p>
+                                <p><span class="item_price"> {{ $currency }} </span> {{ number_format($product->products_price) }}</p>
                                 <h4>{{ trans('labels.Quantity') }} :</h4>
                                 <div class="form-group m-t-10" style="width:100px">
                                     <input type="number" value="1" min="1" name="qty" class="form-control">
@@ -114,27 +114,21 @@
                             <ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
                                 <li class="share">share on : </li>
                                 <li>
-                                    <a href="https://web.facebook.com/blankenheimID?_rdc=1&amp;_rdr" class="facebook">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::fullUrl()) }}" target="_blank" class="facebook">
                                         <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
                                         <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://twitter.com/blankenheimID" class="twitter">
+                                    <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::fullUrl()) }}" target="_blank" class="twitter">
                                         <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
                                         <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.instagram.com/blankenheimstyle/?hl=en" class="instagram">
+                                    <a href="https://www.instagram.com/endlessindonesia/" class="instagram">
                                         <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                         <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://id.pinterest.com/blankenheim/" class="pinterest">
-                                        <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
-                                        <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
                                     </a>
                                 </li>
                             </ul>

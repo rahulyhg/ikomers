@@ -49,8 +49,9 @@ class AdminOrdersController extends Controller
 		$message = array();
 		$errorMessage = array();
 		
-		$orders = DB::table('orders')->orderBy('date_purchased','DESC')
-			->where('customers_id','!=','')->paginate(40);	
+		$orders = DB::table('orders')
+			->whereNotNull('customers_id')
+			->orderBy('date_purchased','DESC')->paginate(40);	
 		
 		$index = 0;
 		$total_price = array();

@@ -1948,6 +1948,9 @@ class AdminProductsController extends Controller
 				DB::table('products_options_descriptions')->where('products_options_id','=',$products_options_id)->where('language_id','=',$languages_data->languages_id)->update([
 					'options_name'  	    		 =>   $request->$options_name,
 					]);
+				DB::table('products_options')->where('products_options_id','=',$products_options_id)->update([
+					'products_options_name'  	    		 =>   $request->$options_name,
+				]);
 			}else{
 				DB::table('products_options_descriptions')->insert([
 					'options_name'  	     =>   $request->$options_name,

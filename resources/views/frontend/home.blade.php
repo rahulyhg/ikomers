@@ -33,7 +33,7 @@
                     <div class="col-md-4 text-center">
                         <img src="{{ asset($product->products_image) }}" class="img-feature" alt="">
                         <h4>{{ ucwords(trans(strtolower($product->products_name))) }}</h4>
-                        <p>{{ App\Models\Setting::getAttr('currency_symbol') }} {{$product->products_price}}</p>
+                        <p>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($product->products_price) }}</p>
                         <p><a href="{{ route('product.detail', $product->products_slug) }}">see more</a></p>
                     </div>
                 @endforeach
