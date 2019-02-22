@@ -57,8 +57,8 @@ class Product extends Model
 			->LeftJoin('specials', function ($join) {
 				$join->on('specials.products_id', '=', 'products.products_id')->where('status', '=', '1');
              })
-            ->LeftJoin('products_attributes', 'products.products_id', '=', 'products_attributes.products_id')
-            ->LeftJoin('products_options_values', 'products_attributes.options_values_id', '=', 'products_options_values.products_options_values_id');
+            ->leftJoin('products_attributes', 'products.products_id', '=', 'products_attributes.products_id')
+            ->leftJoin('products_options_values', 'products_attributes.options_values_id', '=', 'products_options_values.products_options_values_id');
             
             $data->where('products_name', 'like', '%'.$search.'%');
 
@@ -96,6 +96,34 @@ class Product extends Model
 			->get();
 			
 		return $product_images;
+    }
+
+    protected function getProductAttributes($slug) {
+        $product = \DB::table('products')->where('products.products_slug','=', $slug)->first();
+
+        $product_attr = \DB::table('products_attributes')
+        ->join('products_options', 'products_options.products_options_id', '=', 'products_attributes.options_id')
+        ->select('products_options.*')
+        ->where('products_attributes.products_id', $product->products_id)
+        ->groupBy('products_attributes.options_id')
+        ->get();
+
+        $product_attributes = [];
+        foreach($product_attr as $item) {
+            $product_attr_val = \DB::table('products_options')
+            ->join('products_options_values', 'products_options_values.products_options_id', '=', 'products_options.products_options_id')
+            ->select('products_options_values.*')
+            ->where('products_options.products_options_id', $item->products_options_id)
+            ->get()->toArray();
+
+            $product_attributes[] = [
+                'products_options_id' => $item->products_options_id,
+                'products_options_name' => $item->products_options_name,
+                'products_options_values' => $product_attr_val
+            ];
+        }
+
+        return $product_attributes;
     }
 
     protected function getOptions() {

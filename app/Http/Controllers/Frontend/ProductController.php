@@ -24,11 +24,12 @@ class ProductController extends Controller
 
     public function detail($slug) {
         $product = Product::getProduct($slug);
+        $product_attr = Product::getProductAttributes($slug);
         $product_images = Product::getProductImages($slug);
         $currency = Setting::getAttr('currency_symbol');
         $products = Product::getProducts()->inRandomOrder()->take(4)->get();
-        //dd($product_images);
-        return view('frontend.product_detail', compact('product', 'product_images', 'products', 'currency'));
+        //dd($product_attr);
+        return view('frontend.product_detail', compact('product', 'product_images', 'product_attr', 'products', 'currency'));
     }
 
     public function filterProduct() {
