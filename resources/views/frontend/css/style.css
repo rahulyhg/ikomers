@@ -77,10 +77,10 @@ body a {
 	padding: 0 !important;
 }
 .banner-home-right {
-	right: 9.4rem;
+	right: 8.4rem;
 }
 .banner-home-left {
-	left: 9.4rem;
+	left: 8.4rem;
 }
 .banner-home-right, .banner-home-left {
 	position: absolute;
@@ -4846,6 +4846,22 @@ p.w3ls_para {
 	}
 }
 @media (max-width: 1024px){
+	.banner-home-right {
+		right: 4em;
+	}
+	.banner-home-left {
+		left: 4em;
+	}
+	.banner-home-right, .banner-home-left {
+		top: 4em;
+	}
+	.banner-home-right h1, .banner-home-left h1 {
+		font-size: 2rem;
+		margin-bottom: 1em;
+	}
+	.banner-home-right p, .banner-home-left p {
+		font-size: 1.4em;
+	}
 	.header ul li,.section_room select,.header-middle input[type="search"] {
 		font-size: 14px;
 	}
@@ -5435,11 +5451,14 @@ p.w3ls_para {
 	.header-bot {
 		padding: 17px 0;
 	}
+	.navbar-default .navbar-toggle {
+		border-color: transparent;
+	}
 	.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-		background-color: #ff6633;
+		background-color: #fff;
 	}
 	.navbar-default .navbar-toggle .icon-bar {
-		background-color: #FFF;
+		background-color: #ff6633;
 	}
 	.navbar-nav > li {
 		margin: 0 0px 0 0;
@@ -5462,10 +5481,13 @@ p.w3ls_para {
 		width: 77%;
 	}
 	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+		position: fixed;
 		border: none;
-		width:400px !important;
-		background-color:#ff6633;
-		float:right;
+		width: 100% !important;
+		background-color: #ff6633;
+		left: 0;
+		right: 0;
+		margin: 0;
 	}
 	.new-levis {
 		padding: 12px 14px;
@@ -5537,6 +5559,20 @@ p.w3ls_para {
 	.navbar-default .navbar-nav .open .dropdown-menu > li > a {
 		color: #000;
 		border-bottom: 1px solid #999;
+	}
+
+	.banner-home-right, .banner-home-left {
+		top: 4em;
+		right: unset;
+		left: unset;
+		text-align: center;
+	}
+	.banner-home-right h1, .banner-home-left h1 {
+		font-size: 2rem;
+		margin-bottom: 0;
+	}
+	.banner-home-right p, .banner-home-left p {
+		font-size: 1.2em;
 	}
 }
 @media (max-width: 667px){
@@ -6018,6 +6054,23 @@ p.w3ls_para {
 	}
 }
 @media (max-width: 480px){
+	.banner-home-right, .banner-home-left {
+		top: 15px;
+	}
+	.banner-home-right, .banner-home-left {
+		top: 15px;
+		right: unset;
+		left: unset;
+		text-align: center;
+	}
+	.banner-home-right h1, .banner-home-left h1 {
+		font-size: 1.4rem;
+		margin-bottom: 0;
+	}
+	.banner-home-right p, .banner-home-left p {
+		font-size: 0.8em;
+	}
+
 	.prospecheim{
 		margin-top:3em;
 	}
