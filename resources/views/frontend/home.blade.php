@@ -6,7 +6,7 @@
     <div class="bg-paint">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-md-offset-4 text-center">
+                <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-3 col-md-offset-4 text-center">
                     <img class="img-responsive" src="{{ asset('resources/views/frontend/images/logo/endless.png') }}" alt="">
                 </div>
             </div>
@@ -46,15 +46,15 @@
 
     <div class="container-fluid m-t-50 p-0">
         <div class="row feature-product">
-            <?php $toggle_class = 'text-left banner-home-left'; ?>
+            <?php $toggle_class = 'text-left pull-left'; ?>
             @foreach ($banners as $item)
-                <?php $toggle_class = ($toggle_class == 'text-right banner-home-right' ? 'text-left banner-home-left' : 'text-right banner-home-right'); ?>
-                <div class="col-md-12 text-center">
-                    <img src="{{ asset($item['sliders_image']) }}" class="img-responsive" alt="">
-                    <div class="col-md-4  <?php echo $toggle_class; ?>">
+                <?php $toggle_class = ($toggle_class == 'text-right pull-right' ? 'text-left pull-left' : 'text-right pull-right'); ?>
+                <div class="col-md-12 text-center" style="background: url({{ asset($item['sliders_image']) }}) center bottom; background-size: cover">
+                    <div class="col-md-4 home-banner <?php echo $toggle_class; ?>">
                         <h1>{{ $item['sliders_title'] }}</h1>
                         <p>{{ $item['sliders_html_text'] }}</p>
                     </div>
+                    <div class="clearfix"></div>
                 </div>
             @endforeach
         </div>

@@ -20,15 +20,16 @@
 
 
 <div class="container-fluid p-0">
-    <div class="agile_ab_w3ls_info">
-        <div class="col-md-12 header-img-about p-0">
-            <img src="{{ asset('resources/views/frontend/images/about.png') }}" alt=" " class="img-responsive" />
-        </div>
-        <div class="container p-0" style="position:relative">
-            <div class="col-md-7 header-text-about">
-                <h5><span>The whole world,</span> empowered.</h5>
+    <div class="row">
+        <div class="col-md-12 p-0" style="background: url({{ asset('resources/views/frontend/images/about.png') }}) left bottom; background-size: cover;">
+            <div class="col-md-7 text-left header-text-about">
+                <div class="agile_ab_w3ls_info">
+                    <h5><span>The whole world,</span> empowered.</h5>
+                </div>
+                
                 <p>Our mission is to enable people <br> to harness the power of computing <br> everywhere.</p>
             </div>
+            <div class="clearfix"></div>
         </div>
     </div>
 
@@ -49,8 +50,8 @@
 </div> 
 
 <div class="container-fluid about-grid">
-    <div class="row row-eq-height row-grid">
-        <div class="col-md-6 row-grid-content" style="background:url({{ asset('resources/views/frontend/images/oren.png') }})">
+    <div class="row">
+        <div class="col-md-6 row-grid-content text-left" style="height:760px;min-height:760px;max-height:760px;background:url({{ asset('resources/views/frontend/images/oren.png') }})">
             <h3 class="text-yellow">"Access The World Without Limits"</h3>
             <p class="m-t-20 text-white">Around the world, there are still around 5 billion people who have not been touched by computers. Therefore, we make educational computers for everyone.</p>
             <div class="col-md-12 m-t-50 text-center">
@@ -59,15 +60,15 @@
                 <p class="m-t-10 text-white">CEO and Founder Endless OS</p>
             </div>
         </div>
-        <div class="col-md-6 p-0">
+        <div class="col-md-6 p-0" style="height:760px;min-height:760px;max-height:760px">
             <img src="{{ asset('resources/views/frontend/images/about-2.jpeg') }}" alt=" " class="img-responsive" />
         </div>
     </div>
-    <div class="row row-eq-height row-grid">
-        <div class="col-md-6 p-0">
+    <div class="row">
+        <div class="col-md-6 p-0" style="height:760px;min-height:760px;max-height:760px">
             <img src="{{ asset('resources/views/frontend/images/about-1.jpg') }}" alt=" " class="img-responsive" />
         </div>
-        <div class="col-md-6 row-grid-content" style="background:url({{ asset('resources/views/frontend/images/putih.png') }})">
+        <div class="col-md-6 row-grid-content text-left" style="height:760px;min-height:760px;max-height:760px;background:url({{ asset('resources/views/frontend/images/putih.png') }})">
             <h3 class="text-primary">"All -in-One Solution For Everyone"</h3>
             <p class="m-t-20">The rapid development of technology has given positive impact on Indonesian education. 
                     Education sector is urged to apply technology in many aspects, including curriculum, teaching and learning activities, and many more. One of the examples is providing learning materials through video online.</p>

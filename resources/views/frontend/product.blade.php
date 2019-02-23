@@ -79,7 +79,7 @@
             <div class="col-md-9 products-right" id="Products">
                 <div class="row">
                     @foreach ($products as $item)
-                        <div class="col-md-4 item-product">
+                        <div class="col-md-4 col-sm-4 col-xs-6 item-product">
                             <a href="{{ route('product.detail', ['slug' => $item->products_slug]) }}"><img src="{{ asset($item->products_image) }}" alt="" class="img-responsive"></a>
                             <div class="item-info-product ">
                                 <a href="{{ route('product.detail', ['slug' => $item->products_slug]) }}" class="btn btn-block btn-view-product">{{ strtoupper('Quick View') }}</a>
