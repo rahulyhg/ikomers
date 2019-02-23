@@ -26,7 +26,7 @@ body a {
 	color: #fff !important;
 }
 .img-feature {
-	width: 50%;
+	width: 42%;
 }
 .bg-paint_b {
 	padding-top: 1rem;
@@ -76,25 +76,18 @@ body a {
 .p-0 {
 	padding: 0 !important;
 }
-.banner-home-right {
-	right: 8.4rem;
+.home-banner {
+	margin: 8em 6em;
 }
-.banner-home-left {
-	left: 8.4rem;
-}
-.banner-home-right, .banner-home-left {
-	position: absolute;
-    z-index: 9;
-    top: 1.4rem;
-}
-.banner-home-right h1, .banner-home-left h1 {
-	font-size: 6rem;
-    text-transform: uppercase;
-	margin-bottom: 48px;
+.home-banner h1 {
 	color: #ff6633;
+	font-size: 4em;
+	margin-bottom: 0.6em;
+	text-transform: uppercase;
 }
-.banner-home-right p, .banner-home-left p {
-	font-size: 1.6rem;
+.home-banner p {
+	color: #333 !important;
+	font-size: 1.6em;
 }
 .banner-support p {
 	color: #333;
@@ -175,13 +168,8 @@ label{
     margin: 0 auto;
     width: 90%;
 }
-.header-img-about img {
-    width: 100%;
-    object-fit: cover;
-}
 .header-text-about {
-	position: absolute;
-	top: 4em;
+	padding: 4em 10em;
 }
 .header-text-about h5 {
 	font-size: 4.2em !important;
@@ -213,7 +201,7 @@ label{
 	max-height:680px;
 }
 .row-grid-content {
-	padding: 14em 10em;
+	padding: 10em 10em;
 }
 .about-grid img.img-avatar {
 	max-width: 82px;
@@ -2424,7 +2412,7 @@ button.w3view-cart a{
 .item-product a img {
 	width: 100%;
 	height: 224px;
-	object-fit: cover;
+	object-fit: contain;
 }
 .product-attr {
 	color: #ff6633 !important;
@@ -3211,7 +3199,6 @@ figure.effect-roxy img {
 
 .carousel-caption{
 	min-height:400px !important;
-	padding-top:13em;
 }
 }
 @media (max-width:768px){
@@ -3256,18 +3243,25 @@ figure.effect-roxy img {
 }	
 }
 @media (max-width: 640px){
+	.header-text-about {
+		padding: 4em 1em;
+	}
+	.header-text-about h5 {
+		font-size: 2.2em !important;
+	}
+	.header-text-about p {
+		font-size: 1em !important;
+	}
 	
+	.dottedline-bheim{
+		border-bottom:1px dotted #333333;
+		padding-bottom:15px;
+		margin-top:10em;
+	}
 
-	
-.dottedline-bheim{
-	border-bottom:1px dotted #333333;
-	padding-bottom:15px;
-	margin-top:10em;
-}
-
-.fromtopspacebheim{
-	margin-top:6.3em;
-}	
+	.fromtopspacebheim{
+		margin-top:6.3em;
+	}	
 	.icon-box {
 		float: left;
 		width: 50%;
@@ -3311,14 +3305,17 @@ figure.effect-roxy img {
 	}	
 }
 @media (max-width: 480px){
-		.gal {
 	
-	
-	-webkit-column-count: 1; /* Chrome, Safari, Opera */
-    -moz-column-count: 1; /* Firefox */
-    column-count: 1;
-	  
-	
+	.home-banner {
+		margin: 8em 1em;
+	}
+	.header-text-about {
+		padding: 4em 1em;
+	}
+	.gal {	
+		-webkit-column-count: 1; /* Chrome, Safari, Opera */
+		-moz-column-count: 1; /* Firefox */
+		column-count: 1;
 	}	
 	.description{
 		text-align:center;
@@ -3349,7 +3346,8 @@ figure.effect-roxy img {
 	}
 	
 	.carousel-caption{
-		padding-top:11em;
+		top: 3em !important;
+		left: 4em !important;
 	}
 }
 @media (max-width: 414px){
@@ -3577,6 +3575,10 @@ h2.typoh2{
 	}
 	.list-group {
 		margin-bottom: 20px;
+	}
+	.carousel-caption{
+		top: 6em;
+		left: 6em;
 	}
 }
 @media (max-width:480px){
@@ -4846,21 +4848,8 @@ p.w3ls_para {
 	}
 }
 @media (max-width: 1024px){
-	.banner-home-right {
-		right: 4em;
-	}
-	.banner-home-left {
-		left: 4em;
-	}
-	.banner-home-right, .banner-home-left {
-		top: 4em;
-	}
-	.banner-home-right h1, .banner-home-left h1 {
-		font-size: 2rem;
-		margin-bottom: 1em;
-	}
-	.banner-home-right p, .banner-home-left p {
-		font-size: 1.4em;
+	.row-grid-content {
+		padding: 10em 3em !important;
 	}
 	.header ul li,.section_room select,.header-middle input[type="search"] {
 		font-size: 14px;
@@ -4898,7 +4887,6 @@ p.w3ls_para {
 	}
 	.carousel-caption {
 		min-height: 450px!important;
-		padding-top:9em;
 	}
 	.social-nav li {
 		margin: 0 2px;
@@ -4908,7 +4896,6 @@ p.w3ls_para {
 		letter-spacing: 1px;
 	}
 	.carousel-caption p {
-		letter-spacing: 11px;
 		font-size: 1.1em;
 		margin-top: 1em;
 	}
@@ -4917,6 +4904,9 @@ p.w3ls_para {
 	}
 }
 @media (max-width: 991px){
+	.row-grid-content {
+		padding: 10em 10em !important;
+	}
 	.single-top-left{
 		width:50%;
 		float:left;
@@ -5258,7 +5248,6 @@ p.w3ls_para {
 	}
 	.carousel-caption {
 		min-height: 400px!important;
-		padding-top: 13em;
 	}
 	.modal_body_right.modal_body_right1 img {
 		margin-top: 1em;
@@ -5315,7 +5304,6 @@ p.w3ls_para {
 		letter-spacing: 9px;
 	}
 	.carousel-caption p {
-		letter-spacing: 10px;
 		font-size: 1em;
 		margin-top: 1em;
 	}
@@ -5357,6 +5345,10 @@ p.w3ls_para {
 	}
 }
 @media (max-width: 768px){
+	.product-attr {
+		margin: 0 1.2em;
+	}
+
 	.pignose-layerslider .slide-visual {
 		height: 400px;
 	}
@@ -5559,20 +5551,6 @@ p.w3ls_para {
 	.navbar-default .navbar-nav .open .dropdown-menu > li > a {
 		color: #000;
 		border-bottom: 1px solid #999;
-	}
-
-	.banner-home-right, .banner-home-left {
-		top: 4em;
-		right: unset;
-		left: unset;
-		text-align: center;
-	}
-	.banner-home-right h1, .banner-home-left h1 {
-		font-size: 2rem;
-		margin-bottom: 0;
-	}
-	.banner-home-right p, .banner-home-left p {
-		font-size: 1.2em;
 	}
 }
 @media (max-width: 667px){
@@ -6031,6 +6009,9 @@ p.w3ls_para {
 	}
 }
 @media (max-width: 568px){
+	.row-grid-content {
+		padding: 10em 3em !important;
+	}
 .top_nav_left {
     float: left;
     width: 30%;
@@ -6054,22 +6035,6 @@ p.w3ls_para {
 	}
 }
 @media (max-width: 480px){
-	.banner-home-right, .banner-home-left {
-		top: 15px;
-	}
-	.banner-home-right, .banner-home-left {
-		top: 15px;
-		right: unset;
-		left: unset;
-		text-align: center;
-	}
-	.banner-home-right h1, .banner-home-left h1 {
-		font-size: 1.4rem;
-		margin-bottom: 0;
-	}
-	.banner-home-right p, .banner-home-left p {
-		font-size: 0.8em;
-	}
 
 	.prospecheim{
 		margin-top:3em;
@@ -6199,6 +6164,9 @@ p.w3ls_para {
 	.text-right {
 		text-align: center;
 	}
+	.text-left {
+		text-align: center;
+	}
 	.pagination {
 		margin: 34px 0px 0 0;
 	}
@@ -6287,13 +6255,11 @@ p.w3ls_para {
 		width: 14%;
 	}
 	.carousel-caption p {
-		letter-spacing: 7px;
 		font-size: 0.9em;
 		margin-top: 0.7em;
 	}
 	.carousel-caption {
 		min-height: 350px!important;
-		padding-top: 11em;
 	}
 	.carousel-caption h2, .carousel-caption h3 {
 		font-size: 1.8em;
@@ -6393,7 +6359,6 @@ p.w3ls_para {
 	}
 	.carousel-caption {
 		min-height: 289px!important;
-		padding-top: 4em;
 	}
 	.carousel-caption a {
 		padding: 8px 20px;
@@ -6539,13 +6504,11 @@ p.w3ls_para {
 		letter-spacing: 2px;
 	}
 	.carousel-caption p {
-		letter-spacing: 4px;
 		font-size: 0.6em;
 		margin-top: 0.5em;
 	}
 	.carousel-caption {
 		min-height: 270px!important;
-		padding-top: 8em;
 	}
 	.carousel-indicators {
 		bottom: 2%;
@@ -6778,7 +6741,6 @@ p.w3ls_para {
 	}
 	.carousel-caption {
 		min-height: 250px!important;
-		padding-top: 12em;
 	}
 	.multi-gd-img.multi-gd-text h4 {
 		top: 47%;
