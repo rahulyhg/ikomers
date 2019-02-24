@@ -1740,14 +1740,7 @@ h4.signbheim{
 .modal-body-sub {
     padding:2em !important;
 }
-.modal-title {
-    font-size: 1.1em;
-    color: #212121;
-    text-transform: uppercase;
-    font-weight: 700;
-    padding-left: 1em;
-    letter-spacing: 2px;
-}
+
 .modal-body.modal-body-sub_agile input[type="text"],.modal-body.modal-body-sub_agile input[type="email"],.modal-body.modal-body-sub_agile input[type="password"] {
     font-size: 14px;
     letter-spacing: 1px;

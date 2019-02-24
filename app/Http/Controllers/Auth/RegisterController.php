@@ -86,7 +86,7 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
         dispatch(new SendVerificationEmail($user));
-        return view('frontend.verification');
+        return redirect()->back()->with('message', 'Please check your email for account verification.');
     }
     /**
     * Handle a registration request for the application.
@@ -99,7 +99,7 @@ class RegisterController extends Controller
         $user = User::where('email_token',$token)->first();
         
         if(!$user){
-            return "Fuck";
+            return "Invalid Token";
         }
 
         $user->email_verification = 1;

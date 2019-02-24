@@ -21,6 +21,31 @@
     <div class="banner_bottom_agile_info m-t-20">
         <div class="container">
             <div class="col-md-offset-3 col-md-6 contact-formnewbheim">
+
+                    @if(session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif
+
+                    <div class="modal fade" id="modalMessage" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="gridSystemModalLabel">Congratulation!</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            {{ session()->get('message')  }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
                 <form method="POST" action="{{ route('register') }}">
                     {{ csrf_field() }}
 
@@ -83,4 +108,14 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('addscript')
+    @if(session()->has('message'))
+        <script type="text/javascript">
+            $(window).on('load',function(){
+                $('#modalMessage').modal('show');
+            });
+        </script>
+    @endif
 @endsection
