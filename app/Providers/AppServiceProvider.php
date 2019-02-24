@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
+    {	
          // Using Closure based composers...
 		$result = array();
         $orders = DB::table('orders')

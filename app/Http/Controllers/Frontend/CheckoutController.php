@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Cart;
+use App\User;
 use Carbon\Carbon;
+use App\Jobs\SendOrderEmail;
+use App\Jobs\SendVerificationEmail;
 
 class CheckoutController extends Controller
 {
@@ -53,6 +56,8 @@ class CheckoutController extends Controller
             'delivery_phone' => $input['delivery_phone'],
 
             'order_price' => Cart::total(2, '.', ''),
+
+            'date_purchased' => Carbon::now(),
             
             'email' => $input['email'],
         ]);
@@ -88,7 +93,14 @@ class CheckoutController extends Controller
                 'price_prefix' => ''
             ]);
         }
+
+        $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
+        $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->first();
+        dispatch(new SendOrderEmail($order_user, $order_product));
+        dispatch(new SendVerificationEmail($order_user));
+
         Cart::destroy();
+
         return redirect('payment');
     }
 }
