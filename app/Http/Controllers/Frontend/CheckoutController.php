@@ -10,6 +10,7 @@ use App\User;
 use Carbon\Carbon;
 use App\Jobs\SendOrderEmail;
 use App\Jobs\SendVerificationEmail;
+use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
 {
@@ -23,6 +24,8 @@ class CheckoutController extends Controller
     }
 
     public function checkout(Request $request) {
+        $order_id = "EOS" . str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+
         $input = $request->all();
 
         $chart = Cart::content();
@@ -56,10 +59,9 @@ class CheckoutController extends Controller
             'delivery_phone' => $input['delivery_phone'],
 
             'order_price' => Cart::total(2, '.', ''),
-
             'date_purchased' => Carbon::now(),
-            
             'email' => $input['email'],
+            'transaction_id' => $order_id
         ]);
 
         $order = Order::orderBy('orders_id', 'DESC')->first();
@@ -97,10 +99,9 @@ class CheckoutController extends Controller
         $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
         $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->first();
         dispatch(new SendOrderEmail($order_user, $order_product));
-        dispatch(new SendVerificationEmail($order_user));
 
         Cart::destroy();
 
-        return redirect('payment');
+        return redirect('payment-order');
     }
 }

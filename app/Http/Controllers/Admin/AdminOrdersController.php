@@ -8,6 +8,7 @@ Author URI: http://vectorcoder.com/
 */
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendPaymentConfirmationEmail;
 
 
 use Validator;
@@ -172,59 +173,62 @@ class AdminOrdersController extends Controller
 	public function updateOrder(Request $request){
 		if(session('orders_confirm')==0){
 			print Lang::get("labels.You do not have to access this route");
-		}else{
-		 $orders_status 		=	 $request->orders_status;
-		 $comments 	 			=	 $request->comments;
-		 $orders_id 			= 	 $request->orders_id;
-		 $old_orders_status 	= 	 $request->old_orders_status;
-		 $date_added			=    date('Y-m-d h:i:s');
-		 
-		 //get function from other controller
-		 $myVar = new AdminSiteSettingController();
-		 $setting = $myVar->getSetting();
-		 
-		 $status = DB::table('orders_status')->where('orders_status_id', '=', $orders_status)->get();
-		
-		
-		 if($old_orders_status==$orders_status){
-			 return redirect()->back()->with('error', Lang::get("labels.StatusChangeError"));
-		 }else{
-		 
-		 //orders status history
-		 $orders_history_id = DB::table('orders_status_history')->insertGetId(
-			[	 'orders_id'  => $orders_id,
-				 'orders_status_id' => $orders_status,
-				 'date_added'  => $date_added,
-				 'customer_notified' =>'1',
-				 'comments'  =>  $comments
-			]);
-		
-			if($orders_status=='2'){
+		} else {
+			$orders_status 		=	 $request->orders_status;
+			$comments 	 			=	 $request->comments;
+			$orders_id 			= 	 $request->orders_id;
+			$old_orders_status 	= 	 $request->old_orders_status;
+			$date_added			=    date('Y-m-d h:i:s');
+			
+			//get function from other controller
+			$myVar = new AdminSiteSettingController();
+			$setting = $myVar->getSetting();
+			
+			$status = DB::table('orders_status')->where('orders_status_id', '=', $orders_status)->get();
+			
+			
+			if($old_orders_status==$orders_status){
+				return redirect()->back()->with('error', Lang::get("labels.StatusChangeError"));
+			} else {
+			
+				//orders status history
+				$orders_history_id = DB::table('orders_status_history')->where('orders_id', $request->orders_id)->update(
+					[	 'orders_id'  => $orders_id,
+						'orders_status_id' => $orders_status,
+						'date_added'  => $date_added,
+						'customer_notified' =>'1',
+						'comments'  =>  $comments
+					]);
 				
-				$orders_products = DB::table('orders_products')->where('orders_id', '=', $orders_id)->get();
-				
-				foreach($orders_products as $products_data){
-					DB::table('products')->where('products_id', $products_data->products_id)->update([
-						'products_quantity' => DB::raw('products_quantity - "'.$products_data->products_quantity.'"'),
-						'products_ordered'  => DB::raw('products_ordered + 1')
-						]);
-				}
-			}
-		
-		$orders = DB::table('orders')->where('orders_id', '=', $orders_id)
-			->where('customers_id','!=','')->get();
-		
-		$data = array();
-		$data['customers_id'] = $orders[0]->customers_id;
-		$data['orders_id'] = $orders_id;
-		$data['status'] = $status[0]->orders_status_name;
-		
-		//notify user		
-		$myVar = new AdminAlertController();
-		$myVar->orderStatusChange($data);
+					if($orders_status=='2'){
 						
-		return redirect()->back()->with('message', Lang::get("labels.OrderStatusChangedMessage"));
-		 }
+						$orders_products = DB::table('orders_products')->where('orders_id', '=', $orders_id)->get();
+						
+						foreach($orders_products as $products_data){
+							DB::table('products')->where('products_id', $products_data->products_id)->update([
+								'products_quantity' => DB::raw('products_quantity - "'.$products_data->products_quantity.'"'),
+								'products_ordered'  => DB::raw('products_ordered + 1')
+								]);
+						}
+					}
+				
+				$orders = DB::table('orders')->where('orders_id', '=', $orders_id)
+				->whereNotNull('customers_id')->first();
+				$data = array();
+				$data['customers_id'] = $orders->customers_id;
+				$data['orders_id'] = $orders_id;
+				$data['status'] = $status[0]->orders_status_name;
+
+				if ($status[0]->orders_status_id == 2) {
+					dispatch(new SendPaymentConfirmationEmail($orders));
+				}
+				
+				//notify user		
+				$myVar = new AdminAlertController();
+				$myVar->orderStatusChange($data);
+								
+				return redirect()->back()->with('message', Lang::get("labels.OrderStatusChangedMessage"));
+			}
 		
 		}
 		

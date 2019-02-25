@@ -21,9 +21,11 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Registration</div>
+                    <div class="panel-heading">Payment</div>
                     <div class="panel-body">
-                        You have successfully registered. An email is sent to you for verification.
+                            <p>Transfer Bank Permata</p>
+                            <p>No Rek. 01811600888</p>
+                            <p>a/n PT Teknologi Informasi Tanpa Batas</p>       
                     </div>
                 </div>
             </div>
