@@ -60,6 +60,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 	
 	//Track Order
 	Route::get('/track-order', 'TrackOrderController@index')->name('track-order');
+	Route::post('/track-order', 'TrackOrderController@getWaybill')->name('post.track-order');
 	
 });
 
