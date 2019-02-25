@@ -7,7 +7,7 @@
                 <ul class="pull-right">
                     <li class='hidden-xs'> <a href="#"> Track order </a></li>
                     @if (Auth::guest())
-                      <li> <a href='login'> Sign in </a></li>
+                      <li> <a href='{{ route('login') }}'> Sign in </a></li>
                       <li class='hidden-xs'> <a href='register'> Sign up </a></li>
                     @endif
                     <li class='hidden-xs'>		

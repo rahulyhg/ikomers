@@ -219,7 +219,7 @@
 @stop
 
 @section('addscript')
-<script type="text/javascript" src="{{ asset('resources/views/frontend/js/jquery-2.1.4.min.js') }}"></script>>
+<script type="text/javascript" src="{{ asset('resources/views/frontend/js/jquery-2.1.4.min.js') }}"></script>
 <script src="{{ asset('resources/views/frontend/js/easy-responsive-tabs.js') }}"></script>
 <script src="{{ asset('resources/views/frontend/js/imagezoom.js') }}"></script>
 <script src="{{ asset('resources/views/frontend/js/jquery.flexslider.js') }}"></script>

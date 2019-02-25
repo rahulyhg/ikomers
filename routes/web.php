@@ -60,6 +60,8 @@ Route::group(['namespace' => 'Frontend'], function () {
 	
 });
 
+Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
+
 /*
 |--------------------------------------------------------------------------
 | Admin controller Routes

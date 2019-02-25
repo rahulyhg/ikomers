@@ -6,6 +6,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
+use App\Jobs\SendVerificationEmail;
 
 class RegisterController extends Controller
 {
@@ -68,6 +71,40 @@ class RegisterController extends Controller
             'customers_lastname' => $data['customers_lastname'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'email_token' => base64_encode($data['email'])
         ]);
+    }
+
+    /**
+    * Handle a registration request for the application.
+    *
+    * @param \Illuminate\Http\Request $request
+    * @return \Illuminate\Http\Response
+    */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        dispatch(new SendVerificationEmail($user));
+        return redirect()->back()->with('message', 'Please check your email for account verification.');
+    }
+    /**
+    * Handle a registration request for the application.
+    *
+    * @param $token
+    * @return \Illuminate\Http\Response
+    */
+    public function verify($token)
+    {
+        $user = User::where('email_token',$token)->first();
+        
+        if(!$user){
+            return "Invalid Token";
+        }
+
+        $user->email_verification = 1;
+        if($user->save()){
+            return view('frontend.email-verification',['user'=>$user]);
+        }
     }
 }

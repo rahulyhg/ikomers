@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Jobs\SendResetPasswordEmail;
 
 class User extends Authenticatable
 {
@@ -17,7 +18,7 @@ class User extends Authenticatable
 	protected $table = 'customers';
 	
     protected $fillable = [
-        'name', 'email', 'password',
+        'customers_firstname', 'customers_lastname', 'email', 'password', 'email_token'
     ];
 
     /**
@@ -29,5 +30,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 	//use user id of admin
-	protected $primaryKey = 'customers_id';
+    protected $primaryKey = 'customers_id';
+    
+    public function sendPasswordResetNotification($token)
+    {
+        //dd(request()->email);
+        $user = User::where('email', request()->email)->first();
+        dispatch(new SendResetPasswordEmail($user, $token));
+    }
 }
