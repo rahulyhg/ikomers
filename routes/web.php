@@ -58,6 +58,9 @@ Route::group(['namespace' => 'Frontend'], function () {
 	Route::get('/faq', 'FAQController@index')->name('faq');
 	Route::get('/how-to-buy', 'FAQController@howToBuy')->name('how-to-buy');
 	
+	//Track Order
+	Route::get('/track-order', 'TrackOrderController@index')->name('track-order');
+	
 });
 
 Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
