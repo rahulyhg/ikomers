@@ -287,6 +287,22 @@ Route::group(['prefix' => 'admin'], function () {
 			Route::get('/editorderstatus/{id}', 'AdminSiteSettingController@editorderstatus');
 			Route::post('/updateOrderStatus', 'AdminSiteSettingController@updateOrderStatus');
 			Route::post('/deleteOrderStatus', 'AdminSiteSettingController@deleteOrderStatus');
+
+			//frequently ask question
+			Route::get('/faqcategories', 'AdminFaqController@faqcategories');
+			Route::get('/addfaqcategory', 'AdminFaqController@addfaqcategory');
+			Route::post('/addnewfaqcategory', 'AdminFaqController@addnewfaqcategory');
+			Route::get('/editfaqcategory/{id}', 'AdminFaqController@editfaqcategory');
+			Route::post('/updatefaqcategory', 'AdminFaqController@updatefaqcategory');
+			Route::get('/deletefaqcategory/{id}', 'AdminFaqController@deletefaqcategory');
+			
+			//frequently ask question
+			Route::get('/faq', 'AdminFaqController@faq');
+			Route::get('/addfaq', 'AdminFaqController@addfaq');
+			Route::post('/addnewfaq', 'AdminFaqController@addnewfaq');
+			Route::get('/editfaq/{id}', 'AdminFaqController@editfaq');
+			Route::post('/updatefaq', 'AdminFaqController@updatefaq');
+			Route::get('/deletefaq/{id}', 'AdminFaqController@deletefaq');
 			
 			//units
 			Route::get('/units', 'AdminSiteSettingController@units');

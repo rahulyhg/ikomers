@@ -136,6 +136,18 @@
           </a>
         </li>
          @endif
+        @if(session('faq_view')==1  or auth()->guard('admin')->user()->adminType=='1')
+          <li class="treeview {{ Request::is('admin/faq') ? 'active' : '' }} {{ Request::is('admin/addfaq') ? 'active' : '' }} {{ Request::is('admin/editfaq/*') ? 'active' : '' }} {{ Request::is('admin/faqcategories') ? 'active' : '' }}  {{ Request::is('admin/addfaqcategory') ? 'active' : '' }}  {{ Request::is('admin/editfaqcategory/*') ? 'active' : '' }}">
+            <a href="#">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+            <span>Frequently Ask Question </span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{{ Request::is('admin/faqcategories') ? 'active' : '' }}  {{ Request::is('admin/addfaqcategory') ? 'active' : '' }}  {{ Request::is('admin/editfaqcategory/*') ? 'active' : '' }}"><a href="{{ URL::to('admin/faqcategories')}}"><i class="fa fa-circle-o"></i>FAQ Categories</a></li>
+              <li class="{{ Request::is('admin/faq') ? 'active' : '' }} {{ Request::is('admin/addfaq') ? 'active' : '' }} {{ Request::is('admin/editfaq/*') ? 'active' : '' }}"><a href="{{ URL::to('admin/faq')}}"><i class="fa fa-circle-o"></i> Frequently Ask Question</a></li>
+            </ul>
+          </li>
+        @endif
         @if(session('reports_view')==1 or auth()->guard('admin')->user()->adminType=='1')
         <li class="treeview {{ Request::is('admin/statscustomers') ? 'active' : '' }} {{ Request::is('admin/outofstock') ? 'active' : '' }} {{ Request::is('admin/statsproductspurchased') ? 'active' : '' }} {{ Request::is('admin/statsproductsliked') ? 'active' : '' }} {{ Request::is('admin/lowinstock') ? 'active' : '' }}">
           <a href="#">

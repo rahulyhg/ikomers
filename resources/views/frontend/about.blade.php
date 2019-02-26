@@ -39,7 +39,7 @@
                 <h4 class="text-primary" style="line-height:1.6em">
                     Computing is one of the greatest revolutions in human history. <br>
                     Yet, it remains out of reach for half the planet. <br>
-                    Whe create Endless OS - a free and robust computing solution - <br>
+                    We create Endless OS - a free and robust computing solution - <br>
                     so people everywhere have access to relevant information and technology. <br> <br>
     
                     Our goal is build a global platform for digital literacy.
