@@ -9,7 +9,7 @@
       <div class="services-breadcrumb">
           <div class="agile_inner_breadcrumb">
               <ul class="w3_short">
-                  <li><a href="index.html">Home</a><i>|</i></li>
+                  <li><a href="{{ route('home') }}">Home</a><i>|</i></li>
                   <li>How to Buy</li>
               </ul>
           </div>

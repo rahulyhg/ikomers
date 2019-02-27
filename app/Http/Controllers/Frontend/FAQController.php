@@ -9,7 +9,7 @@ use App\Models\FAQ;
 class FAQController extends Controller
 {
     //
-    public function faq($slug='') {
+    public function faq($slug="") {
         //dd($slug);
         $faq_categories = FAQ::getFAQCategories();
 

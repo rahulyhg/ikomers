@@ -5,6 +5,22 @@
 <div class="page-head_agile_info_w3l">
     <div class="container dottedline-bheim">
         <h3>Endless <span>Cart  </span></h3>
+        <div class="services-breadcrumb">
+            <div class="agile_inner_breadcrumb">
+
+                <ul class="w3_short">
+                    <li><a href="">Home</a><i>|</i></li>
+                    <li><a href="{{ route('product') }}">Products</a><i>|</i></li>
+                    {{-- <li>
+                        <a href="">
+                            {{ $product->categories_name }}
+                        </a><i>|</i></li> --}}
+                    <li>
+                        Cart
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 
