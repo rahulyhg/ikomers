@@ -13,12 +13,10 @@
         <tbody>
           <tr>
             <td>
-                <p>
-                    Mail from : {{ $user->name }} - {{ $user->email }}
-                    Subject email : {{ $user->subject }}
-                </p>
-                
-                <p>{{ $user->message }}</p>
+                <p>Mail from : {{ $user['name'] }} - {{ $user['email'] }}</p>
+                <p>Subject email : {{ $user['subject'] }}</p>
+                    
+                <p>{{ $user['message'] }}</p>
           </tr>
         </tbody>
       </table>

@@ -14,7 +14,8 @@ class ContactController extends Controller
     }
 
     public function sendEmail(Request $request) {
-        dispatch(new SendContactCustomerEmail($request->all()));
+        $user = $request->all();
+        dispatch(new SendContactCustomerEmail($user));
         return redirect()->back()->with('message','Thank you, your email has been sended. We will confirm immediately.');
     }
 }

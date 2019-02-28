@@ -69,6 +69,11 @@
                 </div>
                 <div class="col-md-6 contact-form address-grid">
                     <h4 class="">Mail <span>Us</span></h4>
+                    @if(session()->has('message'))
+                        <div class="alert alert-success m-t-20">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
                     <form action="{{ route('post.contact') }}" method="post" class="m-t-30">
                         <div class="styled-input agile-styled-input-top">
                             <input type="text" name="name" required="">
