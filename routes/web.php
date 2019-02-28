@@ -42,10 +42,12 @@ Route::group(['namespace' => 'Frontend'], function () {
 	//Checkout
 	Route::get('/checkout', 'CheckoutController@index')->name('checkout');
 	Route::post('/checkout', 'CheckoutController@checkout')->name('post.checkout');
-	Route::get('/payment', 'CheckoutController@index')->name('payment');
+	Route::get('/payment-method/{invoice_number}', 'PaymentController@paymentMethod')->name('payment-method');
+	Route::post('/payment-method', 'PaymentController@postPayment')->name('post-payment');
+	Route::post('/payment-method-cardless', 'PaymentController@token')->name('post-payment-cardless');
+	Route::get('/payment/{invoice_number}', 'PaymentController@payment')->name('payment');
 	Route::get('/payment-confirmation', 'PaymentController@paymentConfirmation')->name('payment-confirmation');
 	Route::post('/payment-confirmation', 'PaymentController@postPaymentConfirmation')->name('post.payment-confirmation');
-	Route::get('/payment-order', 'PaymentController@index')->name('payment-order');
 
 	//About
 	Route::get('/about', 'AboutController@index')->name('about');

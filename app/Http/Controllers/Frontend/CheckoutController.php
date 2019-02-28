@@ -16,7 +16,11 @@ class CheckoutController extends Controller
 {
     //
     public function index() {
-        return view('frontend.checkout');
+        $cart = Cart::count();
+        if($cart) {
+            return view('frontend.checkout');
+        }
+        return redirect('cart');
     }
 
     public function payment() {
@@ -24,11 +28,11 @@ class CheckoutController extends Controller
     }
 
     public function checkout(Request $request) {
-        $order_id = "EOS" . str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+        $invoice_number = "EOS" . str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
 
         $input = $request->all();
 
-        $chart = Cart::content();
+        $cart = Cart::content();
 
         $order = Order::insert([
             //customer
@@ -61,7 +65,7 @@ class CheckoutController extends Controller
             'order_price' => Cart::total(2, '.', ''),
             'date_purchased' => Carbon::now(),
             'email' => $input['email'],
-            'transaction_id' => $order_id
+            'invoice_number' => $invoice_number
         ]);
 
         $order = Order::orderBy('orders_id', 'DESC')->first();
@@ -73,7 +77,7 @@ class CheckoutController extends Controller
         ]);
 
         
-        foreach($chart as $item) {
+        foreach($cart as $item) {
             $order_product = \DB::table('orders_products')->insert([
                 'orders_id' => $order->orders_id,
                 'products_id' => $item->id,
@@ -96,12 +100,12 @@ class CheckoutController extends Controller
             ]);
         }
 
-        $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
-        $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->first();
-        dispatch(new SendOrderEmail($order_user, $order_product));
+        // $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
+        // $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->first();
+        // dispatch(new SendOrderEmail($order_user, $order_product));
 
-        Cart::destroy();
+        //Cart::destroy();
 
-        return redirect('payment-order');
+        return redirect('payment-method/'.$order->invoice_number);
     }
 }

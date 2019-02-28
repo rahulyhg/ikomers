@@ -114,7 +114,7 @@ font-family: 'Open Sans', sans-serif;
 }	
 p{
 	margin:0;
-	letter-spacing:1px;
+	/* letter-spacing:1px; */
 	font-size: 0.9em;
 }
 ul{

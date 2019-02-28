@@ -140,7 +140,7 @@
 
                 <div class="form-group m-t-20">
                     <button type="submit" class="newbutton">
-                        Continue Payment
+                        Select Payment Method
                     </button>
                 </div>
             </form>
