@@ -69,24 +69,24 @@
                 </div>
                 <div class="col-md-6 contact-form address-grid">
                     <h4 class="">Mail <span>Us</span></h4>
-                    <form action="#" method="post" class="m-t-30">
+                    <form action="{{ route('post.contact') }}" method="post" class="m-t-30">
                         <div class="styled-input agile-styled-input-top">
-                            <input type="text" name="Name" required="">
+                            <input type="text" name="name" required="">
                             <label>name</label>
                             <span></span>
                         </div>
                         <div class="styled-input">
-                            <input type="email" name="Email" required="">
+                            <input type="email" name="email" required="">
                             <label>email</label>
                             <span></span>
                         </div>
                         <div class="styled-input">
-                            <input type="text" name="Subject" required="">
+                            <input type="text" name="subject" required="">
                             <label>subject</label>
                             <span></span>
                         </div>
                         <div class="styled-input">
-                            <textarea name="Message" required=""></textarea>
+                            <textarea name="message" required=""></textarea>
                             <label>message</label>
                             <span></span>
                         </div>

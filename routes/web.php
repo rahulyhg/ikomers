@@ -57,6 +57,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 	//Contact
 	Route::get('/contact', 'ContactController@index')->name('contact');
+	Route::post('/contact', 'ContactController@sendEmail')->name('post.contact');
 
 	//How to buy
 	Route::get('/faq/{slug?}', 'FAQController@faq')->name('faq');
