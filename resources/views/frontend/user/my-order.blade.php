@@ -20,12 +20,12 @@
 
 
 <div class="container-fluid p-0">
-    <div class="container m-t-50">
+    <div class="container">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-3 m-t-50 text-left">
                 @include('frontend.user.menu')
             </div>
-            <div class="col-sm-offset-1 col-sm-8">
+            <div class="col-sm-offset-1 col-sm-8 m-t-50">
                 <h2 class="text-primary">My Orders</h2>
                 @foreach ($orders as $order)
                     <div class="panel panel-default m-t-30">
@@ -38,32 +38,32 @@
                                 <div class="row m-t-30">
                                     <div class="col-md-4">
                                         <p>Product</p>
-                                        <p>{{ $item->products_name }}</p>
+                                        <strong><p>{{ $item->products_name }}</p></strong>
                                     </div>
                                     <div class="col-md-4">
                                         <p>Quantity</p>
-                                        <p>{{ $item->products_quantity }}</p>
+                                        <strong><p>{{ $item->products_quantity }}</p></strong>
                                     </div>
                                     <div class="col-md-4">
                                         <p>Price</p>
-                                        <p>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($item->products_price, 0 , '.' , ',') }}</p>
+                                        <strong><p>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($item->products_price, 0 , '.' , ',') }}</p></strong>
                                     </div>
                                 </div>
                                 <div class="row m-t-20">
                                     <div class="col-md-4">
                                         <p>Total</p>
-                                        <p>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($order->order_price , 0 , '.' , ',') }}</p>
+                                        <strong><p>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($order->order_price , 0 , '.' , ',') }}</p></strong>
                                     </div>
                                     <div class="col-md-4">
                                         <p>Purchase Date</p>
-                                        <p>{{ $order->date_purchased }}</p>
+                                        <strong><p>{{ $order->date_purchased }}</p></strong>
                                     </div>
                                     <div class="col-md-4">
                                         <p>Status</p>
                                         @php
                                             $order_history = App\Models\Order::getHistoryOrder($item->orders_id)
                                         @endphp
-                                        <p>{{ $order_history->orders_status_name }}</p>
+                                        <strong><p>{{ $order_history->orders_status_name }}</p></strong>
                                     </div>
                                 </div>
                             @endforeach
