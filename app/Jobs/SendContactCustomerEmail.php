@@ -37,8 +37,8 @@ class SendContactCustomerEmail implements ShouldQueue
         //
         $email = new EmailContactCustomer($this->user);
         try {
-            //Mail::to('bantuan@endlessos.co.id')->send($email);
-            Mail::to('asep.sholihin11@gmail.com')->send($email);
+            Mail::to('bantuan@endlessos.co.id')->send($email);
+            //Mail::to('asep.sholihin11@gmail.com')->send($email);
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('message', 'Something wrong, please try again.');
         }

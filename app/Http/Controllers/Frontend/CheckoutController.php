@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Cart;
+use Auth;
 use App\User;
 use Carbon\Carbon;
 use App\Jobs\SendOrderEmail;
@@ -18,6 +19,14 @@ class CheckoutController extends Controller
     public function index() {
         $cart = Cart::count();
         if($cart) {
+
+            $auth = Auth::user();
+            if($auth) {
+                $data['user'] = User::find($auth->customers_id);
+                $data['address_book'] = \DB::table('address_book')->where('customers_id', $data['user']->customers_id)->first();
+                return view('frontend.checkout', compact('data'));    
+            }
+
             return view('frontend.checkout');
         }
         return redirect('cart');
@@ -36,6 +45,7 @@ class CheckoutController extends Controller
 
         $order = Order::insert([
             //customer
+            'customers_id' => $input['customers_id'],
             'customers_name' => $input['customers_firstname']." ".$input['customers_lastname'],
             'customers_street_address' => $input['delivery_street_address'],
             'customers_suburb' => $input['delivery_suburb'],

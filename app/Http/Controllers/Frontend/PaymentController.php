@@ -117,9 +117,9 @@ class PaymentController extends Controller
             return $e->getMessage; 
         }
         //dd($response);
-        // $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
-        // $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->first();
-        // dispatch(new SendOrderEmail($order_user, $order_product));
+        $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
+        $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->first();
+        dispatch(new SendOrderEmail($order_user, $order_product));
 
         Cart::destroy();
 

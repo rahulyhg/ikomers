@@ -66,7 +66,11 @@ Route::group(['namespace' => 'Frontend'], function () {
 	//Track Order
 	Route::get('/track-order', 'TrackOrderController@index')->name('track-order');
 	Route::post('/track-order', 'TrackOrderController@getWaybill')->name('post.track-order');
-	
+	Route::group(['middleware' => 'auth'], function() {
+		Route::get('/my-order', 'UserController@order')->name('user.order');
+		Route::get('/my-account', 'UserController@account')->name('user.account');
+		Route::post('/my-account', 'UserController@updateAccount')->name('user.update.my-account');
+	});	
 });
 
 Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
