@@ -664,16 +664,16 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v3.2.0",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "7194c0cd9fb2ce449669252b8ec316b85b7de481"
+                "reference": "79316f36641f1916a50ab14d368acdf1d97e46de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/7194c0cd9fb2ce449669252b8ec316b85b7de481",
-                "reference": "7194c0cd9fb2ce449669252b8ec316b85b7de481",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/79316f36641f1916a50ab14d368acdf1d97e46de",
+                "reference": "79316f36641f1916a50ab14d368acdf1d97e46de",
                 "shasum": ""
             },
             "require": {
@@ -723,7 +723,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2018-10-18T03:39:04+00:00"
+            "time": "2018-12-21T14:06:32+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1171,16 +1171,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "594bcae1fc0bccd3993d2f0d61a018e26ac2865a"
+                "reference": "5221f49a608808c1e4d436df32884cbc1b821ac0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/594bcae1fc0bccd3993d2f0d61a018e26ac2865a",
-                "reference": "594bcae1fc0bccd3993d2f0d61a018e26ac2865a",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/5221f49a608808c1e4d436df32884cbc1b821ac0",
+                "reference": "5221f49a608808c1e4d436df32884cbc1b821ac0",
                 "shasum": ""
             },
             "require": {
@@ -1218,7 +1218,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-01-12T16:31:37+00:00"
+            "time": "2019-02-16T20:54:15+00:00"
         },
         {
             "name": "o2system/curl",
@@ -1328,23 +1328,23 @@
         },
         {
             "name": "o2system/kernel",
-            "version": "v1.9.134",
+            "version": "v1.9.143",
             "source": {
                 "type": "git",
                 "url": "https://github.com/o2system/kernel.git",
-                "reference": "da4c7436e2bc50aa8da20dd7914ffa89cf3cdda2"
+                "reference": "7faace187d0171fff70bbba94444d508c914fc69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/o2system/kernel/zipball/da4c7436e2bc50aa8da20dd7914ffa89cf3cdda2",
-                "reference": "da4c7436e2bc50aa8da20dd7914ffa89cf3cdda2",
+                "url": "https://api.github.com/repos/o2system/kernel/zipball/7faace187d0171fff70bbba94444d508c914fc69",
+                "reference": "7faace187d0171fff70bbba94444d508c914fc69",
                 "shasum": ""
             },
             "require": {
                 "o2system/gear": "*",
                 "o2system/psr": "*",
                 "o2system/spl": "*",
-                "php": ">=5.6.0"
+                "php": "~7.2.0"
             },
             "type": "package",
             "autoload": {
@@ -1385,7 +1385,7 @@
                 "php",
                 "singleton"
             ],
-            "time": "2019-01-11T11:54:28+00:00"
+            "time": "2019-01-25T09:06:10+00:00"
         },
         {
             "name": "o2system/psr",
@@ -3843,7 +3843,6 @@
                 "mock",
                 "xunit"
             ],
-            "abandoned": true,
             "time": "2017-06-30T09:13:00+00:00"
         },
         {
