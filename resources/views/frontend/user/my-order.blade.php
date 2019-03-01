@@ -27,7 +27,7 @@
             </div>
             <div class="col-sm-offset-1 col-sm-8 m-t-50">
                 <h2 class="text-primary">My Orders</h2>
-                @foreach ($orders as $order)
+                @forelse ($orders as $order)
                     <div class="panel panel-default m-t-30">
                         <div class="panel-body order">
                             <h3 class="text-primary">Invoice Number : {{ $order->invoice_number }}</h3>
@@ -69,7 +69,9 @@
                             @endforeach
                         </div>
                     </div>
-                @endforeach
+                    @empty
+                        <p>Empty</p>
+                @endforelse
             </div>
         </div>
     </div>

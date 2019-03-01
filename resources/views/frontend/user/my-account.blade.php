@@ -164,7 +164,7 @@
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('entry_postcode') ? ' has-error' : '' }}">
                             <label for="entry_postcode" class="control-label">Zip Code</label>
-                            <input id="entry_postcode" type="text" class="form-control" name="entry_postcode" @isset($entry_postcode) value="{{ $address_book->entry_postcode }}" @endisset required autofocus>
+                            <input id="entry_postcode" type="text" class="form-control" name="entry_postcode" @isset($address_book->entry_postcode) value="{{ $address_book->entry_postcode }}" @endisset required autofocus>
         
                             @if ($errors->has('entry_postcode'))
                                 <span class="help-block">
@@ -222,31 +222,4 @@
     <!--/col-9-->
 </div>
 <!--/row-->
-@endsection
-
-@section('addscript')
-
-<script>
-$(document).ready(function() {
-
-    
-var readURL = function(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('.avatar').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-
-$(".file-upload").on('change', function(){
-    readURL(this);
-});
-});
-</script>
-
 @endsection
