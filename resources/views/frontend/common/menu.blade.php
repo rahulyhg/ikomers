@@ -50,7 +50,7 @@
         <!-- //header -->
             <div class="container menubawah">
                 <div class="top_nav_left">
-                  <a href="{{ route('home') }}"><img src="{!! asset('resources/views/frontend/images/logo/endless.png') !!}" class="img-responsive"/></a>
+                  <a href="{{ route('home') }}"><img src="{{ asset('resources/views/frontend/images/logo/endless.png') }}" class="img-responsive"/></a>
                 </div>
                 <div class="top_nav_right">
                     <nav class="navbar navbar-default">

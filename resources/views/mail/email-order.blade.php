@@ -13,7 +13,7 @@
         <tr>
             <td style="vertical-align: top; padding-bottom:30px;" align="center">
                 <a href="http://endlessos.co.id" target="_blank">
-                <img src="http://endlessos.co.id/resources/views/frontend/images/logo/endless.png" width="96" alt="PSB" style="border:none">
+                  <img src="http://endlessos.co.id/resources/views/frontend/images/logo/endless.png" width="200" alt="EndlessOS" style="border:none">
                 </a>
             </td>
         </tr>
