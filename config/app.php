@@ -181,7 +181,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        App\Rajaongkir\RajaOngkirServiceProvider::class,
 
     ],
 
@@ -236,6 +237,7 @@ return [
 		'Theme' => Karlomikus\Theme\Facade\Theme::class,
 		'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Rajaongkir' => App\Rajaongkir\RajaOngkirFacade::class,
     ],
 
 ];
