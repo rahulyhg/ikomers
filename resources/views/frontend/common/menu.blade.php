@@ -15,6 +15,12 @@
                     </li>
                     @if (Auth::user())
                       <li> 
+                          <a href="{{ route('user.order') }}">My Order</a>
+                      </li>
+                      <li> 
+                          <a href="{{ route('user.account') }}">My Account</a>
+                      </li>
+                      <li> 
                           <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">

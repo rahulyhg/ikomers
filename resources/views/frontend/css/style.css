@@ -124,6 +124,12 @@ ul{
 label{
 	/* margin:0; */
 }
+img.avatar {
+	height: 140px;
+	width: 140px;
+	object-fit: cover;
+}
+
 /*-- header --*/
 .header {
     background: #ff6633;
