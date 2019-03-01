@@ -74,7 +74,7 @@
                   <tr>
                     <td>Invoice Pembayaran</td>
                     <td></td>
-                    <td>{{ 	$order->transaction_id }}</td>
+                    <td>{{ 	$order->invoice_number }}</td>
                   </tr>
                 </table>
                 
