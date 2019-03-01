@@ -94,7 +94,7 @@
 
                 <div class="form-group{{ $errors->has('entry_street_address') ? ' has-error' : '' }}">
                     <label for="entry_street_address" class="control-label">Address</label>
-                    <textarea class="form-control" name="entry_street_address" id="entry_street_address" rows="2" required>{{ $address_book->entry_street_address }}</textarea>
+                    <textarea class="form-control" name="entry_street_address" id="entry_street_address" rows="2" required>@isset($address_book->entry_street_address){{ $address_book->entry_street_address }}@endisset</textarea>
                     
                     @if ($errors->has('entry_street_address'))
                         <span class="help-block">
@@ -107,7 +107,7 @@
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('entry_state') ? ' has-error' : '' }}">
                             <label for="entry_state" class="control-label">State</label>
-                            <input id="entry_state" type="text" class="form-control" name="entry_state" value="{{ $address_book->entry_state }}" required autofocus>
+                            <input id="entry_state" type="text" class="form-control" name="entry_state" @isset($address_book->entry_state) value="{{ $address_book->entry_state }}" @endisset required autofocus>
         
                             @if ($errors->has('entry_state'))
                                 <span class="help-block">
@@ -119,7 +119,7 @@
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('entry_city') ? ' has-error' : '' }}">
                             <label for="entry_city" class="control-label">City</label>
-                            <input id="entry_city" type="text" class="form-control" name="entry_city" value="{{ $address_book->entry_city }}" required autofocus>
+                            <input id="entry_city" type="text" class="form-control" name="entry_city" @isset($address_book->entry_city) value="{{$address_book->entry_city}}" @endisset required autofocus>
         
                             @if ($errors->has('entry_city'))
                                 <span class="help-block">
@@ -134,7 +134,7 @@
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('entry_suburb') ? ' has-error' : '' }}">
                             <label for="entry_suburb" class="control-label">Region</label>
-                            <input id="entry_suburb" type="text" class="form-control" name="entry_suburb" value="{{ $address_book->entry_suburb }}" required autofocus>
+                            <input id="entry_suburb" type="text" class="form-control" name="entry_suburb" @isset($address_book->entry_suburb) value="{{$address_book->entry_suburb}}" @endisset required autofocus>
         
                             @if ($errors->has('entry_suburb'))
                                 <span class="help-block">
@@ -146,7 +146,7 @@
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('entry_postcode') ? ' has-error' : '' }}">
                             <label for="entry_postcode" class="control-label">Zip Code</label>
-                            <input id="entry_postcode" type="text" class="form-control" name="entry_postcode" value="{{ $address_book->entry_postcode }}" required autofocus>
+                            <input id="entry_postcode" type="text" class="form-control" name="entry_postcode" @isset($entry_postcode) value="{{ $address_book->entry_postcode }}" @endisset required autofocus>
         
                             @if ($errors->has('entry_postcode'))
                                 <span class="help-block">
