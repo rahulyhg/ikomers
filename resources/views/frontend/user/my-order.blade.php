@@ -46,13 +46,13 @@
                                     </div>
                                     <div class="col-md-4">
                                         <p>Price</p>
-                                        <p>{{ $item->products_price }}</p>
+                                        <p>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($item->products_price, 0 , '.' , ',') }}</p>
                                     </div>
                                 </div>
                                 <div class="row m-t-20">
                                     <div class="col-md-4">
                                         <p>Total</p>
-                                        <p>{{ $order->order_price }}</p>
+                                        <p>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($order->order_price , 0 , '.' , ',') }}</p>
                                     </div>
                                     <div class="col-md-4">
                                         <p>Purchase Date</p>
