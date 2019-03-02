@@ -48,13 +48,13 @@
 @section('content')
 <div class="page-head_agile_info_w3l">
     <div class="container dottedline-bheim">
-        <h3>Endless <span>Indonesia </span></h3>
+        <h3>Payment <span>Method </span></h3>
         <!--/w3_short-->
         <div class="services-breadcrumb">
             <div class="agile_inner_breadcrumb">
                 <ul class="w3_short">
                     <li><a href="{{ route('home') }}">Home</a><i>|</i></li>
-                    <li>Endless Indonesia</li>
+                    <li>Payment Method</li>
                 </ul>
             </div>
         </div>
@@ -64,31 +64,70 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2 m-t-50">
-                <header>
-                    <h3>Select Payment Method</h3>
-                </header>
-                <form action="{{ route('post-payment') }}" method="POST">
-                    <section id="accordion" class="m-t-30">
-                        @foreach ($methods as $item)
-                            <div>
-                                <input type="hidden" name="invoice_number" value="{{ $invoice_number }}">
-                                <input type="radio" name="payment_type" value="{{ $item->payment_type }}" id="option-{{ $item->payment_id }}" />
-                                <label for="option-{{ $item->payment_id }}">{{ $item->payment_type_name }}</label>
-                                <article>
-                                    <p>{{ $item->payment_description }}</p>
-                                </article>
+            <div class="col-sm-6 col-sm-offset-3 m-t-50">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        Summary Order
+                        <div class="row summaryheim">
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h5>Order Subtotal</h5>
                             </div>
-                        @endforeach
-                    </section>
-                    <div class="form-group m-t-20">
-                        <button type="submit" class="newbutton">
-                            Continue Payment
-                        </button>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h5>{{ App\Models\Setting::getAttr('currency_symbol') }} {{Cart::subtotal()}} </h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h5>Shipping Cost</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h5 id="shippingCost" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} 0</h5>
+                                <input type="hidden" id="shippingCosthide">
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h6>Total</h6>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h6 id="totalSummary" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} {{ Cart::total() }}</h6>
+                            </div>
+                        </div>
+                        <form id="formPayment">
+                            <div class="form-group m-t-40">
+                                <button type="submit" class="btn btn-block btn-buy-product btn-lg">
+                                    Continue Payment
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 
+@endsection
+
+@section('addscript')
+<script src="{{ !$config['isProduction'] ? 'https://app.sandbox.midtrans.com/snap/snap.js' : 'https://app.midtrans.com/snap/snap.js' }}" data-client-key="{{ $config['clientKey'] }}"></script>
+<script>
+$("#formPayment").on("submit", function(){
+    //Code: Action (like ajax...)
+    $.post("{{ route('post-payment-snap') }}",null,
+    function (data, status) {
+        snap.pay(data, {
+            // Optional
+            onSuccess: function (result) {
+                window.location.replace("{{ route('payment', ['status'=>'success']) }}");
+            },
+            // Optional
+            onPending: function (result) {
+                window.location.replace("{{ route('payment', ['status'=>'pending']) }}");
+            },
+            // Optional
+            onError: function (result) {
+                window.location.replace("{{ route('payment', ['status'=>'error']) }}");
+            }
+        });
+    });
+    return false;
+})
+</script>
+    
 @endsection

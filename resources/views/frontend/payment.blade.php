@@ -48,13 +48,13 @@
 @section('content')
 <div class="page-head_agile_info_w3l">
     <div class="container dottedline-bheim">
-        <h3>Endless <span>Indonesia </span></h3>
+        <h3>Payment</h3>
         <!--/w3_short-->
         <div class="services-breadcrumb">
             <div class="agile_inner_breadcrumb">
                 <ul class="w3_short">
                     <li><a href="{{ route('home') }}">Home</a><i>|</i></li>
-                    <li>Endless Indonesia</li>
+                    <li>Payment</li>
                 </ul>
             </div>
         </div>
@@ -65,16 +65,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 m-t-50">
-                @if (session('message'))
-                    <div class="alert alert-success">
-                        {{ session('message') }}
-                    </div>
-                @endif
-
-                @foreach ($banks as $bank)
-                    <p>{{ $bank->bank_name }}<br>{{ $bank->bank_account_no }}<br>{{ $bank->bank_account_name }}</p>
-                @endforeach
-                
+                <div class="alert alert-success text-center">
+                    <h5>{{ $message }}</h5>
+                </div>
             </div>
         </div>
     </div>

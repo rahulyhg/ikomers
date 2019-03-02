@@ -52,7 +52,7 @@
                   <tr>
                     <td>Total Pembayaran</td>
                     <td></td>
-                    <td>Rp {{ $product->final_price }},-</td>
+                    <td>Rp {{ number_format($product->final_price) }},-</td>
                   </tr>
                   <tr>
                     <td>Batas waktu Pembayaran</td>

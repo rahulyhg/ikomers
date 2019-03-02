@@ -18,11 +18,13 @@
   </div>
 </div>
 
-<div class="banner_bottom_agile_info">
-    <div class="container">
-        <div class="col-md-6 address-grid">
-            <h4 class="">Shipping <span>Address</span></h4>
-            <form method="POST" action="{{ route('post.checkout') }}" class="m-t-30">
+<form method="POST" id="formCheckout" class="m-t-30" onsubmit="return submitForm();">
+    <div class="banner_bottom_agile_info">
+        <div class="container">
+            <div class="col-sm-12 address-grid">
+                <h4 class="">Shipping <span>Address</span></h4>
+            </div>
+            <div class="col-sm-6 address-grid">
                 {{ csrf_field() }}
                 <input type="hidden" name="customers_id" value="@isset($data){{ $data['user']->customers_id }}@endisset">
                 <div class="row">
@@ -42,7 +44,7 @@
                         <div class="form-group{{ $errors->has('customers_lastname') ? ' has-error' : '' }}">
                             <label for="customers_lastname" class="control-label">Last Name</label>
                             <input id="customers_lastname" type="text" class="form-control" name="customers_lastname" value="@isset($data){{ $data['user']->customers_lastname }}@endisset{{ old('customers_lastname') }}" required autofocus>
-    
+
                             @if ($errors->has('customers_lastname'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('customers_lastname') }}</strong>
@@ -138,15 +140,44 @@
                         </span>
                     @endif
                 </div>
-
-                <div class="form-group m-t-20">
-                    <button type="submit" class="newbutton">
-                        Select Payment Method
-                    </button>
+            </div>
+            <div class="col-sm-5 col-sm-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        Summary Order
+                        <div class="row summaryheim">
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h5>Order Subtotal</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h5>{{ App\Models\Setting::getAttr('currency_symbol') }} {{Cart::subtotal()}} </h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h5>Shipping Cost</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h5 id="shippingCost" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} 0</h5>
+                                <input type="hidden" id="shippingCosthide">
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h6>Total</h6>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h6 id="totalSummary" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} {{ Cart::total() }}</h6>
+                            </div>
+                        </div>
+                        @if (Cart::count())
+                            <div class="form-group m-t-40">
+                                <button type="submit" class="btn btn-block btn-buy-product btn-lg">
+                                    Select Payment Method
+                                </button>
+                            </div>
+                        @endif	
+                    </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+</form>
 <!--//contact-->
 @endsection
