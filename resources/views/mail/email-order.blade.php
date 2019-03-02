@@ -60,11 +60,9 @@
                     <td>{{ \Carbon\Carbon::parse($order->date_purchased)->format('l, d F Y H:i') }} 1x24 jam</td>
                   </tr>
                   <tr>
-                    <td>Metode Pembayaran</td>
+                    <td valign="top">Metode Pembayaran</td>
                     <td></td>
-                    <td>transfer Bank Permata <br>
-                        No Rek. 01811600888<br>
-                        a/n PT Teknologi Informasi Tanpa Batas</td>
+                    <td>{!! ($payment) !!}</td>
                   </tr>
                   <tr>
                     <td>Status Pembayaran</td>

@@ -21,12 +21,14 @@ class SendOrderEmail implements ShouldQueue
      */
     protected $order;
     protected $product;
+    protected $payment;
 
-    public function __construct($order, $product)
+    public function __construct($order, $product, $payment)
     {
         //
         $this->order = $order;
         $this->product = $product;
+        $this->payment = $payment;
     }
 
     /**
@@ -37,7 +39,7 @@ class SendOrderEmail implements ShouldQueue
     public function handle()
     {
         //
-        $email = new EmailOrder($this->order, $this->product);
+        $email = new EmailOrder($this->order, $this->product, $this->payment);
         try {
             Mail::to($this->order->email)->send($email);
         } catch (\Exception $e) {

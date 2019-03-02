@@ -38,7 +38,8 @@ class CheckoutController extends Controller
     }
 
     public function checkout(Request $request) {
-        $invoice_number = "EOS" . str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+        $order = Order::orderBy('orders_id', 'DESC')->first();
+        $invoice_number = "EOS" .$order->orders_id. str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
 
         $input = $request->except('_token');
         $input['invoice_number'] = $invoice_number;

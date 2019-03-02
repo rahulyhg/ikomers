@@ -12,16 +12,17 @@ use Cart;
 use Session;
 use Carbon\Carbon;
 use App\Jobs\SendOrderEmail;
+use PaymentInfo;
 
 class PaymentController extends Controller
 {
     public function __construct()
     {   
-        Veritrans::$serverKey = 'SB-Mid-server-quQ53FbpETTRGleKquHEjHB2';
-        Veritrans::$isProduction = false;
+        Veritrans::$serverKey = env('MIDTRANS_SERVER_KEY', 'default');
+        Veritrans::$isProduction = env('MIDTRANS_PRODUCTION', 'false');
 
-        Midtrans::$serverKey = 'SB-Mid-server-quQ53FbpETTRGleKquHEjHB2';
-        Midtrans::$isProduction = false;
+        Midtrans::$serverKey = env('MIDTRANS_SERVER_KEY', 'default');
+        Midtrans::$isProduction = env('MIDTRANS_PRODUCTION', 'false');
     }
     
     public function paymentMethod($invoice_number) {
@@ -30,7 +31,7 @@ class PaymentController extends Controller
         }
         $config['serverKey'] = Midtrans::$serverKey;
         $config['isProduction'] = Midtrans::$isProduction;
-        $config['clientKey'] = 'SB-Mid-client-3X_KkHt5DoXFnDtf';
+        $config['clientKey'] = env('MIDTRANS_CLIENT_KEY', 'default');
         $invoice_number = $invoice_number;
         return view('frontend.payment-method', compact('invoice_number','config'));
     }
@@ -225,7 +226,10 @@ class PaymentController extends Controller
             }
             $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
             $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->first();
-            dispatch(new SendOrderEmail($order_user, $order_product));
+            $vt = new Veritrans;
+                
+            $payment_info = PaymentInfo::getInfo($order_session['invoice_number']);
+            dispatch(new SendOrderEmail($order_user, $order_product, $payment_info));
             Cart::destroy();
             Session::forget('shipping');
         } else {

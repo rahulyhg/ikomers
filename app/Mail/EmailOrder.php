@@ -18,12 +18,14 @@ class EmailOrder extends Mailable
      */
     protected $order;
     protected $product;
+    protected $payment;
 
-    public function __construct($order, $product)
+    public function __construct($order, $product, $payment)
     {
         //
         $this->order = $order;
         $this->product = $product;
+        $this->payment = $payment;
     }
 
     /**
@@ -35,7 +37,7 @@ class EmailOrder extends Mailable
     {
         //return $this->view('view.name');
         return $this->view('mail.email-order')->with([
-        'order' => $this->order, 'product' => $this->product
+        'order' => $this->order, 'product' => $this->product, 'payment' => $this->payment
         ]);
     }
 }

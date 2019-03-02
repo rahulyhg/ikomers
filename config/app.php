@@ -238,6 +238,7 @@ return [
 		'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Rajaongkir' => App\Rajaongkir\RajaOngkirFacade::class,
+        'PaymentInfo' => App\Veritrans\PaymentMethod::class,
     ],
 
 ];
