@@ -326,4 +326,83 @@ class PaymentController extends Controller
             return $e->getMessage;
         }
     }
+
+    public function notification() {
+        $vt = new Veritrans;
+        $json_result = file_get_contents('php://input');
+        $result = json_decode($json_result);
+        if($result){
+            $notif = $vt->status($result->order_id);
+            
+            switch ($notif->transaction_status) {
+                case 'capture':
+                    $this->capture($notif->order_id);
+                    break;
+                case 'settlement':
+                    $this->settlement($notif->order_id);
+                    break;
+                case 'pending':
+                    $this->pending($notif->order_id);
+                    break;
+                case 'deny':
+                    $this->deny($notif->order_id);
+                    break;
+                case 'cancel':
+                    $this->cancel($notif->order_id);
+                    break;
+                case 'refund':
+                    $this->refund($notif->order_id);
+                    break;
+            } 
+        }
+    }
+
+    public function capture($order_id)
+    {
+        $order_history = \DB::table('orders_status_history')->insert([
+            'orders_id' => $order_id,
+            'orders_status_id' => '2',
+            'date_added' => Carbon::now()->toDateString()
+        ]);
+    }
+    public function settlement($order_id)
+    {
+        $order_history = \DB::table('orders_status_history')->insert([
+            'orders_id' => $order_id,
+            'orders_status_id' => '2',
+            'date_added' => Carbon::now()->toDateString()
+        ]);
+    }
+    public function pending($order_id)
+    {
+        $order_history = \DB::table('orders_status_history')->insert([
+            'orders_id' => $order_id,
+            'orders_status_id' => '1',
+            'date_added' => Carbon::now()->toDateString()
+        ]);
+    }
+    public function deny($order_id)
+    {
+        $order_history = \DB::table('orders_status_history')->insert([
+            'orders_id' => $order_id,
+            'orders_status_id' => '4',
+            'date_added' => Carbon::now()->toDateString()
+        ]);
+    }
+    public function cancel($order_id)
+    {
+        $order_history = \DB::table('orders_status_history')->insert([
+            'orders_id' => $order_id,
+            'orders_status_id' => '3',
+            'date_added' => Carbon::now()->toDateString()
+        ]);
+    }
+    public function refund($order_id)
+    {
+        $order_history = \DB::table('orders_status_history')->insert([
+            'orders_id' => $order_id,
+            'orders_status_id' => '5',
+            'date_added' => Carbon::now()->toDateString()
+        ]);
+    }
 }
