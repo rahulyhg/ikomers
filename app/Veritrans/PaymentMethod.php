@@ -22,6 +22,12 @@ class PaymentMethod {
     public static function getInfo($invoice_number) {
         $vt = new Veritrans;
         $payment_info = $vt->status($invoice_number);
+        
+        //UPDATE Transaction
+        $transaction = \DB::table('orders')->where('invoice_number', $payment_info->order_id)->update([
+            'transaction_id' =>$payment_info->transaction_id
+        ]);
+
         if(isset($payment_info->va_numbers)){
             $method = "
             <strong>Bank Transfer</strong>
