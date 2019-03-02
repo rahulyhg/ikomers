@@ -5,6 +5,22 @@
 <div class="page-head_agile_info_w3l">
     <div class="container dottedline-bheim">
         <h3>Endless <span>Cart  </span></h3>
+        <div class="services-breadcrumb">
+            <div class="agile_inner_breadcrumb">
+
+                <ul class="w3_short">
+                    <li><a href="">Home</a><i>|</i></li>
+                    <li><a href="{{ route('product') }}">Products</a><i>|</i></li>
+                    {{-- <li>
+                        <a href="">
+                            {{ $product->categories_name }}
+                        </a><i>|</i></li> --}}
+                    <li>
+                        Cart
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -77,7 +93,7 @@
                         <h5>Shipping Cost</h5>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
-                        <h5 id="shippingCost" data-total="">IDR 0</h5>
+                        <h5 id="shippingCost" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} 0</h5>
                         <input type="hidden" id="shippingCosthide">
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">

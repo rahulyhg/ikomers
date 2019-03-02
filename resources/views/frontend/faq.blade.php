@@ -9,7 +9,7 @@
                 <div class="services-breadcrumb">
                 <div class="agile_inner_breadcrumb">
                     <ul class="w3_short">
-                        <li><a href="index.html">Home</a><i>|</i></li>
+                        <li><a href="{{ route('home') }}">Home</a><i>|</i></li>
                         <li>Frequently Ask Questions</li>
                     </ul>
                 </div>
@@ -43,88 +43,30 @@
         <div class="row">
             <div class="col-md-4">
                 <ul class="list-faq">
-                    <li><a class="active" href="">Endless OS Installer & Download</a></li>
-                    <li><a href="">How to use Endless OS</a></li>
-                    <li><a href="">Apps & Programs</a></li>
-                    <li><a href="">Technical Questions</a></li>
-                    <li><a href="">Endless Computers</a></li>
-                    <li><a href="">Endless Community</a></li>
-                    <li><a href="">Partnerships & Others</a></li>
+                    @foreach ($faq_categories as $item)
+                        <li><a class="@if($item->slug == $faq_category->slug) active @endif" href="{{ route('faq', ['slug'=>$item->slug]) }}">{{ $item->faq_category_name }}</a></li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-md-7 faq-accordion">
-                <h2 class="text-primary" style="line-height:1.6em">Endless OS Installer & Download</h2>
+                <h2 class="text-primary" style="line-height:1.6em">{{ $faq_category->faq_category_name }}</h2>
                 <div class="panel-group m-t-30" id="accordion" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingOne">
-                            <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    1. How do I create an Endless OS USB stick on Windows?
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                            <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    @foreach ($faqs as $item)
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading{{ $item->faq_id }}">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $item->faq_id }}" aria-expanded="false" aria-controls="collapse{{ $item->faq_id }}">
+                                        {{ $item->question }}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse{{ $item->faq_id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ $item->faq_id }}">
+                                <div class="panel-body">
+                                    {{ $item->answer }}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingTwo">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                2. How do I install Endless OS alongside Windows?
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                            <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingThree">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                3. Will Endless OS work with my computer?
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                            <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingFour">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                                4. Where can I download the Endless OS ISO image files directly?
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                            <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingFive">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
-                                4. How do I create an Endless USB stick from Linux?
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-                            <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

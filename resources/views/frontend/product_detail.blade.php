@@ -34,10 +34,11 @@
 
                 <ul class="w3_short">
                     <li><a href="">Home</a><i>|</i></li>
-                    <li>
+                    <li><a href="{{ route('product') }}">Products</a><i>|</i></li>
+                    {{-- <li>
                         <a href="">
                             {{ $product->categories_name }}
-                        </a><i>|</i></li>
+                        </a><i>|</i></li> --}}
                     <li>
                         {{ ucwords(strtolower($product->products_name)) }}
                     </li>

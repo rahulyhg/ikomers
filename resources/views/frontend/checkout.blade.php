@@ -9,7 +9,7 @@
       <div class="services-breadcrumb">
           <div class="agile_inner_breadcrumb">
               <ul class="w3_short">
-                  <li><a href="index.html">Home</a><i>|</i></li>
+                  <li><a href="{{ route('home') }}">Home</a><i>|</i></li>
                   <li>Checkout</li>
               </ul>
           </div>
@@ -18,17 +18,20 @@
   </div>
 </div>
 
-<div class="banner_bottom_agile_info">
-    <div class="container">
-        <div class="col-md-6 address-grid">
-            <h4 class="">Shipping <span>Address</span></h4>
-            <form method="POST" action="{{ route('post.checkout') }}" class="m-t-30">
+<form method="POST" id="formCheckout" class="m-t-30" onsubmit="return submitForm();">
+    <div class="banner_bottom_agile_info">
+        <div class="container">
+            <div class="col-sm-12 address-grid">
+                <h4 class="">Shipping <span>Address</span></h4>
+            </div>
+            <div class="col-sm-6 address-grid">
                 {{ csrf_field() }}
+                <input type="hidden" name="customers_id" value="@isset($data){{ $data['user']->customers_id }}@endisset">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('customers_firstname') ? ' has-error' : '' }}">
                             <label for="customers_firstname" class="control-label">First Name</label>
-                            <input id="customers_firstname" type="text" class="form-control" name="customers_firstname" value="{{ old('customers_firstname') }}" required autofocus>
+                            <input id="customers_firstname" type="text" class="form-control" name="customers_firstname" value="@isset($data){{ $data['user']->customers_firstname }}@endisset{{ old('customers_firstname') }}" required autofocus>
         
                             @if ($errors->has('customers_firstname'))
                                 <span class="help-block">
@@ -40,8 +43,8 @@
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('customers_lastname') ? ' has-error' : '' }}">
                             <label for="customers_lastname" class="control-label">Last Name</label>
-                            <input id="customers_lastname" type="text" class="form-control" name="customers_lastname" value="{{ old('customers_lastname') }}" required autofocus>
-    
+                            <input id="customers_lastname" type="text" class="form-control" name="customers_lastname" value="@isset($data){{ $data['user']->customers_lastname }}@endisset{{ old('customers_lastname') }}" required autofocus>
+
                             @if ($errors->has('customers_lastname'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('customers_lastname') }}</strong>
@@ -53,7 +56,7 @@
 
                 <div class="form-group{{ $errors->has('delivery_street_address') ? ' has-error' : '' }}">
                     <label for="delivery_street_address" class="control-label">Address</label>
-                    <textarea class="form-control" name="delivery_street_address" id="delivery_street_address" rows="2" required>{{ old('delivery_street_address') }}</textarea>
+                    <textarea class="form-control" name="delivery_street_address" id="delivery_street_address" rows="2" required>@isset($data){{ $data['address_book']->entry_street_address }}@endisset{{ old('delivery_street_address') }}</textarea>
                     
                     @if ($errors->has('delivery_street_address'))
                         <span class="help-block">
@@ -66,7 +69,7 @@
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('delivery_state') ? ' has-error' : '' }}">
                             <label for="delivery_state" class="control-label">State</label>
-                            <input id="delivery_state" type="text" class="form-control" name="delivery_state" value="{{ old('delivery_state') }}" required autofocus>
+                            <input id="delivery_state" type="text" class="form-control" name="delivery_state" value="@isset($data){{ $data['address_book']->entry_state }}@endisset{{ old('delivery_state') }}" required autofocus>
         
                             @if ($errors->has('delivery_state'))
                                 <span class="help-block">
@@ -78,7 +81,7 @@
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('delivery_city') ? ' has-error' : '' }}">
                             <label for="delivery_city" class="control-label">City</label>
-                            <input id="delivery_city" type="text" class="form-control" name="delivery_city" value="{{ old('delivery_city') }}" required autofocus>
+                            <input id="delivery_city" type="text" class="form-control" name="delivery_city" value="@isset($data){{ $data['address_book']->entry_city }}@endisset{{ old('delivery_city') }}" required autofocus>
         
                             @if ($errors->has('delivery_city'))
                                 <span class="help-block">
@@ -93,7 +96,7 @@
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('delivery_suburb') ? ' has-error' : '' }}">
                             <label for="delivery_suburb" class="control-label">Region</label>
-                            <input id="delivery_suburb" type="text" class="form-control" name="delivery_suburb" value="{{ old('delivery_suburb') }}" required autofocus>
+                            <input id="delivery_suburb" type="text" class="form-control" name="delivery_suburb" value="@isset($data){{ $data['address_book']->entry_suburb }}@endisset{{ old('delivery_suburb') }}" required autofocus>
         
                             @if ($errors->has('delivery_suburb'))
                                 <span class="help-block">
@@ -105,7 +108,7 @@
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('delivery_postcode') ? ' has-error' : '' }}">
                             <label for="delivery_postcode" class="control-label">Zip Code</label>
-                            <input id="delivery_postcode" type="text" class="form-control" name="delivery_postcode" value="{{ old('delivery_postcode') }}" required autofocus>
+                            <input id="delivery_postcode" type="text" class="form-control" name="delivery_postcode" value="@isset($data){{ $data['address_book']->entry_postcode }}@endisset{{ old('delivery_postcode') }}" required autofocus>
         
                             @if ($errors->has('delivery_postcode'))
                                 <span class="help-block">
@@ -118,7 +121,7 @@
 
                 <div class="form-group{{ $errors->has('delivery_phone') ? ' has-error' : '' }}">
                     <label for="delivery_phone" class="control-label">Phone Number</label>
-                    <input id="delivery_phone" type="text" class="form-control" name="delivery_phone" value="{{ old('delivery_phone') }}" required autofocus>
+                    <input id="delivery_phone" type="text" class="form-control" name="delivery_phone" value="@isset($data){{ $data['user']->customers_telephone }}@endisset{{ old('delivery_phone') }}" required autofocus>
 
                     @if ($errors->has('delivery_phone'))
                         <span class="help-block">
@@ -129,7 +132,7 @@
                 
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label for="email" class="control-label">Email</label>
-                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                    <input id="email" type="email" class="form-control" name="email" value="@isset($data){{ $data['user']->email }}@endisset{{ old('email') }}" required>
 
                     @if ($errors->has('email'))
                         <span class="help-block">
@@ -137,15 +140,44 @@
                         </span>
                     @endif
                 </div>
-
-                <div class="form-group m-t-20">
-                    <button type="submit" class="newbutton">
-                        Continue Payment
-                    </button>
+            </div>
+            <div class="col-sm-5 col-sm-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        Summary Order
+                        <div class="row summaryheim">
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h5>Order Subtotal</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h5>{{ App\Models\Setting::getAttr('currency_symbol') }} {{Cart::subtotal()}} </h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h5>Shipping Cost</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h5 id="shippingCost" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} 0</h5>
+                                <input type="hidden" id="shippingCosthide">
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h6>Total</h6>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                                <h6 id="totalSummary" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} {{ Cart::total() }}</h6>
+                            </div>
+                        </div>
+                        @if (Cart::count())
+                            <div class="form-group m-t-40">
+                                <button type="submit" class="btn btn-block btn-buy-product btn-lg">
+                                    Select Payment Method
+                                </button>
+                            </div>
+                        @endif	
+                    </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+</form>
 <!--//contact-->
 @endsection

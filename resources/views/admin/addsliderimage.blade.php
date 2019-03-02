@@ -89,6 +89,7 @@
                                           <option value="homepage">Homepage</option>
                                           <option value="logo">Logo</option>
                                           <option value="feature-logo">Feature Logo</option>
+                                          <option value="gallery">Gallery</option>
                                       </select>
                                         <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
                                       {{ trans('labels.ChooseSliderToAsscociateWith') }}</span>

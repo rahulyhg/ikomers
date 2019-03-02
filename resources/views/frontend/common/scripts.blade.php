@@ -25,9 +25,19 @@ $(function(){
         var $this = $(this);
 		// if the current path is like this link, make it active
 		
-		console.log(current);
+		//console.log(current);
         if($this.attr('href') === current){
 			$this.parents('.menu__item').addClass('active menu__item--current')
+        }
+	})
+	
+	$('ul.list-faq li a').each(function(){
+        var $this = $(this);
+		// if the current path is like this link, make it active
+		
+		console.log(current+' == '+$this.attr('href'));
+        if($this.attr('href') === current){
+			$this.addClass('active')
         }
     })
 })

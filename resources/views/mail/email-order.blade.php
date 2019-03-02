@@ -8,6 +8,17 @@
 <body style="margin:0px; background: #f8f8f8; ">
 <div width="100%" style="background: #f8f8f8; padding: 0px 0px; font-family:arial; line-height:28px; height:100%;  width: 100%; color: #514d6a;">
   <div style="max-width: 700px; padding:50px 0;  margin: 0px auto; font-size: 14px">
+    <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 20px">
+      <tbody>
+        <tr>
+            <td style="vertical-align: top; padding-bottom:30px;" align="center">
+                <a href="http://endlessos.co.id" target="_blank">
+                  <img src="http://endlessos.co.id/resources/views/frontend/images/logo/endless.png" width="200" alt="EndlessOS" style="border:none">
+                </a>
+            </td>
+        </tr>
+      </tbody>
+    </table>
     <div style="padding: 40px; background: #fff;">
       <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
         <tbody>
@@ -41,7 +52,7 @@
                   <tr>
                     <td>Total Pembayaran</td>
                     <td></td>
-                    <td>Rp {{ $product->final_price }},-</td>
+                    <td>Rp {{ number_format($product->final_price) }},-</td>
                   </tr>
                   <tr>
                     <td>Batas waktu Pembayaran</td>
@@ -63,7 +74,7 @@
                   <tr>
                     <td>Invoice Pembayaran</td>
                     <td></td>
-                    <td>{{ 	$order->transaction_id }}</td>
+                    <td>{{ 	$order->invoice_number }}</td>
                   </tr>
                 </table>
                 

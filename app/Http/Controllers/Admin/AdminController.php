@@ -483,6 +483,11 @@ class AdminController extends Controller
 						
 						$payment_methods_view = '1';
 						$payment_methods_update = '1';
+
+						$faq_view   = '1';	
+						$faq_create = '1';
+						$faq_update = '1';
+						$faq_delete = '1';
 						
 						$reports_view = '1';
 						
@@ -567,6 +572,11 @@ class AdminController extends Controller
 				
 				session(['payment_methods_view' => $payment_methods_view]);
 				session(['payment_methods_update' => $payment_methods_update]);
+
+				session(['faq_view' => $faq_view]);
+				session(['faq_create' => $faq_create]);
+				session(['faq_update' => $faq_update]);
+				session(['faq_delete' => $faq_delete]);
 						
 				session(['reports_view' => $reports_view]);
 				
@@ -1091,6 +1101,11 @@ class AdminController extends Controller
 			
 			$payment_methods_view = $roles[0]->payment_methods_view;
 			$payment_methods_update = $roles[0]->payment_methods_update;
+
+			$faq_view   = $roles[0]->faq_view;	
+			$faq_create = $roles[0]->faq_create;
+			$faq_update = $roles[0]->faq_update;
+			$faq_delete = $roles[0]->faq_delete;
 			
 			$reports_view = $roles[0]->reports_view;
 			
@@ -1174,6 +1189,11 @@ class AdminController extends Controller
 			
 			$payment_methods_view = '0';
 			$payment_methods_update = '0';
+
+			$faq_view   = '0';	
+			$faq_create = '0';
+			$faq_update = '0';
+			$faq_delete = '0';
 			
 			$reports_view = '0';
 			

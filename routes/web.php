@@ -42,10 +42,12 @@ Route::group(['namespace' => 'Frontend'], function () {
 	//Checkout
 	Route::get('/checkout', 'CheckoutController@index')->name('checkout');
 	Route::post('/checkout', 'CheckoutController@checkout')->name('post.checkout');
-	Route::get('/payment', 'CheckoutController@index')->name('payment');
+	Route::get('/payment-method/{invoice_number}', 'PaymentController@paymentMethod')->name('payment-method');
+	Route::post('/payment-method', 'PaymentController@postPayment')->name('post-payment');
+	Route::post('/payment-method-snap', 'PaymentController@getSnapToken')->name('post-payment-snap');
+	Route::get('/payment/{status}', 'PaymentController@payment')->name('payment');
 	Route::get('/payment-confirmation', 'PaymentController@paymentConfirmation')->name('payment-confirmation');
 	Route::post('/payment-confirmation', 'PaymentController@postPaymentConfirmation')->name('post.payment-confirmation');
-	Route::get('/payment-order', 'PaymentController@index')->name('payment-order');
 
 	//About
 	Route::get('/about', 'AboutController@index')->name('about');
@@ -55,15 +57,20 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 	//Contact
 	Route::get('/contact', 'ContactController@index')->name('contact');
+	Route::post('/contact', 'ContactController@sendEmail')->name('post.contact');
 
 	//How to buy
-	Route::get('/faq', 'FAQController@index')->name('faq');
+	Route::get('/faq/{slug?}', 'FAQController@faq')->name('faq');
 	Route::get('/how-to-buy', 'FAQController@howToBuy')->name('how-to-buy');
 	
 	//Track Order
 	Route::get('/track-order', 'TrackOrderController@index')->name('track-order');
 	Route::post('/track-order', 'TrackOrderController@getWaybill')->name('post.track-order');
-	
+	Route::group(['middleware' => 'auth'], function() {
+		Route::get('/my-order', 'UserController@order')->name('user.order');
+		Route::get('/my-account', 'UserController@account')->name('user.account');
+		Route::post('/my-account', 'UserController@updateAccount')->name('user.update.my-account');
+	});	
 });
 
 Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
@@ -287,6 +294,22 @@ Route::group(['prefix' => 'admin'], function () {
 			Route::get('/editorderstatus/{id}', 'AdminSiteSettingController@editorderstatus');
 			Route::post('/updateOrderStatus', 'AdminSiteSettingController@updateOrderStatus');
 			Route::post('/deleteOrderStatus', 'AdminSiteSettingController@deleteOrderStatus');
+
+			//frequently ask question
+			Route::get('/faqcategories', 'AdminFaqController@faqcategories');
+			Route::get('/addfaqcategory', 'AdminFaqController@addfaqcategory');
+			Route::post('/addnewfaqcategory', 'AdminFaqController@addnewfaqcategory');
+			Route::get('/editfaqcategory/{id}', 'AdminFaqController@editfaqcategory');
+			Route::post('/updatefaqcategory', 'AdminFaqController@updatefaqcategory');
+			Route::get('/deletefaqcategory/{id}', 'AdminFaqController@deletefaqcategory');
+			
+			//frequently ask question
+			Route::get('/faq', 'AdminFaqController@faq');
+			Route::get('/addfaq', 'AdminFaqController@addfaq');
+			Route::post('/addnewfaq', 'AdminFaqController@addnewfaq');
+			Route::get('/editfaq/{id}', 'AdminFaqController@editfaq');
+			Route::post('/updatefaq', 'AdminFaqController@updatefaq');
+			Route::get('/deletefaq/{id}', 'AdminFaqController@deletefaq');
 			
 			//units
 			Route::get('/units', 'AdminSiteSettingController@units');

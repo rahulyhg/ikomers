@@ -192,12 +192,12 @@ class AdminOrdersController extends Controller
 			} else {
 			
 				//orders status history
-				$orders_history_id = DB::table('orders_status_history')->where('orders_id', $request->orders_id)->update(
+				$orders_history_id = DB::table('orders_status_history')->insertGetId(
 					[	 'orders_id'  => $orders_id,
-						'orders_status_id' => $orders_status,
-						'date_added'  => $date_added,
-						'customer_notified' =>'1',
-						'comments'  =>  $comments
+						 'orders_status_id' => $orders_status,
+						 'date_added'  => $date_added,
+						 'customer_notified' =>'1',
+						 'comments'  =>  $comments
 					]);
 				
 					if($orders_status=='2'){

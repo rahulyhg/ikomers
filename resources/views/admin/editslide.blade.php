@@ -87,6 +87,7 @@
                                           <option value="homepage" @if($result['sliders'][0]->sliders_group=='homepage') selected @endif>Homepage</option>
                                           <option value="logo" @if($result['sliders'][0]->sliders_group=='logo') selected @endif>Logo</option>
                                           <option value="feature-logo" @if($result['sliders'][0]->sliders_group=='feature-logo') selected @endif>Feature Logo</option>
+                                          <option value="gallery" @if($result['sliders'][0]->sliders_group=='gallery') selected @endif>Gallery</option>
                                       </select>
                                         <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
                                       {{ trans('labels.ChooseSliderToAsscociateWith') }}</span>

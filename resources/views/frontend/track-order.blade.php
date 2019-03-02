@@ -3,13 +3,13 @@
 @section('content')
 <div class="page-head_agile_info_w3l">
     <div class="container dottedline-bheim">
-        <h3>Endless <span>Indonesia </span></h3>
+        <h3>Track <span>Order </span></h3>
         <!--/w3_short-->
         <div class="services-breadcrumb">
             <div class="agile_inner_breadcrumb">
                 <ul class="w3_short">
-                    <li><a href="index.html">Home</a><i>|</i></li>
-                    <li>Endless Indonesia</li>
+                    <li><a href="{{ route('home') }}">Home</a><i>|</i></li>
+                    <li>Track Order</li>
                 </ul>
             </div>
         </div>
