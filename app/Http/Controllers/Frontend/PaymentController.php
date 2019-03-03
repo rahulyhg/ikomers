@@ -150,20 +150,11 @@ class PaymentController extends Controller
         }
     }
 
-    public function payment($status) {
-        if($status == "success"){
-            $message = "Terima kasih telah menyelesaikan transaksi di Endless Store.";
-        } elseif($status == "pending") {
-            $message = "Terimakasih, kami menunggu pembayaran.";
-        } else {
-            $message = "Mohon maaf, terjadi kesalahan. Silahkan ulangi.";
-        }
-        $banks = Payment::getBanks();
-
+    public function payment($status='') {
         $cart = Cart::content();
         $order_session = Session::get('shipping');
-
-        if(Cart::count() > 0) {
+        
+        if(Cart::count() > 0 && !isset($order_session['invoice_number'])) {
 
             $order = Order::insert([
                 //customer
@@ -232,11 +223,53 @@ class PaymentController extends Controller
             dispatch(new SendOrderEmail($order_user, $order_product, $payment_info));
             Cart::destroy();
             Session::forget('shipping');
-        } else {
-            return redirect('home');
         }
 
-        return view('frontend.payment', compact('banks','message'));
+        if(!isset($status)) {
+            if($status == "capture"){
+                $message = "Terima kasih telah menyelesaikan transaksi di Endless Store.";
+            } elseif($status == "settlement") {
+                $message = "Terima kasih telah menyelesaikan transaksi di Endless Store.";
+            } elseif($status == "pending") {
+                $message = "Terimakasih, kami menunggu pembayaran.";
+            } elseif($status == "deny") {
+                $message = "Mohon maaf, pembayaran yang dilakukan gagal.";
+            } elseif($status == "cancel") {
+                $message = "Mohon maaf, pembayaran dibatalkan.";
+            } elseif($status == "refund") {
+                $message = "Terimakasih, pembayaran akan kami refund.";
+            } elseif($status == "expire") {
+                $message = "Mohon maaf, pembayaran telah kadaluarsa.";
+            }
+    
+            return view('frontend.payment', compact('message'));
+        } else {
+            $vt = new Veritrans;
+            $json_result = file_get_contents('php://input');
+            $result = json_decode($json_result);
+            if($result){
+                $notif = $vt->status($result->order_id);
+                if($notif->transaction_status == "capture"){
+                    $message = "Terima kasih telah menyelesaikan transaksi di Endless Store.";
+                } elseif($notif->transaction_status == "settlement") {
+                    $message = "Terima kasih telah menyelesaikan transaksi di Endless Store.";
+                } elseif($notif->transaction_status == "pending") {
+                    $message = "Terimakasih, kami menunggu pembayaran.";
+                } elseif($notif->transaction_status == "deny") {
+                    $message = "Mohon maaf, pembayaran yang dilakukan gagal.";
+                } elseif($notif->transaction_status == "cancel") {
+                    $message = "Mohon maaf, pembayaran dibatalkan.";
+                } elseif($notif->transaction_status == "refund") {
+                    $message = "Terimakasih, pembayaran akan kami refund.";
+                } elseif($notif->transaction_status == "expire") {
+                    $message = "Mohon maaf, pembayaran telah kadaluarsa.";
+                }
+
+                return view('frontend.payment', compact('message'));
+            } else {
+                return redirect('home');
+            }
+        }
     }
 
     public function paymentConfirmation() {
@@ -350,6 +383,9 @@ class PaymentController extends Controller
                 case 'cancel':
                     $this->cancel($notif->order_id);
                     break;
+                case 'expire':
+                    $this->expire($notif->order_id);
+                    break;
                 case 'refund':
                     $this->refund($notif->order_id);
                     break;
@@ -402,6 +438,14 @@ class PaymentController extends Controller
         $order_history = \DB::table('orders_status_history')->insert([
             'orders_id' => $order_id,
             'orders_status_id' => '5',
+            'date_added' => Carbon::now()->toDateString()
+        ]);
+    }
+    public function expire($order_id)
+    {
+        $order_history = \DB::table('orders_status_history')->insert([
+            'orders_id' => $order_id,
+            'orders_status_id' => '6',
             'date_added' => Carbon::now()->toDateString()
         ]);
     }

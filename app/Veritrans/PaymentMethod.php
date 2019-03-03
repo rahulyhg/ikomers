@@ -128,6 +128,8 @@ class PaymentMethod {
             </tr>
             </table>
             ";
+        } else {
+            $method = null;
         }
 
         return $method;
