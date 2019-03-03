@@ -26,12 +26,12 @@
             </div>
             <div class="col-sm-6 address-grid">
                 {{ csrf_field() }}
-                <input type="hidden" name="customers_id" value="@isset($data){{ $data['user']->customers_id }}@endisset">
+                <input type="hidden" name="customers_id" value="@isset($data['user']){{ $data['user']->customers_id }}@endisset">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('customers_firstname') ? ' has-error' : '' }}">
                             <label for="customers_firstname" class="control-label">First Name</label>
-                            <input id="customers_firstname" type="text" class="form-control" name="customers_firstname" value="@isset($data){{ $data['user']->customers_firstname }}@endisset{{ old('customers_firstname') }}" required autofocus>
+                            <input id="customers_firstname" type="text" class="form-control" name="customers_firstname" value="@isset($data['user']){{ $data['user']->customers_firstname }}@endisset{{ old('customers_firstname') }}" required autofocus>
         
                             @if ($errors->has('customers_firstname'))
                                 <span class="help-block">
@@ -43,7 +43,7 @@
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('customers_lastname') ? ' has-error' : '' }}">
                             <label for="customers_lastname" class="control-label">Last Name</label>
-                            <input id="customers_lastname" type="text" class="form-control" name="customers_lastname" value="@isset($data){{ $data['user']->customers_lastname }}@endisset{{ old('customers_lastname') }}" required autofocus>
+                            <input id="customers_lastname" type="text" class="form-control" name="customers_lastname" value="@isset($data['user']){{ $data['user']->customers_lastname }}@endisset{{ old('customers_lastname') }}" required autofocus>
 
                             @if ($errors->has('customers_lastname'))
                                 <span class="help-block">
@@ -56,7 +56,7 @@
 
                 <div class="form-group{{ $errors->has('delivery_street_address') ? ' has-error' : '' }}">
                     <label for="delivery_street_address" class="control-label">Address</label>
-                    <textarea class="form-control" name="delivery_street_address" id="delivery_street_address" rows="2" required>@isset($data){{ $data['address_book']->entry_street_address }}@endisset{{ old('delivery_street_address') }}</textarea>
+                    <textarea class="form-control" name="delivery_street_address" id="delivery_street_address" rows="2" required>@isset($data['address_book']){{ $data['address_book']->entry_street_address }}@endisset{{ old('delivery_street_address') }}</textarea>
                     
                     @if ($errors->has('delivery_street_address'))
                         <span class="help-block">
@@ -68,12 +68,12 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('delivery_state') ? ' has-error' : '' }}">
-                            <label for="delivery_state" class="control-label">State {{ $data['address_book']->entry_state }}</label>
+                            <label for="delivery_state" class="control-label">State</label>
                             {{-- <input id="delivery_state" type="text" class="form-control" name="delivery_state" value="@isset($data){{ $data['address_book']->entry_state }}@endisset{{ old('delivery_state') }}" required autofocus> --}}
                             <select name="delivery_state" id="delivery_state" class="form-control" required>
                                 <option value="">-- Select --</option>
                                 @foreach ($provinces as $item)
-                                    <option @if($item['province'] == $data['address_book']->entry_state) selected @endif data-value="{{ $item['province_id'] }}" value="{{ $item['province'] }}">{{ $item['province'] }}</option>
+                                    <option @isset($data['address_book']) @if($item['province'] == $data['address_book']->entry_state) selected @endif @endisset data-value="{{ $item['province_id'] }}" value="{{ $item['province'] }}">{{ $item['province'] }}</option>
                                 @endforeach
                             </select>
         
@@ -90,7 +90,7 @@
                             {{-- <input id="delivery_city" type="text" class="form-control" name="delivery_city" value="@isset($data){{ $data['address_book']->entry_city }}@endisset{{ old('delivery_city') }}" required autofocus> --}}
                             <select name="delivery_city" id="delivery_city" class="form-control" required>
                                 <option value="">-- Select --</option>
-                                @isset($data) <option selected value="{{ $data['address_book']->entry_city }}">{{ $data['address_book']->entry_city }}</option> @endisset
+                                @isset($data['address_book']) <option selected value="{{ $data['address_book']->entry_city }}">{{ $data['address_book']->entry_city }}</option> @endisset
                             </select>
         
                             @if ($errors->has('delivery_city'))
@@ -109,7 +109,7 @@
                             {{-- <input id="delivery_suburb" type="text" class="form-control" name="delivery_suburb" value="@isset($data){{ $data['address_book']->entry_suburb }}@endisset{{ old('delivery_suburb') }}" required autofocus> --}}
                             <select name="delivery_suburb" id="delivery_suburb" class="form-control" required>
                                 <option value="">-- Select --</option>
-                                @isset($data) <option selected value="{{ $data['address_book']->entry_suburb }}">{{ $data['address_book']->entry_suburb }}</option> @endisset
+                                @isset($data['address_book']) <option selected value="{{ $data['address_book']->entry_suburb }}">{{ $data['address_book']->entry_suburb }}</option> @endisset
                             </select>
                             
                             @if ($errors->has('delivery_suburb'))
@@ -122,7 +122,7 @@
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('delivery_postcode') ? ' has-error' : '' }}">
                             <label for="delivery_postcode" class="control-label">Zip Code</label>
-                            <input id="delivery_postcode" type="text" class="form-control" name="delivery_postcode" value="@isset($data){{ $data['address_book']->entry_postcode }}@endisset{{ old('delivery_postcode') }}" required autofocus>
+                            <input id="delivery_postcode" type="text" class="form-control" name="delivery_postcode" value="@isset($data['address_book']){{ $data['address_book']->entry_postcode }}@endisset{{ old('delivery_postcode') }}" required autofocus>
         
                             @if ($errors->has('delivery_postcode'))
                                 <span class="help-block">
@@ -135,7 +135,7 @@
 
                 <div class="form-group{{ $errors->has('delivery_phone') ? ' has-error' : '' }}">
                     <label for="delivery_phone" class="control-label">Phone Number</label>
-                    <input id="delivery_phone" type="text" class="form-control" name="delivery_phone" value="@isset($data){{ $data['user']->customers_telephone }}@endisset{{ old('delivery_phone') }}" required autofocus>
+                    <input id="delivery_phone" type="text" class="form-control" name="delivery_phone" value="@isset($data['user']){{ $data['user']->customers_telephone }}@endisset{{ old('delivery_phone') }}" required autofocus>
 
                     @if ($errors->has('delivery_phone'))
                         <span class="help-block">
@@ -146,7 +146,7 @@
                 
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label for="email" class="control-label">Email</label>
-                    <input id="email" type="email" class="form-control" name="email" value="@isset($data){{ $data['user']->email }}@endisset{{ old('email') }}" required>
+                    <input id="email" type="email" class="form-control" name="email" value="@isset($data['user']){{ $data['user']->email }}@endisset{{ old('email') }}" required>
 
                     @if ($errors->has('email'))
                         <span class="help-block">
@@ -170,13 +170,15 @@
                                 <h5>Shipping Cost</h5>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
-                                <h5>{{ strtoupper($cost[0]['code']) }}</h5>
+                                <h5>@isset($cost) {{ strtoupper($cost[0]['code']) }} @endisset</h5>
                                 
                                 <select name="shipping_cost" id="ongkir" class="form-control m-t-10" required>
                                     <option value="">-- Select --</option>
-                                    @foreach ($cost[0]['costs'] as $item)
-                                    <option value="{{ $item['cost'][0]['value'] }}" data-type="{{ $item['service'] }}">{{ $item['service'] }} {{ $item['cost'][0]['etd'] }} Hari</option>
-                                    @endforeach
+                                    @isset($cost)
+                                        @foreach ($cost[0]['costs'] as $item)
+                                        <option value="{{ $item['cost'][0]['value'] }}" data-type="{{ $item['service'] }}">{{ $item['service'] }} {{ $item['cost'][0]['etd'] }} Hari</option>
+                                        @endforeach
+                                    @endisset
                                 </select>
                                 {{-- <h5 id="shippingCost" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} 0</h5> --}}
                             </div>

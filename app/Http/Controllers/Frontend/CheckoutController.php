@@ -27,18 +27,16 @@ class CheckoutController extends Controller
             if($auth) {
                 $data['user'] = User::find($auth->customers_id);
                 $data['address_book'] = \DB::table('address_book')->where('customers_id', $data['user']->customers_id)->first();
+                $kota = RajaOngkir::Kota()->search('city_name', $name = $data['address_book']->entry_city)->get();
+                $cost = RajaOngkir::Cost([
+                    'origin' 		=> 151, // id kota asal
+                    'originType'    => 'city',
+                    'destination' 	=> $kota[0]['city_id'], // id kota tujuan
+                    'destinationType'=> 'city',
+                    'weight' 		=> 1700, // berat satuan gram
+                    'courier' 		=> 'jne', // kode kurir pengantar ( jne / tiki / pos )
+                ])->get();
             }
-
-            $kota = RajaOngkir::Kota()->search('city_name', $name = $data['address_book']->entry_city)->get();
-            $cost = RajaOngkir::Cost([
-                'origin' 		=> 151, // id kota asal
-                'originType'    => 'city',
-                'destination' 	=> $kota[0]['city_id'], // id kota tujuan
-                'destinationType'=> 'city',
-                'weight' 		=> 1700, // berat satuan gram
-                'courier' 		=> 'jne', // kode kurir pengantar ( jne / tiki / pos )
-            ])->get();
-            //dd($cost);
 
             $provinces = RajaOngkir::Provinsi()->all();
             return view('frontend.checkout', compact('data','provinces','cost'));
