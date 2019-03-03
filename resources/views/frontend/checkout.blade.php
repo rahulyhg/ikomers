@@ -210,11 +210,11 @@ $(document).ready(function() {
 
     $('#delivery_state').on('change', function() {
         var data = {
-            'id': $(this).attr('data-value')
+            'id': $('option:selected', this).attr('data-value')
         };
         $.post('{{ route("get-cities") }}', data, function(data, textStatus, xhr) {
             /*optional stuff to do after success */
-            console.log(data);
+            //console.log(data);
             $('#delivery_city').empty();
             $('#delivery_city').append('<option value="">-- Select --</option>');
             $.each( data, function(k, v) {
@@ -225,11 +225,11 @@ $(document).ready(function() {
 
     $('#delivery_city').on('change', function() {
         var data = {
-            'id': $(this).attr('data-value')
+            'id': $('option:selected', this).attr('data-value')
         };
         $.post('{{ route("get-subdistricts") }}', data, function(data, textStatus, xhr) {
             /*optional stuff to do after success */
-            console.log(data);
+            //console.log(data);
             $('#delivery_suburb').empty();
             $('#delivery_suburb').append('<option value="">-- Select --</option>');
             $.each( data, function(k, v) {
@@ -241,7 +241,22 @@ $(document).ready(function() {
     $('#delivery_suburb').on('change', function() {
         $.post('{{ route("get-cost") }}', null, function(data, textStatus, xhr) {
             /*optional stuff to do after success */
-            console.log(data);
+            
+            $('#ongkir').empty();
+            $('#ongkir').append('<option value="">-- Select --</option>');
+            $.each( data, function(k, v) {
+                $.each( v.costs, function(k, v) {
+                    var cost = '';
+                    var etd = '';
+
+                    //console.log(v);
+                    $.each( v.cost, function(k, v) {
+                        cost = v.value;
+                        etd = v.etd;
+                    });
+                    $('#ongkir').append('<option data-type="'+v.service+'" value="'+cost+'">'+v.service+' '+etd+' Hari</option>');
+                });
+           });
         });
     });
 
@@ -256,7 +271,7 @@ $(document).ready(function() {
         };
         $.post('{{ route("update-cost") }}', data, function(data, textStatus, xhr) {
             /*optional stuff to do after success */
-            console.log(data);
+            //console.log(data);
         });
 
     });
