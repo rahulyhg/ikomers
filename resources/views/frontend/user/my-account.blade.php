@@ -124,8 +124,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('entry_state') ? ' has-error' : '' }}">
-                            <label for="entry_state" class="control-label">State</label>
-                            <input id="entry_state" type="text" class="form-control" name="entry_state" @isset($address_book->entry_state) value="{{ $address_book->entry_state }}" @endisset required autofocus>
+                            <label for="entry_state" class="control-label">State{{ $address_book->entry_state }}</label>
+                            {{-- <input id="entry_state" type="text" class="form-control" name="entry_state" @isset($address_book->entry_state) value="{{ $address_book->entry_state }}" @endisset required autofocus> --}}
+                            <select name="entry_state" id="entry_state" class="form-control" required>
+                                <option value="">-- Select --</option>
+                                @foreach ($provinces as $item)
+                                    <option @if($item['province'] == $address_book->entry_state) selected @endif value="{{ $item['province_id'] }}">{{ $item['province'] }}</option>
+                                @endforeach
+                            </select>
         
                             @if ($errors->has('entry_state'))
                                 <span class="help-block">
@@ -137,7 +143,11 @@
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('entry_city') ? ' has-error' : '' }}">
                             <label for="entry_city" class="control-label">City</label>
-                            <input id="entry_city" type="text" class="form-control" name="entry_city" @isset($address_book->entry_city) value="{{$address_book->entry_city}}" @endisset required autofocus>
+                            {{-- <input id="entry_city" type="text" class="form-control" name="entry_city" @isset($address_book->entry_city) value="{{$address_book->entry_city}}" @endisset required autofocus> --}}
+                            <select name="entry_city" id="entry_city" class="form-control" required>
+                                <option value="">-- Select --</option>
+                                @isset($address_book) <option selected value="{{ $address_book->entry_city }}">{{ $address_book->entry_city }}</option> @endisset
+                            </select>
         
                             @if ($errors->has('entry_city'))
                                 <span class="help-block">
@@ -152,7 +162,11 @@
                     <div class="col-md-6">
                         <div class="form-group{{ $errors->has('entry_suburb') ? ' has-error' : '' }}">
                             <label for="entry_suburb" class="control-label">Region</label>
-                            <input id="entry_suburb" type="text" class="form-control" name="entry_suburb" @isset($address_book->entry_suburb) value="{{$address_book->entry_suburb}}" @endisset required autofocus>
+                            {{-- <input id="entry_suburb" type="text" class="form-control" name="entry_suburb" @isset($address_book->entry_suburb) value="{{$address_book->entry_suburb}}" @endisset required autofocus> --}}
+                            <select name="entry_suburb" id="entry_suburb" class="form-control" required>
+                                <option value="">-- Select --</option>
+                                @isset($address_book) <option selected value="{{ $address_book->entry_suburb }}">{{ $address_book->entry_suburb }}</option> @endisset
+                            </select>
         
                             @if ($errors->has('entry_suburb'))
                                 <span class="help-block">

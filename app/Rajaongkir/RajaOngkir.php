@@ -11,6 +11,7 @@ namespace App\Rajaongkir;
 
 use App\Rajaongkir\app\Provinsi;
 use App\Rajaongkir\app\Kota;
+use App\Rajaongkir\app\Kecamatan;
 use App\Rajaongkir\app\Cost;
 use App\Rajaongkir\app\Waybill;
 
@@ -21,6 +22,10 @@ class RajaOngkir {
 
 	public function Kota(){
 		return new Kota;
+	}
+
+	public function Kecamatan(){
+		return new Kecamatan;
 	}
 
 	public function Cost($attributes){

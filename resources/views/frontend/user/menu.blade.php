@@ -37,7 +37,39 @@
 </ul>
 
 @section('addscript')
-
+<script>
+    $(document).ready(function() {
+        $('#entry_state').on('change', function() {
+            var data = {
+                'id': $(this).val()
+            };
+            $.post('{{ route("get-cities") }}', data, function(data, textStatus, xhr) {
+                /*optional stuff to do after success */
+                console.log(data);
+                $('#entry_city').empty();
+                $('#entry_city').append('<option value="">-- Select --</option>');
+                $.each( data, function(k, v) {
+                    $('#entry_city').append($('<option>', {value:k, text:v}));
+                });
+            });
+        });
+    
+        $('#entry_city').on('change', function() {
+            var data = {
+                'id': $(this).val()
+            };
+            $.post('{{ route("get-subdistricts") }}', data, function(data, textStatus, xhr) {
+                /*optional stuff to do after success */
+                console.log(data);
+                $('#entry_suburb').empty();
+                $('#entry_suburb').append('<option value="">-- Select --</option>');
+                $.each( data, function(k, v) {
+                    $('#entry_suburb').append($('<option>', {value:k, text:v}));
+                });
+            });
+        });
+    });
+</script>
 <script>
 $(document).ready(function() {
 

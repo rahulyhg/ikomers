@@ -79,14 +79,13 @@
                                 <h5>Shipping Cost</h5>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
-                                <h5 id="shippingCost" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} 0</h5>
-                                <input type="hidden" id="shippingCosthide">
+                                <h5 id="shippingCost" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($shipping_cost,2) }}</h5>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
                                 <h6>Total</h6>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
-                                <h6 id="totalSummary" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} {{ Cart::total() }}</h6>
+                                <h6 id="totalSummary" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($total,2) }}</h6>
                             </div>
                         </div>
                         <form id="formPayment">

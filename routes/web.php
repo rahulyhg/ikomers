@@ -67,6 +67,12 @@ Route::group(['namespace' => 'Frontend'], function () {
 	//Track Order
 	Route::get('/track-order', 'TrackOrderController@index')->name('track-order');
 	Route::post('/track-order', 'TrackOrderController@getWaybill')->name('post.track-order');
+	Route::post('/get-states', 'TrackOrderController@getStates')->name('get-states');
+	Route::post('/get-cities', 'TrackOrderController@getCities')->name('get-cities');
+	Route::post('/get-subdistricts', 'TrackOrderController@getSubdistricts')->name('get-subdistricts');
+	Route::post('/get-cost', 'TrackOrderController@getCost')->name('get-cost');
+	Route::post('/update-cost', 'TrackOrderController@updateCost')->name('update-cost');
+
 	Route::group(['middleware' => 'auth'], function() {
 		Route::get('/my-order', 'UserController@order')->name('user.order');
 		Route::get('/my-account', 'UserController@account')->name('user.account');

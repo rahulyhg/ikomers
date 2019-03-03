@@ -33,7 +33,9 @@ class PaymentController extends Controller
         $config['isProduction'] = Midtrans::$isProduction;
         $config['clientKey'] = env('MIDTRANS_CLIENT_KEY', 'default');
         $invoice_number = $invoice_number;
-        return view('frontend.payment-method', compact('invoice_number','config'));
+        $shipping_cost = Session::get('shipping')['shipping_cost'];
+        $total = Cart::total(0,'','')+$shipping_cost;
+        return view('frontend.payment-method', compact('invoice_number','config','shipping_cost','total'));
     }
 
     public function postPayment(Request $request) {
@@ -288,13 +290,16 @@ class PaymentController extends Controller
     public function getSnapToken() {
         $cart = Cart::content();
         $order = Session::get('shipping');
+        $shipping_cost = Session::get('shipping')['shipping_cost'];
+        $shipping_peritem = Session::get('shipping')['shipping_cost']/Cart::count();
+        $total = Cart::total(0,'','')+$shipping_cost;
         $midtrans = new Midtrans;
-        //return response()->json($cart);
+        //return response()->json($shipping_cost);
 
         //$midtrans = new Midtrans;
         $transaction_details = array(
             'order_id'      => $order['invoice_number'],
-            'gross_amount'  => (int)Cart::total(0,'','')
+            'gross_amount'  => (int)$total
         );
         
         // Populate items
@@ -302,7 +307,7 @@ class PaymentController extends Controller
         foreach ($cart as $item) {
             $products[] = array(
                 'id'        => $item->id,
-                'price'     => (int)$item->price,
+                'price'     => (int)$item->price+$shipping_peritem,
                 'quantity'  => (int)$item->qty,
                 'name'      => $item->name
             );

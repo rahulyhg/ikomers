@@ -8,6 +8,7 @@ use Auth;
 use App\User;
 use App\Models\Order;
 use File;
+use Rajaongkir;
 use App\Http\Controllers\Admin\AdminSiteSettingController;
 
 class UserController extends Controller
@@ -33,16 +34,23 @@ class UserController extends Controller
         $auth = Auth::user();
         $user = User::find($auth->customers_id);
         $address_book = \DB::table('address_book')->where('customers_id', $user->customers_id)->first();
-        return view('frontend.user.my-account', compact('user','address_book'));
+        $provinces = RajaOngkir::Provinsi()->all();
+        return view('frontend.user.my-account', compact('user','address_book','provinces'));
     }
 
     public function updateAccount(Request $request) {
         $auth = Auth::user();
         $user = User::find($auth->customers_id);
 
+        $input = $request->except(['_token','user_name','customers_telephone','email']);
+
+        $input['entry_state'] = RajaOngkir::Provinsi()->find($request->entry_state)['province'];
+        $input['entry_city'] = RajaOngkir::Kota()->find($request->entry_city)['city_name'];
+        $input['entry_suburb'] = RajaOngkir::Kecamatan()->find($request->entry_suburb)['subdistrict_name'];
         $myVar = new AdminSiteSettingController();	
 		$extensions = $myVar->imageType();
 				
+        //dd($input);
 		if($request->hasFile('customers_picture') and in_array($request->customers_picture->extension(), $extensions)){
 			$image = $request->customers_picture;
             $fileName = time().'.'.$image->getClientOriginalName();
@@ -61,9 +69,9 @@ class UserController extends Controller
 
         $address_book = \DB::table('address_book')->where('customers_id', $user->customers_id)->first();
         if($address_book) {
-            \DB::table('address_book')->where('customers_id', $user->customers_id)->update($request->except(['_token','user_name','customers_telephone','email']));
+            \DB::table('address_book')->where('customers_id', $user->customers_id)->update($input);
         } else {
-            \DB::table('address_book')->insert($request->except(['_token','user_name','customers_telephone','email']));
+            \DB::table('address_book')->insert($input);
         }
         return redirect()->back()->with('message','Your bio has been updated');
     }

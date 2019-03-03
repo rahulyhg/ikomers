@@ -28,6 +28,16 @@ abstract class Api {
 		return $this->GetData()->data;
 	}
 
+	public function getList() {
+		$data = $this->GetData()->data;
+		$list = [];
+		foreach($data as $k => $v) {
+				$list[''] = '-- Select --';
+                $list[$v[$this->method.'_id']] = $v[$this->method];
+		}
+		return $list;
+	}
+
 	public function find($id){
 		$this->parameters = "?id=".$id;
 		return $this->GetData()->data;

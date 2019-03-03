@@ -8,6 +8,7 @@ use App\Models\Order;
 use Cart;
 use Auth;
 use Session;
+use Rajaongkir;
 use App\User;
 use Carbon\Carbon;
 use App\Jobs\SendOrderEmail;
@@ -20,15 +21,27 @@ class CheckoutController extends Controller
     public function index() {
         $cart = Cart::count();
         if($cart) {
-
+            
+            $data = array();
             $auth = Auth::user();
             if($auth) {
                 $data['user'] = User::find($auth->customers_id);
                 $data['address_book'] = \DB::table('address_book')->where('customers_id', $data['user']->customers_id)->first();
-                return view('frontend.checkout', compact('data'));    
             }
 
-            return view('frontend.checkout');
+            $kota = RajaOngkir::Kota()->search('city_name', $name = $data['address_book']->entry_city)->get();
+            $cost = RajaOngkir::Cost([
+                'origin' 		=> 151, // id kota asal
+                'originType'    => 'city',
+                'destination' 	=> $kota[0]['city_id'], // id kota tujuan
+                'destinationType'=> 'city',
+                'weight' 		=> 1700, // berat satuan gram
+                'courier' 		=> 'jne', // kode kurir pengantar ( jne / tiki / pos )
+            ])->get();
+            //dd($cost);
+
+            $provinces = RajaOngkir::Provinsi()->all();
+            return view('frontend.checkout', compact('data','provinces','cost'));
         }
         return redirect('cart');
     }
@@ -40,13 +53,12 @@ class CheckoutController extends Controller
     public function checkout(Request $request) {
         $order = Order::orderBy('orders_id', 'DESC')->first();
         $invoice_number = "EOS" .$order->orders_id. str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
-
         $input = $request->except('_token');
         $input['invoice_number'] = $invoice_number;
         $cart = Cart::content();
         
         Session::put('shipping', $input);
-
+        
         if(Cart::count() > 0) {
             return redirect('payment-method/'.$invoice_number);
         } else {
