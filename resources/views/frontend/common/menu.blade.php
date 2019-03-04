@@ -18,7 +18,7 @@
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"> <i class="fa fa-user-circle"></i>{{ Auth::user()->user_name }}</a>
                     <ul class="dropdown-menu dropdown-menu-right">
                       <li>
-                        <a href="#">
+                        <a href="{{ route('user.account') }}">
                           <span>Halo,</span> <br>
                           {{ Auth::user()->user_name }}
                           <div class="li-avatar">
