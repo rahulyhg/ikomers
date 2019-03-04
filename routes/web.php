@@ -74,7 +74,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 	Route::post('/update-cost', 'TrackOrderController@updateCost')->name('update-cost');
 
 	Route::group(['middleware' => 'auth'], function() {
-		Route::get('/my-order', 'UserController@order')->name('user.order');
+		Route::get('/history-order', 'UserController@order')->name('user.order');
 		Route::get('/my-account', 'UserController@account')->name('user.account');
 		Route::post('/my-account', 'UserController@updateAccount')->name('user.update.my-account');
 	});	

@@ -142,7 +142,6 @@ img.avatar {
     font-size: 12px;
 	padding: 0 8px;
 	margin-bottom: 6px;
-    letter-spacing: 1px;
     border-right: 1px solid #ff6633;
 }
 .header ul li:hover {
@@ -160,8 +159,8 @@ img.avatar {
 	color:#000;
 }
 .header ul li i {
-    margin-right: 12px;
-    top: 2px;
+    margin-right: 6px;
+    top: 1px;
     color: #fff;
 }
 .header-right {
@@ -187,6 +186,34 @@ img.avatar {
 	text-transform: unset !important;
 	color: #ff6633 !important;
 	line-height: unset !important;
+}
+ul.dropdown-menu li {
+	display: inline-block;
+    text-align: left;
+    color: #333;
+    font-size: 12px;
+	padding: 0 8px;
+	margin-bottom: 6px;
+    border:none;
+}
+ul.dropdown-menu li a {
+	color:#333;
+	font-weight: bold;
+}
+ul.dropdown-menu li a > span {
+	font-weight: normal;
+}
+ul.dropdown-menu li a > .li-avatar {
+	position: absolute;
+	right: 12px;
+	top: 12px;
+}
+ul.dropdown-menu li a:hover {
+	color:#ff6633;
+    background: #fff;
+}
+.dropdown-menu .divider {
+	width: 100%;
 }
 .text-primary {
 	color: #ff6633 !important;

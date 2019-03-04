@@ -14,18 +14,30 @@
                         <a href="{{URL::to('cart')}}"><strong>{{ Cart::count() }}</strong> Items in Cart</a>
                     </li>
                     @if (Auth::user())
-                      <li> 
-                          <a href="{{ route('user.order') }}">My Order</a>
-                      </li>
-                      <li> 
-                          <a href="{{ route('user.account') }}">My Account</a>
-                      </li>
-                      <li> 
-                          <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
+                      <li class="dropdown"> 
+                          <a data-toggle="dropdown" class="dropdown-toggle" href="#"> <i class="fa fa-user-circle"></i>{{ Auth::user()->user_name }}</a>
+                          <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                              <a href="#">
+                                <span>Halo,</span> <br>
+                                {{ Auth::user()->user_name }}
+                                <div class="li-avatar">
+                                    <img src="{{ asset(Auth::user()->customers_picture) }}" width="32px" height="32px" alt="avatar" class="img-circle">
+                                </div>
+                              </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ route('user.order') }}">History Pembelian</a></li>
+                            <li><a href="#">Pengaturan</a></li>
+                            <li><a href="#">Ubah Password</a></li>
+                            <li> 
+                                <a href="{{ route('logout') }}"
+                                  onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                                  Logout
+                              </a>
+                            </li>
+                          </ul>
                       </li>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                           {{ csrf_field() }}
