@@ -42,7 +42,7 @@ class TrackOrderController extends Controller
             'originType'    => 'city',
             'destination' 	=> 114, // id kota tujuan
             'destinationType'=> 'city',
-            'weight' 		=> 1700, // berat satuan gram
+            'weight' 		=> 23000, // berat satuan gram
             'courier' 		=> 'jne', // kode kurir pengantar ( jne / tiki / pos )
         ])->get();
         return response()->json($cost);

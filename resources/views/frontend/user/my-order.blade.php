@@ -63,9 +63,10 @@
                                 <strong><p>{{ $order_history->orders_status_name }}</p></strong>
                             </div>
                             <div class="col-sm-3 m-t-30">
-                                <a href="{{ route('product') }}" class="btn btn-buy-product">Beli Lagi</a>
+                                <a href="{{ route('product.detail',['slug' => $products_attr->products_slug]) }}" class="btn btn-buy-product">Beli Lagi</a>
                             </div>
                         </div>
+                        <hr class="orange">
                     @endforeach
                     @empty
                         <p>Empty</p>

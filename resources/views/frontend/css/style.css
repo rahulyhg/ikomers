@@ -2517,6 +2517,10 @@ hr {
 	border-width: 2px;
 	border-color: #ccc;
 }
+hr.orange {
+	border-width: 2px;
+	border-color: #ff6633 !important;
+}
 .yes-marg{
 	margin-top:30px;
 }
