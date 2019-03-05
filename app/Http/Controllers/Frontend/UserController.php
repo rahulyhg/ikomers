@@ -76,7 +76,7 @@ class UserController extends Controller
         } else {
             \DB::table('address_book')->insert($input);
         }
-        return redirect()->back()->with('message','Your bio has been updated');
+        return redirect()->back()->with('message','Your profile has been updated');
     }
     
     public function changePassword() {

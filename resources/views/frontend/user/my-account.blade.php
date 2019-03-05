@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <div>
-                        <img @isset($user->customers_picture) src="{{ $user->customers_picture }}" @endisset src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"  class="avatar img-circle img-thumbnail" alt="avatar">
+                        <img @if($user->customers_picture != '') src="{{ $user->customers_picture }}" @else src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" @endif class="avatar img-circle img-thumbnail" alt="avatar">
                         <form method="POST" action="{{ route('user.update.my-account') }}" enctype="multipart/form-data">
                             <label class="btn btn-upload-foto">
                                 <i class="fa fa-camera" aria-hidden="true"></i>
@@ -195,7 +195,7 @@
                                     <select name="entry_state" id="entry_state" class="form-control" required>
                                         <option value="">-- Select --</option>
                                         @foreach ($provinces as $item)
-                                            <option @if($item['province'] == $address_book->entry_state) selected @endif data-value="{{ $item['province_id'] }}" value="{{ $item['province'] }}">{{ $item['province'] }}</option>
+                                            <option @isset($address_book) @if($item['province'] == $address_book->entry_state) selected @endif @endisset data-value="{{ $item['province_id'] }}" value="{{ $item['province'] }}">{{ $item['province'] }}</option>
                                         @endforeach
                                     </select>
                                 </div>

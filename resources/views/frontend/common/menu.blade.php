@@ -15,14 +15,29 @@
               </li>
               @if (Auth::user())
                 <li class="dropdown"> 
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"> <i class="fa fa-user-circle"></i>{{ Auth::user()->user_name }}</a>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                      <i class="fa fa-user-circle"></i>
+                      @if(!empty(Auth::user()->user_name))
+                        {{ Auth::user()->user_name }}    
+                      @else
+                        {{ Auth::user()->customers_firstname }}
+                      @endif
+                    </a>
                     <ul class="dropdown-menu dropdown-menu-right">
                       <li>
                         <a href="{{ route('user.account') }}">
                           <span>Halo,</span> <br>
-                          {{ Auth::user()->user_name }}
+                          @if(!empty(Auth::user()->user_name))
+                            {{ Auth::user()->user_name }}    
+                          @else
+                            {{ Auth::user()->customers_firstname }}
+                          @endif
                           <div class="li-avatar">
+                            @if(Auth::user()->customers_picture != '')
                               <img src="{{ asset(Auth::user()->customers_picture) }}" width="32px" height="32px" alt="avatar" class="img-circle">
+                            @else
+                              <div class="fa fa-2x fa-user-circle"></div>
+                            @endif
                           </div>
                         </a>
                       </li>
