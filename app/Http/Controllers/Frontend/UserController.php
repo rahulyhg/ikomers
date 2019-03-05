@@ -27,7 +27,7 @@ class UserController extends Controller
 
     public function order() {
         $auth = Auth::user();
-        $orders = Order::where('customers_id', $auth->customers_id)->get();
+        $orders = Order::where('customers_id', $auth->customers_id)->orderBy('orders_id', 'DESC')->get();
         $user = User::find($auth->customers_id);
         //dd($orders);
         return view('frontend.user.my-order', compact('orders','user'));
