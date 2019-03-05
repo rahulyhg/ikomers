@@ -98,7 +98,11 @@ Route::get('/clear-cache', function() {
 	$exitCode = Artisan::call('cache:clear');
 });
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'endlessosidadmin'], function () {
+
+	Route::get('/', function(){
+		return redirect()->route('admin.login');
+	});
 	
 	Route::group(['namespace' => 'Admin'], function () {
 
@@ -477,7 +481,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 		
 		//log in
-		Route::get('/login', 'AdminController@login');
+		Route::get('/login', 'AdminController@login')->name('admin.login');
 		Route::post('/checkLogin', 'AdminController@checkLogin');
 
 		//log out
