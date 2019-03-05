@@ -84,19 +84,6 @@
                 
                 <div class="row summaryheim">
                     <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
-                        <h5>Order Subtotal</h5>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
-                        <h5>{{ App\Models\Setting::getAttr('currency_symbol') }} {{Cart::subtotal()}} </h5>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
-                        <h5>Shipping Cost</h5>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
-                        <h5 id="shippingCost" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} 0</h5>
-                        <input type="hidden" id="shippingCosthide">
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
                         <h6>Total</h6>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">

@@ -166,7 +166,7 @@
             <div class="col-sm-5 col-sm-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        Summary Order
+                        <h3>Order Summary</h3>
                         <div class="row summaryheim">
                             <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
                                 <h5>Order Subtotal</h5>
