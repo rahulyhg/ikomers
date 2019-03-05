@@ -5375,6 +5375,10 @@ p.w3ls_para {
 	}
 }
 @media (max-width: 768px){
+	.btn-lg {
+		font-size: 14px;
+		padding: 14px 16px;
+	}
 	.product-attr {
 		margin: 0 1.2em;
 	}

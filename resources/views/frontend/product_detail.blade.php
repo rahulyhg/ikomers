@@ -95,13 +95,13 @@
             
                             <div class="">
                                 <div class="row">
-                                    <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
+                                    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
                                         <button class="btn btn-buy-product btn-block" type="submit" name="buy" value="1">Buy now</button>
                                     </div>
-                                    <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
+                                    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
                                         <button class="btn btn-view-product btn-block" type="submit">Add to Cart</button>
                                     </div>
-                                    <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
+                                    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
                                         <button class="btn btn-wishlist-product btn-block" type="submit" name="add_wishlist">Wishlist</button>
                                     </div>
                                 </div>
@@ -153,7 +153,7 @@
                         <div class="single_page_agile_its_w3ls">
                             <h6>{{ ucwords(strtolower($product->products_name)) }}</h6>
                             <p>
-                                {{ strip_tags($product->products_description) }}
+                                {!! strip_tags($product->products_description) !!}
                             </p>
                         </div>
                     </div>
