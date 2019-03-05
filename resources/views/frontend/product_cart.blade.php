@@ -83,10 +83,10 @@
                 </div>
                 
                 <div class="row summaryheim">
-                    <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                    <div class="col-sm-6 col-xs-12 summaryheim">
                         <h6>Total</h6>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                    <div class="col-sm-6 col-xs-12 summaryheim">
                         <h6 id="totalSummary" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} {{ Cart::total() }}</h6>
                     </div>
                     <div class="clearfix"></div>

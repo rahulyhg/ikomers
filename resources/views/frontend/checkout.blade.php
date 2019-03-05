@@ -168,32 +168,32 @@
                     <div class="panel-body">
                         <h3>Order Summary</h3>
                         <div class="row summaryheim">
-                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                            <div class="col-sm-5 col-xs-12 summaryheim">
                                 <h5>Order Subtotal</h5>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
-                                <h5>{{ App\Models\Setting::getAttr('currency_symbol') }} {{Cart::subtotal(0, '', ',')}} </h5>
+                            <div class="col-sm-7 col-xs-12 summaryheim">
+                                <h6>{{ App\Models\Setting::getAttr('currency_symbol') }} {{Cart::subtotal(0, '', ',')}} </h6>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                            <div class="col-sm-5 col-xs-12 summaryheim">
                                 <h5>Shipping Cost</h5>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
-                                <h5>@isset($cost) {{ strtoupper($cost[0]['code']) }} @endisset</h5>
-                                
-                                <select name="shipping_cost" id="ongkir" class="form-control m-t-10" required>
-                                    <option value="">-- Select --</option>
-                                    @isset($cost)
-                                        @foreach ($cost[0]['costs'] as $item)
-                                        <option value="{{ $item['cost'][0]['value'] }}" data-type="{{ $item['service'] }}" data-duration="{{ $item['cost'][0]['etd'] }}">{{ $item['service'] }} {{ $item['cost'][0]['etd'] }} Hari</option>
-                                        @endforeach
-                                    @endisset
-                                </select>
-                                {{-- <h5 id="shippingCost" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} 0</h5> --}}
+                            <div class="col-sm-7 col-xs-12 summaryheim form-horizontal">
+                                <label class = "col-xs-2 control-label" style="text-align:left;padding-left:0;">@isset($cost) {{ strtoupper($cost[0]['code']) }} @endisset</label>
+                                <div class = "col-xs-10 p-0">
+                                    <select name="shipping_cost" id="ongkir" class="form-control" required>
+                                        <option value="">-- Select --</option>
+                                        @isset($cost)
+                                            @foreach ($cost[0]['costs'] as $item)
+                                            <option value="{{ $item['cost'][0]['value'] }}" data-type="{{ $item['service'] }}" data-duration="{{ $item['cost'][0]['etd'] }}">{{ $item['service'] }} {{ $item['cost'][0]['etd'] }} Hari</option>
+                                            @endforeach
+                                        @endisset
+                                    </select>
+                                </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                            <div class="col-md-5 col-sm-6 col-xs-6 summaryheim">
                                 <h6>Total</h6>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
+                            <div class="col-md-7 col-sm-6 col-xs-6 summaryheim">
                                 <h6>{{ App\Models\Setting::getAttr('currency_symbol') }} <span id="totalSummary">{{ Cart::total(0, '', ',') }}</span></h6>
                                 <input type="hidden" id="total" value="{{ Cart::total(0,'','') }}">
                             </div>
