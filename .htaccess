@@ -5,7 +5,7 @@
 
     RewriteEngine On
 
-    RewriteRule ^(.*)admin(.*)$ $1/endlessosidadmin$2 [R=301,L]
+    RewriteRule ^(.*)admin(.*)$ http://endlessos.co.id/$1endlessosidadmin$2 [R=301,L]
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
