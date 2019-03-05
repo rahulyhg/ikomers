@@ -2582,10 +2582,17 @@ a.single-item{
 	color: #fff;
 	font-size: 3em;
 }
+.faq-accordion .panel-body p {
+	margin: 0 0 10px;
+}
+.faq-accordion .panel-body {
+	padding: 15px 0;
+}
 .faq-accordion .panel, .faq-accordion .panel-heading, .panel-group .panel-heading + .panel-collapse > .panel-body, .panel-group .panel-heading + .panel-collapse > .list-group {
 	border: none;
 	box-shadow: none;
 	background: none;
+	text-align: justify;
 }
 .faq-accordion .panel-heading {
 	color: #ff6633;

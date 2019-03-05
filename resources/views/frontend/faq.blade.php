@@ -56,13 +56,13 @@
                             <div class="panel-heading" role="tab" id="heading{{ $item->faq_id }}">
                                 <h4 class="panel-title">
                                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $item->faq_id }}" aria-expanded="false" aria-controls="collapse{{ $item->faq_id }}">
-                                        {{ $item->question }}
+                                        {!! $item->question !!}
                                     </a>
                                 </h4>
                             </div>
                             <div id="collapse{{ $item->faq_id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ $item->faq_id }}">
                                 <div class="panel-body">
-                                    {{ $item->answer }}
+                                    {!! $item->answer !!}
                                 </div>
                             </div>
                         </div>

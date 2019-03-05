@@ -153,7 +153,7 @@
                         <div class="single_page_agile_its_w3ls">
                             <h6>{{ ucwords(strtolower($product->products_name)) }}</h6>
                             <p>
-                                {!! strip_tags($product->products_description) !!}
+                                {!! $product->products_description !!}
                             </p>
                         </div>
                     </div>

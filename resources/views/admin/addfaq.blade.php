@@ -72,8 +72,8 @@
                                 </div>
                                 <div class="form-group">
                                   <label for="name" class="col-sm-2 col-md-3 control-label">Answer ({{ $languages->name }})</label>
-                                  <div class="col-sm-10 col-md-4">
-                                    <textarea name="answer_<?=$languages->languages_id?>" class="form-control field-validate" rows="15"></textarea>
+                                  <div class="col-sm-10 col-md-6">
+                                    <textarea id="editor<?=$languages->languages_id?>" name="answer_<?=$languages->languages_id?>" class="form-control field-validate" rows="15"></textarea>
                                     <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">Answer ({{ $languages->name }}).</span>
                                     <span class="help-block hidden">{{ trans('labels.textRequiredFieldMessage') }}</span>
                                   </div>
@@ -107,4 +107,23 @@
   </section>
   <!-- /.content --> 
 </div>
+
+<script src="{!! asset('resources/views/admin/plugins/jQuery/jQuery-2.2.0.min.js') !!}"></script>
+<script type="text/javascript">
+		$(function () {
+			
+			//for multiple languages
+			@foreach($result['languages'] as $languages)
+				// Replace the <textarea id="editor1"> with a CKEditor
+				// instance, using default configuration.
+				CKEDITOR.replace('editor{{$languages->languages_id}}');
+			
+			@endforeach
+			
+			//bootstrap WYSIHTML5 - text editor
+			$(".textarea").wysihtml5();
+			
+    });
+</script>
+
 @endsection 

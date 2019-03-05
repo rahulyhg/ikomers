@@ -77,8 +77,8 @@
                                     </div>
                                     <div class="form-group">
                                       <label for="name" class="col-sm-2 col-md-3 control-label">Answer ({{ $description_data['language_name'] }})</label>
-                                      <div class="col-sm-10 col-md-4">
-                                        <textarea name="answer_<?=$description_data['languages_id']?>" class="form-control field-validate" rows="15">{{$description_data['answer']}}</textarea>
+                                      <div class="col-sm-10 col-md-6">
+                                        <textarea id="editor<?=$description_data['languages_id']?>" name="answer_<?=$description_data['languages_id']?>" class="form-control field-validate" rows="15">{{$description_data['answer']}}</textarea>
                                       <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">Answer ({{ $description_data['language_name'] }}).</span>          
                                         <span class="help-block hidden">{{ trans('labels.textRequiredFieldMessage') }}</span>
                                       </div>
@@ -113,4 +113,22 @@
   </section>
   <!-- /.content --> 
 </div>
+
+<script src="{!! asset('resources/views/admin/plugins/jQuery/jQuery-2.2.0.min.js') !!}"></script>
+<script type="text/javascript">
+		$(function () {
+			
+			//for multiple languages
+			@foreach($result['languages'] as $languages)
+				// Replace the <textarea id="editor1"> with a CKEditor
+				// instance, using default configuration.
+				CKEDITOR.replace('editor{{$description_data['languages_id']}}');
+			
+			@endforeach
+			
+			//bootstrap WYSIHTML5 - text editor
+			$(".textarea").wysihtml5();
+			
+    });
+</script>
 @endsection 
