@@ -5,7 +5,8 @@
 
     RewriteEngine On
 
-    RewriteRule ^admin/(.*)$ /endlessosidadmin/$1 [R=301,NC,L]
+    RewriteCond %{REQUEST_METHOD} !POST
+    RewriteRule ^admin/(.*)$ http://%{HTTP_HOST}/ikomers/endlessosidadmin/$1 [R=301,NE,L]
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
