@@ -178,7 +178,7 @@
                                 <h5>Shipping Cost</h5>
                             </div>
                             <div class="col-sm-7 col-xs-12 summaryheim form-horizontal">
-                                <label class = "col-xs-2 control-label" style="text-align:left;padding-left:0;">@isset($cost) {{ strtoupper($cost[0]['code']) }} @endisset</label>
+                                <label class = "col-xs-2 control-label shipping-method" style="text-align:left;padding-left:0;">@isset($cost) {{ strtoupper($cost[0]['code']) }} @endisset</label>
                                 <div class = "col-xs-10 p-0">
                                     <select name="shipping_cost" id="ongkir" class="form-control" required>
                                         <option value="">-- Select --</option>
@@ -249,22 +249,25 @@ $(document).ready(function() {
     });
 
     $('#delivery_suburb').on('change', function() {
-        $.post('{{ route("get-cost") }}', null, function(data, textStatus, xhr) {
+        var data = {
+            'id': $('option:selected', '#delivery_city').attr('data-value')
+        };
+        $.post('{{ route("get-cost") }}', data, function(data, textStatus, xhr) {
             /*optional stuff to do after success */
-            
+            console.log(data);
+            $('.shipping-method').html(data[0]['code'].toUpperCase());
             $('#ongkir').empty();
             $('#ongkir').append('<option value="">-- Select --</option>');
             $.each( data, function(k, v) {
                 $.each( v.costs, function(k, v) {
                     var cost = '';
                     var etd = '';
-
                     //console.log(v);
                     $.each( v.cost, function(k, v) {
                         cost = v.value;
                         etd = v.etd;
                     });
-                    $('#ongkir').append('<option data-type="'+v.service+'" value="'+cost+'">'+v.service+' '+etd+' Hari</option>');
+                    $('#ongkir').append('<option data-type="'+v.service+'" value="'+cost+'" data-duration="'+etd+'">'+v.service+' '+etd+' Hari</option>');
                 });
            });
         });

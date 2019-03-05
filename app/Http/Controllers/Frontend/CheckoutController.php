@@ -33,7 +33,7 @@ class CheckoutController extends Controller
                     'originType'    => 'city',
                     'destination' 	=> $kota[0]['city_id'], // id kota tujuan
                     'destinationType'=> 'city',
-                    'weight' 		=> 1700, // berat satuan gram
+                    'weight' 		=> 2300, // berat satuan gram
                     'courier' 		=> 'jne', // kode kurir pengantar ( jne / tiki / pos )
                 ])->get();
             }

@@ -38,9 +38,9 @@ class TrackOrderController extends Controller
 
     function getCost(Request $request) {
         $cost = RajaOngkir::Cost([
-            'origin' 		=> 501, // id kota asal
+            'origin' 		=> 151, // id kota asal
             'originType'    => 'city',
-            'destination' 	=> 114, // id kota tujuan
+            'destination' 	=> $request->id, // id kota tujuan
             'destinationType'=> 'city',
             'weight' 		=> 2300, // berat satuan gram
             'courier' 		=> 'jne', // kode kurir pengantar ( jne / tiki / pos )
