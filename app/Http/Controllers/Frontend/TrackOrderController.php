@@ -49,7 +49,9 @@ class TrackOrderController extends Controller
     }
 
     function updateCost(Request $request) {
-        Session::put(['shipping.shipping_cost'=>$request->shipping_cost,'shipping.shipping_type'=>$request->shipping_type]);
+        $input = $request->all();
+        Session::put('shipping', $input);
+        //Session::put(['shipping.shipping_cost'=>$request->shipping_cost,'shipping.shipping_type'=>$request->shipping_type,'shipping.shipping_duration'=>$request->shipping_duration]);
     }
 
     function getWaybill(Request $request) {

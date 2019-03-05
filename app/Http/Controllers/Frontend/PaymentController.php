@@ -155,8 +155,12 @@ class PaymentController extends Controller
     public function payment($status='') {
         $cart = Cart::content();
         $order_session = Session::get('shipping');
+        $shipping_cost = Session::get('shipping')['shipping_cost'];
+        $shipping_method = Session::get('shipping')['shipping_method'];
+        $shipping_duration = Session::get('shipping')['shipping_duration'];
+        $total = Cart::total(2, '.', '')+$shipping_cost;
         
-        if(Cart::count() > 0 && !isset($order_session['invoice_number'])) {
+        if(Cart::count() > 0 && isset($order_session['invoice_number'])) {
 
             $order = Order::insert([
                 //customer
@@ -185,7 +189,10 @@ class PaymentController extends Controller
                 'delivery_state' => $order_session['delivery_state'],
                 'delivery_postcode' => $order_session['delivery_postcode'],
                 'delivery_phone' => $order_session['delivery_phone'],
-                'order_price' => Cart::total(2, '.', ''),
+                'order_price' => $total,
+                'shipping_cost' => $shipping_cost,
+                'shipping_method' => 'JNE '.$shipping_method,
+                'shipping_duration' => $shipping_duration,
                 'date_purchased' => Carbon::now(),
                 'email' => $order_session['email'],
                 'invoice_number' => $order_session['invoice_number']
@@ -218,7 +225,7 @@ class PaymentController extends Controller
                 ]);
             }
             $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
-            $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->first();
+            $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->get();
             $vt = new Veritrans;
                 
             $payment_info = PaymentInfo::getInfo($order_session['invoice_number']);

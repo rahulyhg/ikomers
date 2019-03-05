@@ -102,6 +102,7 @@
                     <div class="col-md-6 col-sm-6 col-xs-6 summaryheim">
                         <h6 id="totalSummary" data-total="">{{ App\Models\Setting::getAttr('currency_symbol') }} {{ Cart::total() }}</h6>
                     </div>
+                    <div class="clearfix"></div>
                     @if (Cart::count())
                         <div class="col-md-12 m-t-20">
                             <a href="{{ route('checkout') }}" class="btn btn-block btn-buy-product btn-lg">Checkout</a>

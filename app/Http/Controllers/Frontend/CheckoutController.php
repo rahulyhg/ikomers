@@ -53,6 +53,8 @@ class CheckoutController extends Controller
         $invoice_number = "EOS" .$order->orders_id. str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
         $input = $request->except('_token');
         $input['invoice_number'] = $invoice_number;
+        $input['shipping_method'] = Session::get('shipping')['shipping_type'];
+        $input['shipping_duration'] = Session::get('shipping')['shipping_duration'];
         $cart = Cart::content();
         
         Session::put('shipping', $input);

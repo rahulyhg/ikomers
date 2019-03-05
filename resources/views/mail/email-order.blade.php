@@ -30,34 +30,33 @@
                 
                 <h4>Mohon segera selesaikan pembayaran pesanan berikut</h4>
 
-                <p>Checkout berhasil pada tanggal {{ \Carbon\Carbon::parse($order->date_purchased)->format('l, d F Y H:i') }} WIB></p>
+                <p>Checkout berhasil pada tanggal {{ \Carbon\Carbon::parse($order->date_purchased)->format('l, d F Y H:i') }} WIB</p>
                 <p>Detail pemesanan</p>  
 
                 <table border="0">
                   <tr>
-                    <td>Nama produk</td>
+                    <td valign="top">Nama Produk</td>
                     <td></td>
-                    <td>{{ $product->products_name }}</td>
-                  </tr>
-                  <tr>
-                    <td>Qty</td>
-                    <td></td>
-                    <td>{{ $product->products_quantity }}</td>
+                    <td>
+                      <ul style="margin:0;padding:0">
+                          @php
+                              $products = App\Models\Order::getOrderProducts($order->orders_id)
+                          @endphp
+                          @foreach ($products as $item)
+                            <li style="margin:0;padding:0;list-style:none;">{{ $item->products_name }} <strong>(x{{ $item->products_quantity }})</strong></li>
+                          @endforeach
+                      </ul>
+                    </td>
                   </tr>
                   <tr>
                     <td>Pengiriman</td>
                     <td></td>
-                    <td>JNE Reguler</td>
+                    <td>{{ $order->shipping_method }}</td>
                   </tr>
                   <tr>
                     <td>Total Pembayaran</td>
                     <td></td>
-                    <td>Rp {{ number_format($product->final_price) }},-</td>
-                  </tr>
-                  <tr>
-                    <td>Batas waktu Pembayaran</td>
-                    <td></td>
-                    <td>{{ \Carbon\Carbon::parse($order->date_purchased)->format('l, d F Y H:i') }} 1x24 jam</td>
+                    <td>Rp {{ number_format($order->order_price) }},-</td>
                   </tr>
                   <tr>
                     <td valign="top">Metode Pembayaran</td>

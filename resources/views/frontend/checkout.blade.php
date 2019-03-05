@@ -54,15 +54,19 @@
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('delivery_street_address') ? ' has-error' : '' }}">
-                    <label for="delivery_street_address" class="control-label">Address</label>
-                    <textarea class="form-control" name="delivery_street_address" id="delivery_street_address" rows="2" required>@isset($data['address_book']){{ $data['address_book']->entry_street_address }}@endisset{{ old('delivery_street_address') }}</textarea>
-                    
-                    @if ($errors->has('delivery_street_address'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('delivery_street_address') }}</strong>
-                        </span>
-                    @endif
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group{{ $errors->has('delivery_street_address') ? ' has-error' : '' }}">
+                            <label for="delivery_street_address" class="control-label">Address</label>
+                            <textarea class="form-control" name="delivery_street_address" id="delivery_street_address" rows="2" required>@isset($data['address_book']){{ $data['address_book']->entry_street_address }}@endisset{{ old('delivery_street_address') }}</textarea>
+                            
+                            @if ($errors->has('delivery_street_address'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('delivery_street_address') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -133,26 +137,30 @@
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('delivery_phone') ? ' has-error' : '' }}">
-                    <label for="delivery_phone" class="control-label">Phone Number</label>
-                    <input id="delivery_phone" type="text" class="form-control" name="delivery_phone" value="@isset($data['user']){{ $data['user']->customers_telephone }}@endisset{{ old('delivery_phone') }}" required autofocus>
-
-                    @if ($errors->has('delivery_phone'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('delivery_phone') }}</strong>
-                        </span>
-                    @endif
-                </div>
-                
-                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                    <label for="email" class="control-label">Email</label>
-                    <input id="email" type="email" class="form-control" name="email" value="@isset($data['user']){{ $data['user']->email }}@endisset{{ old('email') }}" required>
-
-                    @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                    @endif
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group{{ $errors->has('delivery_phone') ? ' has-error' : '' }}">
+                            <label for="delivery_phone" class="control-label">Phone Number</label>
+                            <input id="delivery_phone" type="text" class="form-control" name="delivery_phone" value="@isset($data['user']){{ $data['user']->customers_telephone }}@endisset{{ old('delivery_phone') }}" required autofocus>
+        
+                            @if ($errors->has('delivery_phone'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('delivery_phone') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="control-label">Email</label>
+                            <input id="email" type="email" class="form-control" name="email" value="@isset($data['user']){{ $data['user']->email }}@endisset{{ old('email') }}" required>
+        
+                            @if ($errors->has('email'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-5 col-sm-offset-1">
@@ -176,7 +184,7 @@
                                     <option value="">-- Select --</option>
                                     @isset($cost)
                                         @foreach ($cost[0]['costs'] as $item)
-                                        <option value="{{ $item['cost'][0]['value'] }}" data-type="{{ $item['service'] }}">{{ $item['service'] }} {{ $item['cost'][0]['etd'] }} Hari</option>
+                                        <option value="{{ $item['cost'][0]['value'] }}" data-type="{{ $item['service'] }}" data-duration="{{ $item['cost'][0]['etd'] }}">{{ $item['service'] }} {{ $item['cost'][0]['etd'] }} Hari</option>
                                         @endforeach
                                     @endisset
                                 </select>
@@ -269,7 +277,8 @@ $(document).ready(function() {
 
         var data = {
             'shipping_cost': parseInt($(this).val()),
-            'shipping_type': $('option:selected', this).attr('data-type')
+            'shipping_type': $('option:selected', this).attr('data-type'),
+            'shipping_duration': $('option:selected', this).attr('data-duration')
         };
         $.post('{{ route("update-cost") }}', data, function(data, textStatus, xhr) {
             /*optional stuff to do after success */

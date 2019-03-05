@@ -42,7 +42,7 @@ class PaymentMethod {
             </tr>
             <tr>
                 <td>Batas Pembayaran</td>
-                <td>".\Carbon\Carbon::parse($payment_info->transaction_time)->format('d F Y - H:i:s')."</td>
+                <td>".\Carbon\Carbon::parse($payment_info->transaction_time)->format('d F Y - H:i:s')." <strong>(1x24 Jam)</strong></td>
             </tr>
             </table>
             ";
@@ -60,7 +60,7 @@ class PaymentMethod {
             </tr>
             <tr>
                 <td>Batas Pembayaran</td>
-                <td>".\Carbon\Carbon::parse($payment_info->transaction_time)->format('d F Y - H:i:s')."</td>
+                <td>".\Carbon\Carbon::parse($payment_info->transaction_time)->format('d F Y - H:i:s')." <strong>(1x24 Jam)</strong></td>
             </tr>
             </table>
             ";
@@ -78,7 +78,7 @@ class PaymentMethod {
             </tr>
             <tr>
                 <td>Batas Pembayaran</td>
-                <td>".\Carbon\Carbon::parse($payment_info->transaction_time)->format('d F Y - H:i:s')."</td>
+                <td>".\Carbon\Carbon::parse($payment_info->transaction_time)->format('d F Y - H:i:s')." <strong>(1x24 Jam)</strong></td>
             </tr>
             </table>
             ";
@@ -92,7 +92,7 @@ class PaymentMethod {
             </tr>
             <tr>
                 <td>Batas Pembayaran</td>
-                <td>".\Carbon\Carbon::parse($payment_info->transaction_time)->format('d F Y - H:i:s')."</td>
+                <td>".\Carbon\Carbon::parse($payment_info->transaction_time)->format('d F Y - H:i:s')." <strong>(1x24 Jam)</strong></td>
             </tr>
             </table>
             ";
@@ -106,7 +106,7 @@ class PaymentMethod {
             </tr>
             <tr>
                 <td>Batas Pembayaran</td>
-                <td>".\Carbon\Carbon::parse($payment_info->transaction_time)->format('d F Y - H:i:s')."</td>
+                <td>".\Carbon\Carbon::parse($payment_info->transaction_time)->format('d F Y - H:i:s')." <strong>(1x24 Jam)</strong></td>
             </tr>
             </table>
             ";
@@ -124,7 +124,7 @@ class PaymentMethod {
             </tr>
             <tr>
                 <td>Batas Pembayaran</td>
-                <td>".\Carbon\Carbon::parse($payment_info->transaction_time)->format('d F Y - H:i:s')."</td>
+                <td>".\Carbon\Carbon::parse($payment_info->transaction_time)->format('d F Y - H:i:s')." <strong>(1x24 Jam)</strong></td>
             </tr>
             </table>
             ";
