@@ -27,15 +27,17 @@ class CheckoutController extends Controller
             if($auth) {
                 $data['user'] = User::find($auth->customers_id);
                 $data['address_book'] = \DB::table('address_book')->where('customers_id', $data['user']->customers_id)->first();
-                $kota = RajaOngkir::Kota()->search('city_name', $name = $data['address_book']->entry_city)->get();
-                $cost = RajaOngkir::Cost([
-                    'origin' 		=> 151, // id kota asal
-                    'originType'    => 'city',
-                    'destination' 	=> $kota[0]['city_id'], // id kota tujuan
-                    'destinationType'=> 'city',
-                    'weight' 		=> 2300, // berat satuan gram
-                    'courier' 		=> 'jne', // kode kurir pengantar ( jne / tiki / pos )
-                ])->get();
+                if(isset($data['address_book'])) {
+                    $kota = RajaOngkir::Kota()->search('city_name', $name = $data['address_book']->entry_city)->get();
+                    $cost = RajaOngkir::Cost([
+                        'origin' 		=> 151, // id kota asal
+                        'originType'    => 'city',
+                        'destination' 	=> $kota[0]['city_id'], // id kota tujuan
+                        'destinationType'=> 'city',
+                        'weight' 		=> 2300, // berat satuan gram
+                        'courier' 		=> 'jne', // kode kurir pengantar ( jne / tiki / pos )
+                    ])->get();
+                }
             }
 
             $provinces = RajaOngkir::Provinsi()->all();
@@ -49,8 +51,13 @@ class CheckoutController extends Controller
     }
 
     public function checkout(Request $request) {
-        $order = Order::orderBy('orders_id', 'DESC')->first();
-        $invoice_number = "EOS" .$order->orders_id. str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+
+        // generate a pin based
+        $pin = mt_rand(1, 999);
+        // shuffle the result
+        $string = str_shuffle($pin);
+
+        $invoice_number = "EOS" .$string. str_pad(mt_rand(0, 999999), 3, '0', STR_PAD_LEFT);
         $input = $request->except('_token');
         $input['invoice_number'] = $invoice_number;
         $input['shipping_method'] = Session::get('shipping')['shipping_type'];

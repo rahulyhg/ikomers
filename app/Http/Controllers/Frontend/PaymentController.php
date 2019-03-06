@@ -25,71 +25,96 @@ class PaymentController extends Controller
         Midtrans::$isProduction = env('MIDTRANS_PRODUCTION', 'false');
     }
     
+    //Manual payment
+    // public function paymentMethod($invoice_number) {
+    //     if(Cart::count() == 0) {
+    //         return redirect('home');
+    //     }
+    //     $config['serverKey'] = Midtrans::$serverKey;
+    //     $config['isProduction'] = Midtrans::$isProduction;
+    //     $config['clientKey'] = env('MIDTRANS_CLIENT_KEY', 'default');
+    //     $invoice_number = $invoice_number;
+    //     $shipping_cost = Session::get('shipping')['shipping_cost'];
+    //     $total = Cart::total(0,'','')+$shipping_cost;
+    //     return view('frontend.payment-method', compact('invoice_number','config','shipping_cost','total'));
+    // }
+
+    //SnapMidtrans
     public function paymentMethod($invoice_number) {
         if(Cart::count() == 0) {
             return redirect('home');
         }
+        $methods = Payment::getPaymentMethods();
+        $banks = Payment::getBanks();
         $config['serverKey'] = Midtrans::$serverKey;
         $config['isProduction'] = Midtrans::$isProduction;
         $config['clientKey'] = env('MIDTRANS_CLIENT_KEY', 'default');
         $invoice_number = $invoice_number;
         $shipping_cost = Session::get('shipping')['shipping_cost'];
         $total = Cart::total(0,'','')+$shipping_cost;
-        return view('frontend.payment-method', compact('invoice_number','config','shipping_cost','total'));
+        return view('frontend.payment-method', compact('methods', 'banks', 'invoice_number','config','shipping_cost','total'));
     }
 
     public function postPayment(Request $request) {
-        $order = Order::where('invoice_number', $request->invoice_number)->first();
-
+        $cart = Cart::content();
+        $order = Session::get('shipping');
+        $shipping_cost = round(Session::get('shipping')['shipping_cost']);
+        $shipping_peritem = round(Session::get('shipping')['shipping_cost']/Cart::count());
+        $total = round(Cart::total(0,'','') + $shipping_cost);
+        $code_referal = mt_rand(0, 111);
         $vt = new Veritrans;
-        $transaction_details = array(
-            'order_id'      => $order->invoice_number,
-            'gross_amount'  => (int)$order->order_price
-        );
         
         // Populate items
-        $item_products = Order::getOrderProducts($order->orders_id);
         $products = [];
-        foreach ($item_products as $item) {
+        foreach ($cart as $item) {
             $products[] = array(
-                'id'        => $item->products_id,
-                'price'     => (int)$item->products_price,
-                'quantity'  => $item->products_quantity,
-                'name'      => $item->products_name
+                'id'        => $item->id,
+                'price'     => (int)$item->price + $shipping_peritem + $code_referal,
+                'quantity'  => (int)$item->qty,
+                'name'      => $item->name
             );
+            $gross_total = ((int)$item->price + $shipping_peritem + $code_referal) * Cart::count();
         }
+
+        $transaction_details = array(
+            'order_id'      => $order['invoice_number'],
+            'gross_amount'  => $gross_total
+        );
         $items = $products;
+
+        $kode_unik = $gross_total - $total;
+
         // Populate customer's billing address
         $billing_address = array(
-            'first_name'    => $order->billing_name,
-            "last_name"     => '',
-            'address'       => $order->billing_street_address,
-            'city'          => $order->billing_city,
-            'postal_code'   => $order->billing_postcode,
-            'phone'         => $order->billing_phone,
+            'first_name'    => $order['customers_firstname'],
+            'last_name'     => $order['customers_lastname'],
+            'address'       => $order['delivery_street_address'],
+            'city'          => $order['delivery_city'],
+            'postal_code'   => $order['delivery_postcode'],
+            'phone'         => $order['delivery_phone'],
             'country_code'  => 'IDN'
-            );
+        );
 
         // Populate customer's shipping address
         $shipping_address = array(
-            'first_name'    => $order->delivery_name,
-            "last_name"     => '',
-            'address'       => $order->delivery_street_address,
-            'city'          => $order->delivery_city,
-            'postal_code'   => $order->delivery_postcode,
-            'phone'         => $order->delivery_phone,
+            'first_name'    => $order['customers_firstname'],
+            'last_name'     => $order['customers_lastname'],
+            'address'       => $order['delivery_street_address'],
+            'city'          => $order['delivery_city'],
+            'postal_code'   => $order['delivery_postcode'],
+            'phone'         => $order['delivery_phone'],
             'country_code'  => 'IDN'
-            );
+        );
 
         // Populate customer's Info
         $customer_details = array(
-            'first_name'    => $order->customers_name,
-            "last_name"     => '',
-            'email'         => $order->email,
-            'phone'         => $order->customers_telephone,
+            'first_name'    => $order['customers_firstname'],
+            'last_name'     => $order['customers_lastname'],
+            'email'         => $order['email'],
+            'phone'         => $order['delivery_phone'],
             'billing_address' => $billing_address,
             'shipping_address'=> $shipping_address
-            );
+        );
 
         if($request->payment_type == 'bank_transfer') {
             $transaction_data = array(
@@ -109,6 +134,7 @@ class PaymentController extends Controller
                 'customer_details'   => $customer_details
             );
         }
+
         //dd($transaction_data);
         $response = null;
         try
@@ -124,31 +150,10 @@ class PaymentController extends Controller
         {
             return $e->getMessage; 
         }
-        //dd($response);
-        $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
-        $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->first();
-        dispatch(new SendOrderEmail($order_user, $order_product));
-
-        Cart::destroy();
 
         if($response)
         {
-            if($response->transaction_status == "capture")
-            {
-                return redirect()->route('payment', ['invoice_number' => $request->invoice_number])->with('message', 'Silahkan lakukan pembayaran.');
-            }
-            else if($response->transaction_status == "deny")
-            {
-                return redirect()->route('payment', ['invoice_number' => $request->invoice_number])->with('message', 'Silahkan lakukan pembayaran.');
-            }
-            else if($response->transaction_status == "challenge")
-            {
-                return redirect()->route('payment', ['invoice_number' => $request->invoice_number])->with('message', 'Silahkan lakukan pembayaran.');
-            }
-            else
-            {
-                return redirect()->route('payment', ['invoice_number' => $request->invoice_number])->with('message', 'Silahkan lakukan pembayaran.');
-            }   
+            return redirect()->route('payment', ['status' => $response->transaction_status]);
         }
     }
 
@@ -234,7 +239,7 @@ class PaymentController extends Controller
             Session::forget('shipping');
         }
 
-        if(!isset($status)) {
+        if(isset($status)) {
             if($status == "capture"){
                 $message = "Terima kasih telah menyelesaikan transaksi di Endless Store.";
             } elseif($status == "settlement") {
