@@ -62,6 +62,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 	//How to buy
 	Route::get('/faq/{slug?}', 'FAQController@faq')->name('faq');
+	Route::get('/faq-search', 'FAQController@searchFAQ')->name('faq-search');
 	Route::get('/how-to-buy', 'FAQController@howToBuy')->name('how-to-buy');
 	
 	//Track Order

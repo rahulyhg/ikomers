@@ -25,6 +25,18 @@ class FAQController extends Controller
         return view('frontend.faq', compact('faq_categories', 'faq_category', 'faqs'));
     }
 
+    public function searchFAQ(Request $request) {
+        $faq_categories = FAQ::getFAQCategories();
+
+        $faq_category = FAQ::getFirstFAQCategory();
+        $keyword = $request->input('keyword');
+        $faqs = FAQ::where('question','like','%'.$keyword.'%')
+        ->orWhere('answer','like','%'.$keyword.'%')
+        ->get();
+
+        return view('frontend.faq', compact('faq_categories', 'faq_category', 'faqs'));
+    }
+
     public function howToBuy() {
         return view('frontend.how-to-buy');
     }

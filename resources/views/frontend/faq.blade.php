@@ -28,12 +28,14 @@
             <div class="col-md-6 col-md-offset-3 text-center filter-faq">
                 <h1>Do you have a question?</h1>
                 <div class="m-t-30">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                          <button class="btn btn-orange" type="button"><i class="fa fa-search"></i></button>
-                        </span>
-                    </div>
+                    <form action="{{ route('faq-search') }}" method="GET">
+                        <div class="input-group">
+                            <input type="text" name="keyword" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-orange" type="submit"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
