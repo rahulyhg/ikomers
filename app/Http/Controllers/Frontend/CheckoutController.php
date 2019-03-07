@@ -30,7 +30,7 @@ class CheckoutController extends Controller
                 if(isset($data['address_book'])) {
                     $kota = RajaOngkir::Kota()->search('city_name', $name = $data['address_book']->entry_city)->get();
                     $cost = RajaOngkir::Cost([
-                        'origin' 		=> 151, // id kota asal
+                        'origin' 		=> 153, // id kota asal
                         'originType'    => 'city',
                         'destination' 	=> $kota[0]['city_id'], // id kota tujuan
                         'destinationType'=> 'city',

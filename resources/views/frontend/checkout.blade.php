@@ -174,12 +174,13 @@
                             <div class="col-sm-7 col-xs-12 summaryheim">
                                 <h6>{{ App\Models\Setting::getAttr('currency_symbol') }} {{Cart::subtotal(0, '', ',')}} </h6>
                             </div>
+                            <div class="clearfix"></div>
                             <div class="col-sm-5 col-xs-12 summaryheim">
                                 <h5>Shipping Cost</h5>
                             </div>
-                            <div class="col-sm-7 col-xs-12 summaryheim form-horizontal">
+                            <div class="col-sm-7 col-xs-12 summaryheim form-horizontal form-ongkir">
                                 <label class = "col-xs-2 control-label shipping-method" style="text-align:left;padding-left:0;">@isset($cost) {{ strtoupper($cost[0]['code']) }} @endisset</label>
-                                <div class = "col-xs-10 p-0">
+                                <div class = "col-xs-10 p-0 shipping-cost" style="margin-bottom:10px;">
                                     <select name="shipping_cost" id="ongkir" class="form-control" required>
                                         <option value="">-- Select --</option>
                                         @isset($cost)
@@ -189,7 +190,9 @@
                                         @endisset
                                     </select>
                                 </div>
+                                <div class="col-xs-12 p-0"> <h6 class="biaya-ongkir">-</h6> </div>
                             </div>
+                            <div class="clearfix"></div>
                             <div class="col-md-5 col-sm-6 col-xs-6 summaryheim">
                                 <h6>Total</h6>
                             </div>
@@ -217,6 +220,8 @@
 @section('addscript')
 <script>
 $(document).ready(function() {
+    $('.shipping-method').hide();
+    $('.shipping-cost').hide();
 
     $('#delivery_state').on('change', function() {
         var data = {
@@ -254,11 +259,21 @@ $(document).ready(function() {
         };
         $.post('{{ route("get-cost") }}', data, function(data, textStatus, xhr) {
             /*optional stuff to do after success */
-            console.log(data);
+            
             $('.shipping-method').html(data[0]['code'].toUpperCase());
             $('#ongkir').empty();
             $('#ongkir').append('<option value="">-- Select --</option>');
             $.each( data, function(k, v) {
+                if(v.costs.length == 0){
+                    $('.shipping-method').hide();
+                    $('.shipping-cost').hide();
+                    $('.biaya-ongkir').html("<span class='text-danger'>Maaf alat tujuan tidak terjangkau.</span>");
+                } else {
+                    $('.shipping-method').show();
+                    $('.shipping-cost').show();
+                    $('.biaya-ongkir').html('');
+                }
+
                 $.each( v.costs, function(k, v) {
                     var cost = '';
                     var etd = '';
@@ -274,9 +289,11 @@ $(document).ready(function() {
     });
 
     $('#ongkir').on('change', function() {
-        var total = parseInt($(this).val()) + parseInt($('#total').val());
+        var ongkir = parseInt($(this).val());
+        var total = ongkir + parseInt($('#total').val());
         $('#totalSummary').html(total.toLocaleString());
         $('#total').html(total);
+        $('.biaya-ongkir').html("{{ App\Models\Setting::getAttr('currency_symbol') }} " + ongkir.toLocaleString());
 
         var data = {
             'shipping_cost': parseInt($(this).val()),
@@ -285,7 +302,6 @@ $(document).ready(function() {
         };
         $.post('{{ route("update-cost") }}', data, function(data, textStatus, xhr) {
             /*optional stuff to do after success */
-            //console.log(data);
         });
 
     });
