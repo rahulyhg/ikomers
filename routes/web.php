@@ -49,6 +49,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 	Route::get('/payment-confirmation', 'PaymentController@paymentConfirmation')->name('payment-confirmation');
 	Route::post('/payment-confirmation', 'PaymentController@postPaymentConfirmation')->name('post.payment-confirmation');
 	Route::get('/payment-status', 'PaymentController@notification')->name('payment-status');
+	Route::post('/notification', 'PaymentController@notification')->name('payment-status');
 
 	//About
 	Route::get('/about', 'AboutController@index')->name('about');

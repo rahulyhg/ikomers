@@ -220,8 +220,6 @@
 @section('addscript')
 <script>
 $(document).ready(function() {
-    $('.shipping-method').hide();
-    $('.shipping-cost').hide();
 
     $('#delivery_state').on('change', function() {
         var data = {
