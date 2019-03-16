@@ -299,13 +299,18 @@ foreach($subjects as $subject) {
 	
 				//shipping setting
 				Route::get('/shippingmethods', 'AdminShippingController@shippingmethods');
-				Route::get('/upsShipping', 'AdminShippingController@upsShipping');
-				Route::post('/updateupsshipping', 'AdminShippingController@updateupsshipping');
-				Route::get('/flateRate', 'AdminShippingController@flateRate');
-				Route::post('/updateflaterate', 'AdminShippingController@updateflaterate');
-				Route::post('/defaultShippingMethod', 'AdminShippingController@defaultShippingMethod');
-				Route::get('/shippingDetail/{table_name}', 'AdminShippingController@shippingDetail');
+				Route::get('/addshippingmethods', 'AdminShippingController@addshippingmethods');
+				// Route::get('/upsShipping', 'AdminShippingController@upsShipping');
+				// Route::post('/updateupsshipping', 'AdminShippingController@updateupsshipping');
+				// Route::get('/flateRate', 'AdminShippingController@flateRate');
+				// Route::post('/updateflaterate', 'AdminShippingController@updateflaterate');
+				// Route::post('/defaultShippingMethod', 'AdminShippingController@defaultShippingMethod');
+				// Route::get('/shippingDetail/{table_name}', 'AdminShippingController@shippingDetail');
+
+				Route::post('/addShipping', 'AdminShippingController@addShipping');
+				Route::get('/editshippingmethods/{id}', 'AdminShippingController@editshippingmethods');
 				Route::post('/updateShipping', 'AdminShippingController@updateShipping');
+				Route::post('/deleteshippingmethods', 'AdminShippingController@deleteshippingmethods');
 				
 				//shppingbyprice
 				Route::get('/shppingbyweight', 'AdminShippingByWeightController@shppingbyweight');
