@@ -67,9 +67,17 @@ class PaymentController extends Controller
         // Populate items
         $products = [];
         foreach ($cart as $item) {
+            //Parameter for Midtrans
             $products[] = array(
                 'id'        => $item->id,
                 'price'     => (int)$item->price + $shipping_peritem + $code_referal,
+                'quantity'  => (int)$item->qty,
+                'name'      => $item->name
+            );
+            //Parameter for Kredivo
+            $products_kredivo[] = array(
+                'id'        => $item->id,
+                'price'     => (int)$item->price,
                 'quantity'  => (int)$item->qty,
                 'name'      => $item->name
             );
@@ -144,6 +152,35 @@ class PaymentController extends Controller
             } else if($request->payment_type == 'akulaku') {
                 $vtweb_url = $vt->vtweb_charge($transaction_data);
                 return redirect($vtweb_url);
+            } else if($request->payment_type == 'kredivo') {
+                $shipping_fee = array(
+                    array(
+                        "id"=>"shippingfee",
+                        "name"=>"Shipping Fee",
+                        "price"=>$shipping_cost,
+                        "quantity"=>1
+                    )
+                );
+                $item_kredivo = array_merge($products_kredivo,$shipping_fee);
+                $data = 
+                array(
+                    "server_key"=>"8tLHIx8V0N6KtnSpS9Nbd6zROFFJH7",
+                    "payment_type"=>"30_days",  
+                    "tokenize_user"=> false,
+                    "user_token" => "XXXX-XXXX",
+                    "transaction_details" => array(
+                        "amount"=>$total,
+                        "order_id"=>$order['invoice_number'],
+                        "items"=> $item_kredivo
+                    ),
+                    "customer_details"=> $customer_details,
+                    "billing_address"=> $billing_address,
+                    "shipping_address"=> $shipping_address,
+                    "push_uri"=>"https://api.merchant.com/push",
+                    "back_to_store_uri"=>"https://merchant.com"
+                );
+                return redirect()->route('checkout-kredivo')->with(['data'=>$data]);
+                //dd($request->payment_type);
             }
         } 
         catch (Exception $e) 
