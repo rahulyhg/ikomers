@@ -21,7 +21,6 @@ class CheckoutController extends Controller
     public function index() {
         $cart = Cart::count();
         if($cart) {
-            
             $data = array();
             $auth = Auth::user();
             if($auth) {
@@ -41,6 +40,7 @@ class CheckoutController extends Controller
                 }
             }
 
+            $data['shipping_methods'] = \DB::table('shipping_methods')->where('status','1')->get();
             $provinces = RajaOngkir::Provinsi()->all();
             return view('frontend.checkout', compact('data','provinces','cost'));
         }
