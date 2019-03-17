@@ -27,6 +27,7 @@ class CheckoutController extends Controller
             if($auth) {
                 $data['user'] = User::find($auth->customers_id);
                 $data['address_book'] = \DB::table('address_book')->where('customers_id', $data['user']->customers_id)->first();
+                $data['shipping_methods'] = \DB::table('shipping_methods')->where('status','1')->get();
                 if(isset($data['address_book'])) {
                     $kota = RajaOngkir::Kota()->search('city_name', $name = $data['address_book']->entry_city)->get();
                     $cost = RajaOngkir::Cost([

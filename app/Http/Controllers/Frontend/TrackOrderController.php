@@ -37,13 +37,21 @@ class TrackOrderController extends Controller
     }
 
     function getCost(Request $request) {
+        if(!isset($request->courier)) {
+            $kota = $request->id;
+            $courier = 'jne';
+        } else {
+            $getkota = RajaOngkir::Kota()->search('city_name', $name = $request->id)->get();
+            $kota = $getkota[0]['city_id'];
+            $courier = $request->courier;
+        }
         $cost = RajaOngkir::Cost([
             'origin' 		=> 153, // id kota asal
             'originType'    => 'city',
-            'destination' 	=> $request->id, // id kota tujuan
+            'destination' 	=> $kota, // id kota tujuan
             'destinationType'=> 'city',
             'weight' 		=> 2300, // berat satuan gram
-            'courier' 		=> 'jne', // kode kurir pengantar ( jne / tiki / pos )
+            'courier' 		=> $courier, // kode kurir pengantar ( jne / tiki / pos )
         ])->get();
         return response()->json($cost);
     }

@@ -168,21 +168,30 @@
                     <div class="panel-body">
                         <h3>Order Summary</h3>
                         <div class="row summaryheim">
-                            <div class="col-sm-5 col-xs-12 summaryheim">
+                            <div class="col-sm-4 col-xs-12 summaryheim">
                                 <h5>Order Subtotal</h5>
                             </div>
-                            <div class="col-sm-7 col-xs-12 summaryheim">
+                            <div class="col-sm-6 col-xs-12 summaryheim">
                                 <h6>{{ App\Models\Setting::getAttr('currency_symbol') }} {{Cart::subtotal(0, '', ',')}} </h6>
                             </div>
                             <div class="clearfix"></div>
-                            <div class="col-sm-5 col-xs-12 summaryheim">
+                            <div class="col-sm-4 col-xs-12 summaryheim">
                                 <h5>Shipping Cost</h5>
                             </div>
-                            <div class="col-sm-7 col-xs-12 summaryheim form-horizontal form-ongkir">
-                                <label class = "col-xs-2 control-label shipping-method" style="text-align:left;padding-left:0;">@isset($cost) {{ strtoupper($cost[0]['code']) }} @endisset</label>
-                                <div class = "col-xs-10 p-0 shipping-cost" style="margin-bottom:10px;">
+                            <div class="col-sm-8 col-xs-12 summaryheim form-horizontal form-ongkir">
+                                <div class="col-xs-5 p-0">
+                                    <select name="shipping_methods" id="shipping_methods" class="form-control" required>
+                                        @isset($cost)
+                                            @foreach ($data['shipping_methods'] as $item)
+                                            <option value="{{ $item->slug }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        @endisset
+                                    </select>
+                                </div>
+                                {{-- <label class = "col-xs-2 control-label shipping-method" style="text-align:left;padding-left:0;">@isset($cost) {{ strtoupper($cost[0]['code']) }} @endisset</label> --}}
+                                <div class = "col-xs-7 shipping-cost" style="margin-bottom:10px;">
                                     <select name="shipping_cost" id="ongkir" class="form-control" required>
-                                        <option value="">-- Select --</option>
+                                        <option value="">-- Layanan --</option>
                                         @isset($cost)
                                             @foreach ($cost[0]['costs'] as $item)
                                             <option value="{{ $item['cost'][0]['value'] }}" data-type="{{ $item['service'] }}" data-duration="{{ $item['cost'][0]['etd'] }}">{{ $item['service'] }} {{ $item['cost'][0]['etd'] }} Hari</option>
@@ -190,13 +199,13 @@
                                         @endisset
                                     </select>
                                 </div>
-                                <div class="col-xs-12 p-0"> <h6 class="biaya-ongkir">-</h6> </div>
+                                <div class="col-xs-12 p-0"> <h6 class="biaya-ongkir"></h6> </div>
                             </div>
                             <div class="clearfix"></div>
-                            <div class="col-md-5 col-sm-6 col-xs-6 summaryheim">
+                            <div class="col-md-4 col-sm-6 col-xs-6 summaryheim">
                                 <h6>Total</h6>
                             </div>
-                            <div class="col-md-7 col-sm-6 col-xs-6 summaryheim">
+                            <div class="col-md-8 col-sm-6 col-xs-6 summaryheim">
                                 <h6>{{ App\Models\Setting::getAttr('currency_symbol') }} <span id="totalSummary">{{ Cart::total(0, '', ',') }}</span></h6>
                                 <input type="hidden" id="total" value="{{ Cart::total(0,'','') }}">
                             </div>
@@ -220,6 +229,8 @@
 @section('addscript')
 <script>
 $(document).ready(function() {
+
+    $('#shipping_methods').val("jne").change();
 
     $('#delivery_state').on('change', function() {
         var data = {
@@ -259,8 +270,46 @@ $(document).ready(function() {
             /*optional stuff to do after success */
             
             $('.shipping-method').html(data[0]['code'].toUpperCase());
+            $('#shipping_methods').val("jne").change();
             $('#ongkir').empty();
-            $('#ongkir').append('<option value="">-- Select --</option>');
+            $('#ongkir').append('<option value="">-- Layanan --</option>');
+            $.each( data, function(k, v) {
+                if(v.costs.length == 0){
+                    $('.shipping-method').hide();
+                    $('.shipping-cost').hide();
+                    $('.biaya-ongkir').html("<span class='text-danger'>Maaf alat tujuan tidak terjangkau.</span>");
+                } else {
+                    $('.shipping-method').show();
+                    $('.shipping-cost').show();
+                    $('.biaya-ongkir').html('');
+                }
+
+                $.each( v.costs, function(k, v) {
+                    var cost = '';
+                    var etd = '';
+                    //console.log(v);
+                    $.each( v.cost, function(k, v) {
+                        cost = v.value;
+                        etd = v.etd;
+                    });
+                    $('#ongkir').append('<option data-type="'+v.service+'" value="'+cost+'" data-duration="'+etd+'">'+v.service+' '+etd+' Hari</option>');
+                });
+           });
+        });
+    });
+
+    $('#shipping_methods').on('change', function() {
+        var method = $(this).val();
+        var data = {
+            'id': $('option:selected', '#delivery_city').val(),
+            'courier': method
+        };
+        $.post('{{ route("get-cost") }}', data, function(data, textStatus, xhr) {
+            /*optional stuff to do after success */
+            
+            $('.shipping-method').html(data[0]['code'].toUpperCase());
+            $('#ongkir').empty();
+            $('#ongkir').append('<option value="">-- Layanan --</option>');
             $.each( data, function(k, v) {
                 if(v.costs.length == 0){
                     $('.shipping-method').hide();
@@ -288,10 +337,16 @@ $(document).ready(function() {
 
     $('#ongkir').on('change', function() {
         var ongkir = parseInt($(this).val());
-        var total = ongkir + parseInt($('#total').val());
+        if (!isNaN(ongkir)) {
+            var v_ongkir = ongkir;
+        } else {
+            var v_ongkir = 0;
+        }
+        console.log(v_ongkir);
+        var total = v_ongkir + parseInt($('#total').val());
         $('#totalSummary').html(total.toLocaleString());
         $('#total').html(total);
-        $('.biaya-ongkir').html("{{ App\Models\Setting::getAttr('currency_symbol') }} " + ongkir.toLocaleString());
+        $('.biaya-ongkir').html("{{ App\Models\Setting::getAttr('currency_symbol') }} " + v_ongkir.toLocaleString());
 
         var data = {
             'shipping_cost': parseInt($(this).val()),
