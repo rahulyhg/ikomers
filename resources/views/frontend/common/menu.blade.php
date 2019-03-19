@@ -10,7 +10,7 @@
                 <li> <a href='{{ route('login') }}'> Sign in </a></li>
                 <li class='hidden-xs'> <a href='{{ route('register') }}'> Sign up </a></li>
               @endif
-              <li class='hidden-xs'>		
+              <li>		
                   <a href="{{URL::to('cart')}}"><strong>{{ Cart::count() }}</strong> Items in Cart</a>
               </li>
               @if (Auth::user())

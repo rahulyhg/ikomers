@@ -293,7 +293,8 @@ class PaymentController extends Controller
                 $message = "Mohon maaf, pembayaran telah kadaluarsa.";
             }
     
-            return view('frontend.payment', compact('message'));
+            //return view('frontend.payment', compact('message'));
+            return redirect()->route('payment-confirmation')->withInput(['data' => $payment_info]);
         } else {
             $vt = new Veritrans;
             $json_result = file_get_contents('php://input');
@@ -324,6 +325,8 @@ class PaymentController extends Controller
     }
 
     public function paymentConfirmation() {
+        $info = Session::get('data');
+        dd($info);
         return view('frontend.payment-confirmation');
     }
 
