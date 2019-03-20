@@ -253,6 +253,32 @@
             </div>
           {!! Form::close() !!}
         
+      <div class="col-xs-12">
+        <p class="lead">Konfirmasi Pembayaran</p>
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Tanggal Bayar</th>
+                <th>Rekening Transfer</th>
+                <th>Rekening Pengirim</th>
+                <th>Jumlah Transfer</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach( $data['payment_confirmation'] as $item)
+                  <tr>
+                      <td>{{ $item->orders_id }}</td>
+                      <td>{{ $item->payment_date }}</td>
+                      <td>{{ $item->payment_method }}</td>
+                      <td>{{ $item->sender_bank }} a/n {{ $item->sender_name }}</td>
+                      <td>{{ $data['currency'][19]->value }} {{ $item->amount_sent }}</td>
+                  </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+
         <div class="col-xs-12">
           <p class="lead">{{ trans('labels.OrderHistory') }}</p>
             <table id="example1" class="table table-bordered table-striped">
@@ -267,24 +293,24 @@
                 @foreach( $data['orders_status_history'] as $orders_status_history)
                     <tr>
                         <td>
-							<?php 
-								$date = new DateTime($orders_status_history->date_added);
-								$status_date = $date->format('d-m-Y');
-								print $status_date;
-							?>
+              <?php 
+                $date = new DateTime($orders_status_history->date_added);
+                $status_date = $date->format('d-m-Y');
+                print $status_date;
+              ?>
                         </td>
                         <td>
-                        	@if($orders_status_history->orders_status_id==1)
-                            	<span class="label label-warning">
+                          @if($orders_status_history->orders_status_id==1)
+                              <span class="label label-warning">
                             @elseif($orders_status_history->orders_status_id==2)
                                 <span class="label label-success">
                             @elseif($orders_status_history->orders_status_id==3)
-                                 <span class="label label-danger">
+                                  <span class="label label-danger">
                             @else
-                                 <span class="label label-primary">
+                                  <span class="label label-primary">
                             @endif
                             {{ $orders_status_history->orders_status_name }}
-                                 </span>
+                                  </span>
                         </td>
                         <td style="text-transform: initial;">{{ $orders_status_history->comments }}</td>
                     </tr>
@@ -292,10 +318,11 @@
               </tbody>
             </table>
           </div>
+        
         <!-- /.col -->
       </div>
       <!-- /.row -->
-
+      
      
     </section>
   <!-- /.content --> 

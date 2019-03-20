@@ -30,7 +30,7 @@ use App\Administrator;
 use Auth;
 //for redirect
 use Illuminate\Support\Facades\Redirect;
-
+use App\Models\Payment;
 
 //for requesting a value 
 use Illuminate\Http\Request;
@@ -150,6 +150,7 @@ class AdminOrdersController extends Controller
 			->where('orders_id', '=', $orders_id)->get();
 				
 		$orders_status = DB::table('orders_status')->get();
+		$payment_confirmation = DB::table('payment_confirmation')->where('orders_id',$order[0]->invoice_number)->get();
 				
 		$ordersData['message'] 					=	$message;
 		$ordersData['errorMessage']				=	$errorMessage;
@@ -158,12 +159,12 @@ class AdminOrdersController extends Controller
 		$ordersData['orders_status']			=	$orders_status;
 		$ordersData['orders_status_history']    =	$orders_status_history;
 		$ordersData['subtotal']    				=	$subtotal;
-		
+		$ordersData['payment_confirmation']    	=	$payment_confirmation;
 		
 		//get function from other controller
 		$myVar = new AdminSiteSettingController();
 		$ordersData['currency'] = $myVar->getSetting();
-		
+		//dd($ordersData);
 		return view("admin.vieworder", $title)->with('data', $ordersData);
 		}
 	}
