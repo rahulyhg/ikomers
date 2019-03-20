@@ -54,8 +54,10 @@
                 <div class="form-group{{ $errors->has('payment_method') ? ' has-error' : '' }}">
                     <label for="payment_method" class="control-label">Select Payment Mode</label>
                     <select name="payment_method" class="form-control" required>
-                        <option value="">-- Select --</option>
-                        <option value="transfer">Transfer Bank Permata a/n PT Teknologi Informasi Tanpa Batas</option>
+                        <option value="">-- Pilih Nama Bank Transfer --</option>
+                        @foreach ($bank_transfer as $item)
+                        <option value="{{ $item->bank_name }}">{{ $item->bank_name }} a/n {{ $item->bank_account_name }}</option>
+                        @endforeach
                     </select>
 
                     @if ($errors->has('payment_method'))
@@ -104,6 +106,20 @@
                     </button>
                 </div>
             </form>
+        </div>
+        <div class="col-sm-5 col-sm-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Transfer ke rekening:</h3>
+                    @foreach ($bank_transfer as $item)
+                        <div class="m-t-20">
+                            <p>{{ $item->bank_name }}</p>
+                            <p>{{ $item->bank_account_no }}</p>
+                            <p>a/n {{ $item->bank_account_name }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -69,7 +69,7 @@
                     <td>Menunggu Pembayaran</td>
                   </tr>
                   <tr>
-                    <td>Invoice Pembayaran</td>
+                    <td>ID Order</td>
                     <td></td>
                     <td>{{ 	$order->invoice_number }}</td>
                   </tr>

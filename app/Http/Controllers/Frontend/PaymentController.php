@@ -148,7 +148,10 @@ class PaymentController extends Controller
         try
         {
             if($request->payment_type == 'bank_transfer') {
-                $response= $vt->vtdirect_charge($transaction_data);
+                //$response= $vt->vtdirect_charge($transaction_data);
+                //dd($transaction_data);
+                Session::put('payment', $transaction_data);
+                return redirect()->route('payment', ['status' => 'pending']);
             } else if($request->payment_type == 'akulaku') {
                 $vtweb_url = $vt->vtweb_charge($transaction_data);
                 return redirect($vtweb_url);
@@ -164,7 +167,6 @@ class PaymentController extends Controller
                 $item_kredivo = array_merge($products_kredivo,$shipping_fee);
                 $data = 
                 array(
-                    "server_key"=>"8tLHIx8V0N6KtnSpS9Nbd6zROFFJH7",
                     "payment_type"=>"30_days",  
                     "tokenize_user"=> false,
                     "user_token" => "XXXX-XXXX",
@@ -187,11 +189,6 @@ class PaymentController extends Controller
         {
             return $e->getMessage; 
         }
-
-        if($response)
-        {
-            return redirect()->route('payment', ['status' => $response->transaction_status]);
-        }
     }
 
     public function payment($status='') {
@@ -202,6 +199,8 @@ class PaymentController extends Controller
         $shipping_duration = Session::get('shipping')['shipping_duration'];
         $total = Cart::total(2, '.', '')+$shipping_cost;
         
+        $payment_information = Session::get('payment');
+
         if(Cart::count() > 0 && isset($order_session['invoice_number'])) {
 
             $order = Order::insert([
@@ -233,9 +232,10 @@ class PaymentController extends Controller
                 'delivery_phone' => $order_session['delivery_phone'],
                 'order_price' => $total,
                 'shipping_cost' => $shipping_cost,
-                'shipping_method' => 'JNE '.$shipping_method,
+                'shipping_method' => $order_session['shipping_methods'].' '.$shipping_method,
                 'shipping_duration' => $shipping_duration,
                 'date_purchased' => Carbon::now(),
+                'payment_method' => $payment_information['payment_type'],
                 'email' => $order_session['email'],
                 'invoice_number' => $order_session['invoice_number']
             ]);
@@ -266,15 +266,51 @@ class PaymentController extends Controller
                     'price_prefix' => ''
                 ]);
             }
-            $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
-            $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->get();
-            $vt = new Veritrans;
-                
-            $payment_info = PaymentInfo::getInfo($order_session['invoice_number']);
-            dispatch(new SendOrderEmail($order_user, $order_product, $payment_info));
-            Cart::destroy();
-            Session::forget('shipping');
+
+        
+            if($payment_information['payment_type']) {
+                $bank_transfer = Payment::getBanks();
+                $bank = "";
+                foreach($bank_transfer as $item) {
+                    $bank .=
+                    "<tr>
+                        <td>Bank</td>
+                        <td>".strtoupper($item->bank_name)."</td>
+                    </tr>
+                    <tr>
+                        <td>Rekening</td>
+                        <td>".$item->bank_account_no."<br>a/n ".$item->bank_account_name."</td>
+                    </tr>
+                    <tr>
+                        <td>Batas Pembayaran</td>
+                        <td><strong>(1x24 Jam)</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan=\"2\"><hr></td>
+                    </tr>";
+                }
+                $payment_info = "
+                <strong>Bank Transfer</strong>
+                <table width=\"100%\">
+                ".$bank."
+                </table>
+                ";
+                $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
+                $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->get();
+                dispatch(new SendOrderEmail($order_user, $order_product, $payment_info));
+            } else {
+                $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
+                $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->get();
+                $vt = new Veritrans;
+                    
+                $payment_info = PaymentInfo::getInfo($order_session['invoice_number']);
+                dispatch(new SendOrderEmail($order_user, $order_product, $payment_info));
+            }
         }
+
+        Cart::destroy();
+        Session::forget('shipping');
+        Session::forget('payment');
 
         if(isset($status)) {
             if($status == "capture"){
@@ -292,9 +328,8 @@ class PaymentController extends Controller
             } elseif($status == "expire") {
                 $message = "Mohon maaf, pembayaran telah kadaluarsa.";
             }
-    
-            //return view('frontend.payment', compact('message'));
-            return redirect()->route('payment-confirmation')->withInput(['data' => $payment_info]);
+            
+            return redirect()->route('payment-confirmation');
         } else {
             $vt = new Veritrans;
             $json_result = file_get_contents('php://input');
@@ -325,9 +360,8 @@ class PaymentController extends Controller
     }
 
     public function paymentConfirmation() {
-        $info = Session::get('data');
-        dd($info);
-        return view('frontend.payment-confirmation');
+        $bank_transfer = Payment::getBanks();
+        return view('frontend.payment-confirmation', compact('bank_transfer'));
     }
 
     public function postPaymentConfirmation(Request $request) {

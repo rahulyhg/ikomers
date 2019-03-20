@@ -71,7 +71,7 @@ class Api
             'json' => $data,
         ]);
         $url = json_decode($response->getBody()->getContents());
-        //dd($url);
+        dd($url);
         return redirect($url->redirect_url);
     }
 

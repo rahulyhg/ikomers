@@ -302,6 +302,8 @@ $(document).ready(function() {
             'id': $('option:selected', '#delivery_city').val(),
             'courier': method
         };
+        $('#ongkir').empty();
+        $('#ongkir').append('<option value="">Loading...</option>');
         $.post('{{ route("get-cost") }}', data, function(data, textStatus, xhr) {
             /*optional stuff to do after success */
             
