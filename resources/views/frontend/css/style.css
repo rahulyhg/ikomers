@@ -1715,7 +1715,7 @@ h4.signbheim{
 .styled-input input:focus ~ label, .styled-input input:valid ~ label,.styled-input textarea:focus ~ label ,.styled-input textarea:valid ~ label{
     font-size: 0.9em;
     color: #333333;
-    top: -1.3em;
+    top: -2.2em;
     -webkit-transition: all 0.125s;
 	-moz-transition: all 0.125s; 
 	-o-transition: all 0.125s;
@@ -1729,7 +1729,7 @@ h4.signbheim{
 }
 .styled-input label {
 	color: #555;
-    padding: 0.4em 0.5em;
+    padding: 0.8em 0.8em;
     position: absolute;
     top: 0;
     left: 0;

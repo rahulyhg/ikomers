@@ -77,22 +77,22 @@
                     <form action="{{ route('post.contact') }}" method="post" class="m-t-30">
                         <div class="styled-input agile-styled-input-top">
                             <input type="text" name="name" required="">
-                            <label>name</label>
+                            <label>Name</label>
                             <span></span>
                         </div>
                         <div class="styled-input">
                             <input type="email" name="email" required="">
-                            <label>email</label>
+                            <label>Email</label>
                             <span></span>
                         </div>
                         <div class="styled-input">
                             <input type="text" name="subject" required="">
-                            <label>subject</label>
+                            <label>Subject</label>
                             <span></span>
                         </div>
                         <div class="styled-input">
                             <textarea name="message" required=""></textarea>
-                            <label>message</label>
+                            <label>Message</label>
                             <span></span>
                         </div>
                         <button type="submit" class="btn btn-wishlist-product">Send</button>
