@@ -40,14 +40,16 @@
             
                 <tbody>
             
-                    <?php foreach(Cart::content() as $row) :?>
+                    @foreach(Cart::content() as $row)
             
                         <tr>
                             <td>
                                 <p><strong>{{ ucwords(strtolower($row->name)) }}</strong></p>
                                 <p>{{ $row->options->has('size') ? $row->options->size : '' }}</p>
                             </td>
-                            <td class="text-center"><?php echo $row->qty; ?></td>
+                            <td class="text-center">
+                                <input style="width:42px;text-align:center;" onchange="qty(this.value, '{{$row->rowId}}')" type="number" name="qty" id="qty" value="{{ $row->qty }}" min="1">
+                            </td>
                             <td>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($row->price) }}</td>
                             <td>{{ App\Models\Setting::getAttr('currency_symbol') }} {{ number_format($row->total) }}</td>
                             <td>
@@ -59,7 +61,7 @@
                             </td>
                         </tr>
             
-                    <?php endforeach;?>
+                    @endforeach
             
                 </tbody>
             </table>
@@ -102,4 +104,21 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('addscript')
+<script>
+
+function qty(qty, id) {
+    data = {
+        'qty':qty,
+        '_token':'{!! csrf_token() !!}',
+        '_method':'PUT'
+    };
+    $.post('{{ URL::to("cart") }}/'+id+'', data, function(data, textStatus, xhr) {
+        /*optional stuff to do after success */
+        console.log(data);
+    });
+}
+</script>    
 @endsection

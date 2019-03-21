@@ -30,7 +30,7 @@
                 
                 <p>Kamu melakukan permintaan pengaturan ulang password akun Endless milik kamu.</p>
                 <p>Jika ini bukan kamu, mohon abaikan pemberitahuan ini sehingga akun kamu tetap aman.</p>
-                <p>Untuk megatur ulang password silahkan klik link di bawah ini</p>
+                <p>Untuk mengatur ulang password silahkan klik link di bawah ini</p>
 
                 <br>
                 <center><a href="{{ url('password/reset', $token) }}">RESET PASSWORD</a></center>
