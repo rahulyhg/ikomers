@@ -263,6 +263,7 @@
                 <th>Rekening Transfer</th>
                 <th>Rekening Pengirim</th>
                 <th>Jumlah Transfer</th>
+                <th>Foto</th>
               </tr>
             </thead>
             <tbody>
@@ -273,6 +274,7 @@
                       <td>{{ $item->payment_method }}</td>
                       <td>{{ $item->sender_bank }} a/n {{ $item->sender_name }}</td>
                       <td>{{ $data['currency'][19]->value }} {{ $item->amount_sent }}</td>
+                      <td><img src="{{ asset($item->photo) }}" alt="Bukti Transfer" width="120"></td>
                   </tr>
               @endforeach
             </tbody>

@@ -8,11 +8,13 @@ use App\Models\Payment;
 use App\Models\Order;
 use App\Veritrans\Veritrans;
 use App\Veritrans\Midtrans;
+use File;
 use Cart;
 use Session;
 use Carbon\Carbon;
 use App\Jobs\SendOrderEmail;
 use PaymentInfo;
+use App\Http\Controllers\Admin\AdminSiteSettingController;
 
 class PaymentController extends Controller
 {
@@ -178,8 +180,8 @@ class PaymentController extends Controller
                     "customer_details"=> $customer_details,
                     "billing_address"=> $billing_address,
                     "shipping_address"=> $shipping_address,
-                    "push_uri"=>"https://api.merchant.com/push",
-                    "back_to_store_uri"=>"https://merchant.com"
+                    "push_uri"=>"https://api.endlessos.co.id/push",
+                    "back_to_store_uri"=>"https://endlessos.co.id"
                 );
                 return redirect()->route('checkout-kredivo')->with(['data'=>$data]);
                 //dd($request->payment_type);
@@ -368,7 +370,28 @@ class PaymentController extends Controller
         // dd($request->all());
         $input = $request->all();
         unset($input['_token']);
-        $payment = Payment::insert($input);
+
+        $myVar = new AdminSiteSettingController();	
+		$extensions = $myVar->imageType();
+				
+        //dd($input);
+		if($request->hasFile('photo') and in_array($request->photo->extension(), $extensions)){
+			$image = $request->photo;
+            $fileName = time().'.'.$image->getClientOriginalName();
+            
+			$image->move('resources/assets/images/payment_confirmations/', $fileName);
+            $photo = 'resources/assets/images/payment_confirmations/'.$fileName;
+        } else {
+            $photo = NULL;
+        }
+        $input['photo'] = $photo;
+
+        $payment_exist = Payment::where("orders_id", $request->orders_id)->first();
+        if(isset($payment_exist)) {
+            $payment = Payment::where("orders_id", $request->orders_id)->update($input);
+        } else {
+            $payment = Payment::insert($input);
+        }
 
         return redirect()->back()->with('message', 'Terima kasih telah menyelesaikan transaksi di Endless Store.');
     }

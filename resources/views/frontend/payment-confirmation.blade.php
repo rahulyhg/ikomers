@@ -27,8 +27,20 @@
                 </div>
             @endif
             <h2>Please Confirm Your Payment</h2>
-            <form method="POST" action="{{ route('post.payment-confirmation') }}" class="m-t-30">
+            <form method="POST" action="{{ route('post.payment-confirmation') }}" class="m-t-30" enctype="multipart/form-data">
                 {{ csrf_field() }}
+                <div class="form-group{{ $errors->has('payment_date') ? ' has-error' : '' }}">
+                    <label for="email" class="control-label">Tanggal Transfer</label>
+                    <input id="date" type="date" class="form-control" name="payment_date" value="{{ old('payment_date') }}" required>
+
+                    @if ($errors->has('payment_date'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('payment_date') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                
                 <div class="form-group{{ $errors->has('orders_id') ? ' has-error' : '' }}">
                     <label for="orders_id" class="control-label">Order ID</label>
                     <input id="orders_id" type="text" class="form-control" name="orders_id" value="{{ old('orders_id') }}" required autofocus>
@@ -40,21 +52,10 @@
                     @endif
                 </div>
 
-                <div class="form-group{{ $errors->has('amount_sent') ? ' has-error' : '' }}">
-                    <label for="amount_sent" class="control-label">Amount Sent</label>
-                    <input id="amount_sent" type="text" class="form-control" name="amount_sent" value="{{ old('amount_sent') }}" required autofocus>
-
-                    @if ($errors->has('amount_sent'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('amount_sent') }}</strong>
-                        </span>
-                    @endif
-                </div>
-
                 <div class="form-group{{ $errors->has('payment_method') ? ' has-error' : '' }}">
-                    <label for="payment_method" class="control-label">Select Payment Mode</label>
+                    <label for="payment_method" class="control-label">Pilih Transfer Rekening</label>
                     <select name="payment_method" class="form-control" required>
-                        <option value="">-- Pilih Nama Bank Transfer --</option>
+                        <option value="">-- Pilih Transfer Rekening --</option>
                         @foreach ($bank_transfer as $item)
                         <option value="{{ $item->bank_name }}">{{ $item->bank_name }} a/n {{ $item->bank_account_name }}</option>
                         @endforeach
@@ -68,7 +69,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('sender_bank') ? ' has-error' : '' }}">
-                    <label for="sender_bank" class="control-label">Sender Bank</label>
+                    <label for="sender_bank" class="control-label">Nama Bank</label>
                     <input id="sender_bank" type="text" class="form-control" name="sender_bank" value="{{ old('sender_bank') }}" required autofocus>
 
                     @if ($errors->has('sender_bank'))
@@ -79,7 +80,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('sender_name') ? ' has-error' : '' }}">
-                    <label for="sender_name" class="control-label">Sender Name</label>
+                    <label for="sender_name" class="control-label">Nama Pemilik Rekening</label>
                     <input id="sender_name" type="text" class="form-control" name="sender_name" value="{{ old('sender_name') }}" required autofocus>
 
                     @if ($errors->has('sender_name'))
@@ -88,14 +89,38 @@
                         </span>
                     @endif
                 </div>
-                
-                <div class="form-group{{ $errors->has('payment_date') ? ' has-error' : '' }}">
-                    <label for="email" class="control-label">Payment Date</label>
-                    <input id="date" type="date" class="form-control" name="payment_date" value="{{ old('payment_date') }}" required>
 
-                    @if ($errors->has('payment_date'))
+                <div class="form-group{{ $errors->has('amount_sent') ? ' has-error' : '' }}">
+                    <label for="amount_sent" class="control-label">Nominal Transfer</label>
+                    <input id="amount_sent" type="text" class="form-control" name="amount_sent" value="{{ old('amount_sent') }}" required autofocus>
+
+                    @if ($errors->has('amount_sent'))
                         <span class="help-block">
-                            <strong>{{ $errors->first('payment_date') }}</strong>
+                            <strong>{{ $errors->first('amount_sent') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                <div class="form-group{{ $errors->has('reference_id') ? ' has-error' : '' }}">
+                    <label for="reference_id" class="control-label">Reference ID/Memo</label>
+                    <input id="reference_id" type="text" class="form-control" name="reference_id" value="{{ old('reference_id') }}" placeholder="Masukkan Reference ID yang tercantum di struk ATM" required autofocus>
+
+                    @if ($errors->has('reference_id'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('reference_id') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+
+
+                <div class="form-group{{ $errors->has('photo') ? ' has-error' : '' }}">
+                    <label for="photo" class="control-label">Reference ID/Memo</label>
+                    <input id="photo" type="file" class="form-control" name="photo" value="{{ old('photo') }}" required autofocus>
+
+                    @if ($errors->has('photo'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('photo') }}</strong>
                         </span>
                     @endif
                 </div>
