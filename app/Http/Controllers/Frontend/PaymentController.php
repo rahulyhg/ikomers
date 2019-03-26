@@ -205,6 +205,7 @@ class PaymentController extends Controller
         $cart = Cart::content();
         $order_session = Session::get('shipping');
         $shipping_cost = Session::get('shipping')['shipping_cost'];
+        $shipping_methods = Session::get('shipping')['shipping_methods'];
         $shipping_method = Session::get('shipping')['shipping_method'];
         $shipping_duration = Session::get('shipping')['shipping_duration'];
         $total = Cart::total(2, '.', '')+$shipping_cost;
@@ -242,7 +243,7 @@ class PaymentController extends Controller
                 'delivery_phone' => $order_session['delivery_phone'],
                 'order_price' => $total,
                 'shipping_cost' => $shipping_cost,
-                'shipping_method' => $order_session['shipping_methods'].' '.$shipping_method,
+                'shipping_method' => $shipping_methods.' '.$shipping_method,
                 'shipping_duration' => $shipping_duration,
                 'date_purchased' => Carbon::now(),
                 'payment_method' => $payment_information['payment_type'],
