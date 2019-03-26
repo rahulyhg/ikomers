@@ -143,6 +143,13 @@ class PaymentController extends Controller
                 'item_details'          => $items,
                 'customer_details'   => $customer_details
             );
+        } else {
+            $transaction_data = array(
+                'payment_type'  => $request->payment_type,
+                'transaction_details'   => $transaction_details,
+                'item_details'          => $items,
+                'customer_details'   => $customer_details
+            );
         }
 
         //dd($transaction_data);
@@ -158,6 +165,7 @@ class PaymentController extends Controller
                 $vtweb_url = $vt->vtweb_charge($transaction_data);
                 return redirect($vtweb_url);
             } else if($request->payment_type == 'kredivo') {
+                Session::put('payment', $transaction_data);
                 $shipping_fee = array(
                     array(
                         "id"=>"shippingfee",
@@ -180,8 +188,8 @@ class PaymentController extends Controller
                     "customer_details"=> $customer_details,
                     "billing_address"=> $billing_address,
                     "shipping_address"=> $shipping_address,
-                    "push_uri"=>"https://api.endlessos.co.id/push",
-                    "back_to_store_uri"=>"https://endlessos.co.id"
+                    "push_uri"=>"https://endlessos.co.id/payment",
+                    "back_to_store_uri"=>"https://endlessos.co.id/payment"
                 );
                 return redirect()->route('checkout-kredivo')->with(['data'=>$data]);
                 //dd($request->payment_type);
@@ -194,6 +202,7 @@ class PaymentController extends Controller
     }
 
     public function payment($status='') {
+
         $cart = Cart::content();
         $order_session = Session::get('shipping');
         $shipping_cost = Session::get('shipping')['shipping_cost'];
