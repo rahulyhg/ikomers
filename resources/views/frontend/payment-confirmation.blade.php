@@ -20,12 +20,14 @@
 
 <div class="banner_bottom_agile_info">
     <div class="container">
-        <div class="col-md-6">
+        <div class="col-md-12">
             @if(session()->has('message'))
                 <div class="alert alert-success">
                     {{ session()->get('message') }}
                 </div>
             @endif
+        </div>
+        <div class="col-md-6">
             <h2>Please Confirm Your Payment</h2>
             <form method="POST" action="{{ route('post.payment-confirmation') }}" class="m-t-30" enctype="multipart/form-data">
                 {{ csrf_field() }}

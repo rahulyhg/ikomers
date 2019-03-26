@@ -202,7 +202,6 @@ class PaymentController extends Controller
     }
 
     public function payment($status='') {
-
         $cart = Cart::content();
         $order_session = Session::get('shipping');
         $shipping_cost = Session::get('shipping')['shipping_cost'];
@@ -340,7 +339,7 @@ class PaymentController extends Controller
                 $message = "Mohon maaf, pembayaran telah kadaluarsa.";
             }
             
-            return redirect()->route('payment-confirmation');
+            return redirect()->route('payment-confirmation')->with('message','Terima kasih, Pesanan akan segera kami proses.');
         } else {
             $vt = new Veritrans;
             $json_result = file_get_contents('php://input');
