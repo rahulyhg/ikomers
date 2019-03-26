@@ -205,7 +205,7 @@ class PaymentController extends Controller
         $cart = Cart::content();
         $order_session = Session::get('shipping');
         $shipping_cost = Session::get('shipping')['shipping_cost'];
-        $shipping_methods = Session::get('shipping')['shipping_methods'];
+        $shipping_methods = Session::get('shipping')['shipping_type'];
         $shipping_method = Session::get('shipping')['shipping_method'];
         $shipping_duration = Session::get('shipping')['shipping_duration'];
         $total = Cart::total(2, '.', '')+$shipping_cost;

@@ -180,7 +180,7 @@
                             </div>
                             <div class="col-sm-8 col-xs-12 summaryheim form-horizontal form-ongkir">
                                 <div class="col-xs-5 p-0">
-                                    <select name="shipping_methods" id="shipping_methods" class="form-control" required>
+                                    <select name="shipping_type" id="shipping_methods" class="form-control" required>
                                         @foreach ($data['shipping_methods'] as $item)
                                         <option value="{{ $item->slug }}">{{ $item->name }}</option>
                                         @endforeach
