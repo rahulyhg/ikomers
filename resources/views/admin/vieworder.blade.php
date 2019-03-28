@@ -252,6 +252,25 @@
 
             </div>
           {!! Form::close() !!}
+
+      <div class="col-xs-12">
+        <p class="lead">Nomor Resi</p>
+        {!! Form::open(array('url' =>'admin/updateOrder', 'method'=>'post')) !!}
+          {!! Form::hidden('orders_id', $data['orders_data'][0]->orders_id, array('class'=>'form-control', 'id'=>'orders_id'))!!}
+          <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <input type="text" name="waybill" @isset($data['orders_data'][0]->shipping_waybill) value="{{$data['orders_data'][0]->shipping_waybill}}" @endisset class="form-control">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <button type="submit" class="btn btn-success">Simpan Nomor Resi</button>
+              </div>
+          </div>
+        {!! Form::close() !!}
+          
+      </div>
+      <!-- /.row -->
         
       <div class="col-xs-12">
         <p class="lead">Konfirmasi Pembayaran</p>

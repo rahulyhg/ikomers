@@ -26,7 +26,7 @@
                 <form id="trackOrder" action="{{ route('post.track-order') }}">
                     <div class="input-group">
                         {!! csrf_field() !!}
-                        <input type="text" name="waybill" class="form-control" placeholder="ID Order">
+                        <input type="text" name="orders_id" class="form-control" placeholder="ID Order">
                         <input type="hidden" name="courier" value="jne" class="form-control" placeholder="ID Order">
                         <span class="input-group-btn">
                             <button class="btn btn-orange" type="submit"><i class="fa fa-search"></i></button>

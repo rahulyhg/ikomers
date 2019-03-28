@@ -176,10 +176,11 @@ class AdminOrdersController extends Controller
 			print Lang::get("labels.You do not have to access this route");
 		} else {
 			$orders_status 		=	 $request->orders_status;
-			$comments 	 			=	 $request->comments;
+			$comments 	 		=	 $request->comments;
 			$orders_id 			= 	 $request->orders_id;
 			$old_orders_status 	= 	 $request->old_orders_status;
 			$date_added			=    date('Y-m-d h:i:s');
+			$waybill 			= 	 $request->waybill;
 			
 			//get function from other controller
 			$myVar = new AdminSiteSettingController();
@@ -187,6 +188,14 @@ class AdminOrdersController extends Controller
 			
 			$status = DB::table('orders_status')->where('orders_status_id', '=', $orders_status)->get();
 			
+			//orders waybill
+			if($waybill){
+				DB::table('orders')->where('orders_id', '=', $orders_id)->update([
+					'shipping_waybill' => $waybill
+				]);
+
+				return redirect()->back()->with('message', Lang::get("labels.OrderStatusChangedMessage"));
+			}
 			
 			if($old_orders_status==$orders_status){
 				return redirect()->back()->with('error', Lang::get("labels.StatusChangeError"));

@@ -63,10 +63,14 @@ class TrackOrderController extends Controller
     }
 
     function getWaybill(Request $request) {
-        $waybill = RajaOngkir::Waybill([
-            'waybill' 		=> $request->waybill, // id kota asal
-            'courier' 		=> $request->courier, // kode kurir pengantar ( jne / tiki / pos )
-        ])->get();
+        $order = \DB::table('orders')->where('invoice_number', $request->orders_id)->first();
+        $waybill = "Dalam Proses";
+        if($order) {
+            $waybill = RajaOngkir::Waybill([
+                'waybill' 		=> $order->shipping_waybill, // id kota asal
+                'courier' 		=> $order->shipping_method, // kode kurir pengantar ( jne / tiki / pos )
+            ])->get();
+        }
         return response()->json($waybill);
     }
 }
