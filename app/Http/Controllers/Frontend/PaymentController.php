@@ -177,9 +177,7 @@ class PaymentController extends Controller
                 $item_kredivo = array_merge($products_kredivo,$shipping_fee);
                 $data = 
                 array(
-                    "payment_type"=>"30_days",  
-                    "tokenize_user"=> false,
-                    "user_token" => "XXXX-XXXX",
+                    "payment_type"=>"30_days",
                     "transaction_details" => array(
                         "amount"=>$total,
                         "order_id"=>$order['invoice_number'],
