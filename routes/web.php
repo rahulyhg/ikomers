@@ -44,6 +44,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 	Route::post('/checkout', 'CheckoutController@checkout')->name('post.checkout');
 	Route::get('/payment-method/{invoice_number}', 'PaymentController@paymentMethod')->name('payment-method');
 	Route::post('/payment-method', 'PaymentController@postPayment')->name('post-payment');
+	Route::post('/push-payment', 'PaymentController@pushPayment')->name('push-payment');
 	Route::post('/payment-method-snap', 'PaymentController@getSnapToken')->name('post-payment-snap');
 	Route::get('/payment/{status?}', 'PaymentController@payment')->name('payment');
 	Route::get('/payment-confirmation', 'PaymentController@paymentConfirmation')->name('payment-confirmation');
