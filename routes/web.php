@@ -79,6 +79,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 	Route::group(['middleware' => 'auth'], function() {
 		Route::get('/history-order', 'UserController@order')->name('user.order');
+		Route::get('/my-wishlist', 'UserController@wishlist')->name('user.wishlist');
 		Route::get('/my-account', 'UserController@account')->name('user.account');
 		Route::post('/my-account', 'UserController@updateAccount')->name('user.update.my-account');
 		Route::get('/change-password', 'UserController@changePassword')->name('user.change-password');

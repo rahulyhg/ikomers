@@ -2091,6 +2091,18 @@ position:relative;
 .btn-danger.my-cart-btn:focus {
     outline: none;
 }
+.btn-link {
+	padding: 0;
+	background: none;
+	color: #555;
+	text-decoration: underline;
+	font-weight: bold;
+}
+.btn-link:hover {
+	color: #000;
+	text-decoration: underline;
+	font-weight: bold;
+}
 .snipcart-details input.button {
     font-size: 13px;
     color: #fff;
@@ -2144,10 +2156,17 @@ position:relative;
     letter-spacing: 1px;
     font-weight: 600;
 }
-
-
 .wishlistbutton:hover{
     background:#6BB9F0;
+}
+.toggle-wishlist {
+	position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #ea275a;
+}
+.toggle-wishlist:hover {
+    color: #ff1b1b;
 }
 
 /** added 13 02 2018**/

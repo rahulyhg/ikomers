@@ -12,6 +12,7 @@ use App\Models\Order;
 use File;
 use Illuminate\Support\Facades\Input;
 use Rajaongkir;
+use Cart;
 use App\Http\Controllers\Admin\AdminSiteSettingController;
 
 class UserController extends Controller
@@ -31,6 +32,12 @@ class UserController extends Controller
         $user = User::find($auth->customers_id);
         //dd($orders);
         return view('frontend.user.my-order', compact('orders','user'));
+    }
+
+    public function wishlist() {
+        $orders = Cart::instance('wishlist')->content();
+        //dd($orders);
+        return view('frontend.user.my-wishlist', compact('orders'));
     }
 
     public function account() {

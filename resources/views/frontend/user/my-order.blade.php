@@ -69,7 +69,7 @@
                         <hr class="orange">
                     @endforeach
                     @empty
-                        <p>Empty</p>
+                        <p>Belum ada histori pembelian</p>
                 @endforelse
             </div>
         </div>

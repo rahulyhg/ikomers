@@ -38,11 +38,17 @@ class CartController extends Controller
     public function store(Request $request)
     {
         //
-        Cart::add($request->all());
+        if($request->add_wishlist) {
+            Cart::instance('wishlist')->add($request->all());
+            return redirect()->back()->with('message', 'Produk sudah ditambahkan ke wishlist!');
+        } else {
+            Cart::add($request->all());
+        }
+
         if($request['buy']) {
             return redirect('cart');
         } else {
-            return redirect()->back()->withSuccessMessage('Item was added to your cart!');
+            return redirect()->back()->with('message', 'Produk sudah ditambahkan ke keranjang!');
         }
     }
 
@@ -78,6 +84,10 @@ class CartController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if($request->wishlist) {
+            Cart::instance('wishlist')->remove($id);
+            return redirect()->back()->with('message','Wishlist sudah dihapus!');
+        }
         Cart::update($id, $request->qty); // Will update the quantity
     }
 
@@ -91,6 +101,6 @@ class CartController extends Controller
     {
         //
         Cart::remove($id);
-        return redirect()->back()->withSuccessMessage('Item has been removed!');
+        return redirect()->back()->with('message','Produk sudah dihapus dari keranjang!');
     }
 }

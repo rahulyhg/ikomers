@@ -49,10 +49,16 @@
     </div>
 </div>
 
-<div class="products spaceproheim">
+<div class="products">
     <div class="container p-0">
-        
-            <div class="single-page">
+            <div class="col-md-12 m-t-20">
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
+            </div>
+            <div class="single-page spaceproheim">
                 <div class="single-page-row" id="detail-21">
                     <div class="col-md-6">
                             <div id="slider" class="flexslider">
@@ -102,7 +108,7 @@
                                         <button class="btn btn-view-product btn-block" type="submit">Add to Cart</button>
                                     </div>
                                     <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
-                                        <button class="btn btn-wishlist-product btn-block" type="submit" name="add_wishlist">Wishlist</button>
+                                        <button class="btn btn-wishlist-product btn-block" type="submit" name="add_wishlist" value="1">Wishlist</button>
                                     </div>
                                 </div>
                             </div>

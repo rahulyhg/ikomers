@@ -11,7 +11,7 @@
                 <li class='hidden-xs'> <a href='{{ route('register') }}'> Sign up </a></li>
               @endif
               <li>		
-                  <a href="{{URL::to('cart')}}"><strong>{{ Cart::count() }}</strong> Items in Cart</a>
+                  <a href="{{URL::to('cart')}}"><strong>{{ Cart::instance('default')->count() }}</strong> Items in Cart</a>
               </li>
               @if (Auth::user())
                 <li class="dropdown"> 
@@ -43,6 +43,7 @@
                       </li>
                       <li role="separator" class="divider"></li>
                       <li><a href="{{ route('user.order') }}">History Pembelian</a></li>
+                      <li><a href="{{ route('user.wishlist') }}">Wishlist</a></li>
                       <li><a href="{{ route('user.account') }}">Pengaturan</a></li>
                       <li><a href="{{ route('user.change-password') }}">Ubah Password</a></li>
                       <li> 
