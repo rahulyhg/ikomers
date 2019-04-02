@@ -187,7 +187,7 @@ class PaymentController extends Controller
                     "billing_address"=> $billing_address,
                     "shipping_address"=> $shipping_address,
                     "push_uri"=>"https://endlessos.co.id/push-payment",
-                    "back_to_store_uri"=>"https://endlessos.co.id"
+                    "back_to_store_uri"=>"https://endlessos.co.id/order-kredivo"
                 );
                 return redirect()->route('checkout-kredivo')->with(['data'=>$data]);
                 //dd($request->payment_type);
@@ -376,6 +376,10 @@ class PaymentController extends Controller
             'signature_key' => $input['signature_key']
         ];
 
+        return redirect()->route('confirm-kredivo')->with(['data'=>$data]);
+    }
+
+    public function saveOrderKredivo() {
         $cart = Cart::content();
         $order_session = Session::get('shipping');
         $shipping_cost = Session::get('shipping')['shipping_cost'];
@@ -459,7 +463,7 @@ class PaymentController extends Controller
         Session::forget('shipping');
         Session::forget('payment');
 
-        return redirect()->route('confirm-kredivo')->with(['data'=>$data]);
+        return redirect()->route('home');
     }
 
     public function paymentConfirmation() {

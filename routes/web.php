@@ -54,6 +54,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 	//Checkout kredivo
 	Route::get('/checkout-kredivo', '\App\Kredivo\Api@checkout')->name('checkout-kredivo');
 	Route::get('/confirm-kredivo', '\App\Kredivo\Api@confirm')->name('confirm-kredivo');
+	Route::get('/order-kredivo', 'PaymentController@saveOrderKredivo')->name('order-kredivo');
 
 	//About
 	Route::get('/about', 'AboutController@index')->name('about');
