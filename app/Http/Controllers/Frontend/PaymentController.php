@@ -375,6 +375,94 @@ class PaymentController extends Controller
             'transaction_id' => $input['transaction_id'],
             'signature_key' => $input['signature_key']
         ];
+
+        $cart = Cart::content();
+        $order_session = Session::get('shipping');
+        $shipping_cost = Session::get('shipping')['shipping_cost'];
+        $shipping_methods = Session::get('shipping')['shipping_type'];
+        $shipping_method = Session::get('shipping')['shipping_method'];
+        $shipping_duration = Session::get('shipping')['shipping_duration'];
+        $total = Cart::total(2, '.', '')+$shipping_cost;
+        
+        $payment_information = Session::get('payment');
+
+        if(Cart::count() > 0 && isset($order_session['invoice_number'])) {
+
+            $order = Order::insert([
+                //customer
+                'customers_id' => $order_session['customers_id'],
+                'customers_name' => $order_session['customers_firstname']." ".$order_session['customers_lastname'],
+                'customers_street_address' => $order_session['delivery_street_address'],
+                'customers_suburb' => $order_session['delivery_suburb'],
+                'customers_city' => $order_session['delivery_city'],
+                'customers_state' => $order_session['delivery_state'],
+                'customers_postcode' => $order_session['delivery_postcode'],
+                'customers_telephone' => $order_session['delivery_phone'],
+                //billing
+                'billing_name' => $order_session['customers_firstname']." ".$order_session['customers_lastname'],
+                'billing_street_address' => $order_session['delivery_street_address'],
+                'billing_suburb' => $order_session['delivery_suburb'],
+                'billing_city' => $order_session['delivery_city'],
+                'billing_state' => $order_session['delivery_state'],
+                'billing_postcode' => $order_session['delivery_postcode'],
+                'billing_phone' => $order_session['delivery_phone'],
+                
+                //delivery
+                'delivery_name' => $order_session['customers_firstname']." ".$order_session['customers_lastname'],
+                'delivery_street_address' => $order_session['delivery_street_address'],
+                'delivery_suburb' => $order_session['delivery_suburb'],
+                'delivery_city' => $order_session['delivery_city'],
+                'delivery_state' => $order_session['delivery_state'],
+                'delivery_postcode' => $order_session['delivery_postcode'],
+                'delivery_phone' => $order_session['delivery_phone'],
+                'order_price' => $total,
+                'shipping_cost' => $shipping_cost,
+                'shipping_method' => $shipping_methods,
+                'shipping_type' => $shipping_method,
+                'shipping_duration' => $shipping_duration,
+                'date_purchased' => Carbon::now(),
+                'payment_method' => $payment_information['payment_type'],
+                'email' => $order_session['email'],
+                'invoice_number' => $order_session['invoice_number']
+            ]);
+            $order = Order::orderBy('orders_id', 'DESC')->first();
+            $order_history = \DB::table('orders_status_history')->insert([
+                'orders_id' => $order->orders_id,
+                'orders_status_id' => '1',
+                'date_added' => Carbon::now()->toDateString()
+            ]);
+            
+            foreach($cart as $item) {
+                $order_product = \DB::table('orders_products')->insert([
+                    'orders_id' => $order->orders_id,
+                    'products_id' => $item->id,
+                    'products_name' => $item->name,
+                    'products_price' => $item->price,
+                    'products_quantity' => $item->qty,
+                    'final_price' => $item->total
+                ]);
+                $order_product = \DB::table('orders_products')->orderBy('orders_products_id', 'DESC')->first();
+                $order_product_attr = \DB::table('orders_products_attributes')->insert([
+                    'orders_id' => $order->orders_id,
+                    'orders_products_id' => $order_product->orders_products_id,
+                    'products_id' => $item->id,
+                    'products_options' => '',
+                    'products_options_values' => '',
+                    'options_values_price' => '',
+                    'price_prefix' => ''
+                ]);
+            }
+        
+            $payment_info = "<strong>Terimakasih pesanan sudah dilakukan melalui Kredivo</strong>";
+            $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
+            $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->get();
+            dispatch(new SendOrderEmail($order_user, $order_product, $payment_info));
+        }
+
+        Cart::destroy();
+        Session::forget('shipping');
+        Session::forget('payment');
+
         return redirect()->route('confirm-kredivo')->with(['data'=>$data]);
     }
 
