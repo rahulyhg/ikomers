@@ -43,7 +43,6 @@ class PaymentController extends Controller
 
     //SnapMidtrans
     public function paymentMethod($invoice_number) {
-        dd(Session::get('kredivo'));
         if(Cart::count() == 0) {
             return redirect('home');
         }
