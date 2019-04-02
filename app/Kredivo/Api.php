@@ -55,8 +55,9 @@ class Api
      * @param $data
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function confirm($data)
+    public function confirm()
     {
+        $data = session()->get('data');
         return $this->getResponse($this->kredivo->getConfirmUrl(), $data);
     }
 
