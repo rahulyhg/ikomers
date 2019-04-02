@@ -53,6 +53,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 	Route::post('/notification', 'PaymentController@notification')->name('payment-status');
 	//Checkout kredivo
 	Route::get('/checkout-kredivo', '\App\Kredivo\Api@checkout')->name('checkout-kredivo');
+	Route::get('/confirm-kredivo', '\App\Kredivo\Api@confirm')->name('confirm-kredivo');
 
 	//About
 	Route::get('/about', 'AboutController@index')->name('about');
