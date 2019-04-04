@@ -28,7 +28,7 @@
                     Hai {{ $order->customers_name }}
                 </p>
 
-                <h4>Terima kasih telah menyelesaikan transaksi di Endless Store. Pembayaran menggunakan Transfer Bank berhasil.</h4>
+                <h4>Terima kasih telah menyelesaikan transaksi di Endless Store. {!! ($payment) !!}</h4>
                 
                 <p>Klik link berikut untuk mendapatkan bukti pembayaran anda</p>
                 

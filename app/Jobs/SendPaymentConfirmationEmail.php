@@ -20,11 +20,13 @@ class SendPaymentConfirmationEmail implements ShouldQueue
      * @return void
      */
     protected $order;
+    protected $payment;
 
-    public function __construct($order)
+    public function __construct($order, $payment)
     {
         //
         $this->order = $order;
+        $this->payment = $payment;
     }
 
     /**
@@ -35,7 +37,7 @@ class SendPaymentConfirmationEmail implements ShouldQueue
     public function handle()
     {
         //
-        $email = new EmailPaymentConfirmation($this->order);
+        $email = new EmailPaymentConfirmation($this->order, $this->payment);
         try {
             Mail::to($this->order->email)->send($email);
         } catch (\Exception $e) {

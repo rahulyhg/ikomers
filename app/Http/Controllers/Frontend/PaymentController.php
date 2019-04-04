@@ -13,6 +13,7 @@ use Cart;
 use Session;
 use Carbon\Carbon;
 use App\Jobs\SendOrderEmail;
+use App\Jobs\SendPaymentConfirmationEmail;
 use PaymentInfo;
 use App\Http\Controllers\Admin\AdminSiteSettingController;
 
@@ -317,8 +318,9 @@ class PaymentController extends Controller
                 $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->get();
                 $vt = new Veritrans;
                     
-                $payment_info = PaymentInfo::getInfo($order_session['invoice_number']);
-                dispatch(new SendOrderEmail($order_user, $order_product, $payment_info));
+                $payment_info = "<strong>Pembayaran melalui Kredivo berhasil.</strong>";
+                $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
+                dispatch(new SendPaymentConfirmationEmail($order_user, $payment_info));
             }
         }
 
@@ -458,10 +460,9 @@ class PaymentController extends Controller
             ]);
         }
     
-        $payment_info = "<strong>Terimakasih pesanan sudah dilakukan melalui Kredivo</strong>";
+        $payment_info = "<strong>Pembayaran melalui Kredivo berhasil.</strong>";
         $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
-        $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->get();
-        dispatch(new SendOrderEmail($order_user, $order_product, $payment_info));
+        dispatch(new SendPaymentConfirmationEmail($order_user, $payment_info));
 
         Cart::destroy();
         Session::forget('shipping');
@@ -501,6 +502,10 @@ class PaymentController extends Controller
         } else {
             $payment = Payment::insert($input);
         }
+
+        $payment_info = "<strong>Pembayaran menggunakan Transfer Bank berhasil.</strong>";
+        $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
+        dispatch(new SendPaymentConfirmationEmail($order_user, $payment_info));
 
         return redirect()->back()->with('message', 'Terima kasih telah menyelesaikan transaksi di Endless Store.');
     }

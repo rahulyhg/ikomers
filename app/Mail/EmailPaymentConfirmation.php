@@ -17,11 +17,13 @@ class EmailPaymentConfirmation extends Mailable
      * @return void
      */
     protected $order;
+    protected $payment;
 
-    public function __construct($order)
+    public function __construct($order, $payment)
     {
         //
         $this->order = $order;
+        $this->payment = $payment;
     }
 
     /**
@@ -33,7 +35,7 @@ class EmailPaymentConfirmation extends Mailable
     {
         //return $this->view('view.name');
         return $this->view('mail.email-payment-confimation')->with([
-        'order' => $this->order
+        'order' => $this->order, 'payment' => $this->payment
         ]);
     }
 }
