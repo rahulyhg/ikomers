@@ -504,7 +504,7 @@ class PaymentController extends Controller
         }
 
         $payment_info = "<strong>Pembayaran menggunakan Transfer Bank berhasil.</strong>";
-        $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
+        $order_user = \DB::table('orders')->where('orders_id', $request->orders_id)->first();
         dispatch(new SendPaymentConfirmationEmail($order_user, $payment_info));
 
         return redirect()->back()->with('message', 'Terima kasih telah menyelesaikan transaksi di Endless Store.');
