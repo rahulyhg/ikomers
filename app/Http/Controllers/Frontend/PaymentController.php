@@ -57,7 +57,7 @@ class PaymentController extends Controller
         return view('frontend.payment-method', compact('methods', 'banks', 'invoice_number','config','shipping_cost','total'));
     }
 
-    public function postPayment(Request $request) {
+    public function postPaymentMethod(Request $request) {
         $cart = Cart::content();
         $order = Session::get('shipping');
         $shipping_cost = round(Session::get('shipping')['shipping_cost']);
@@ -197,6 +197,10 @@ class PaymentController extends Controller
         {
             return $e->getMessage; 
         }
+    }
+
+    public function postPayment() {
+        return redirect()->route('payment');
     }
 
     public function payment($status='') {
