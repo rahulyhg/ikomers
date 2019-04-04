@@ -318,7 +318,7 @@ class PaymentController extends Controller
                 $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->get();
                 $vt = new Veritrans;
                     
-                $payment_info = "<strong>Pembayaran melalui Kredivo berhasil.</strong>";
+                $payment_info = "<strong>Pembayaran melalui Midtrans berhasil.</strong>";
                 $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
                 dispatch(new SendPaymentConfirmationEmail($order_user, $payment_info));
             }

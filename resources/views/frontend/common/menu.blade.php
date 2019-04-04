@@ -5,13 +5,13 @@
   <div class="header nuluhur" id="home">
       <div class="container">
           <ul class="pull-right">
-              <li class='hidden-xs'> <a href="{{ route('track-order') }}"> Track order </a></li>
+              <li class='hidden-xs'> <a href="{{ route('track-order') }}"> Track Order </a></li>
               @if (Auth::guest())
-                <li> <a href='{{ route('login') }}'> Sign in </a></li>
-                <li class='hidden-xs'> <a href='{{ route('register') }}'> Sign up </a></li>
+                <li> <a href='{{ route('login') }}'> Login </a></li>
+                <li class='hidden-xs'> <a href='{{ route('register') }}'> Daftar </a></li>
               @endif
               <li>		
-                  <a href="{{URL::to('cart')}}"><strong>{{ Cart::instance('default')->count() }}</strong> Items in Cart</a>
+                  <a href="{{URL::to('cart')}}"><strong>{{ Cart::instance('default')->count() }}</strong> dalam keranjang</a>
               </li>
               @if (Auth::user())
                 <li class="dropdown"> 
@@ -42,7 +42,7 @@
                         </a>
                       </li>
                       <li role="separator" class="divider"></li>
-                      <li><a href="{{ route('user.order') }}">History Pembelian</a></li>
+                      <li><a href="{{ route('user.order') }}">Histori Pembelian</a></li>
                       <li><a href="{{ route('user.wishlist') }}">Wishlist</a></li>
                       <li><a href="{{ route('user.account') }}">Pengaturan</a></li>
                       <li><a href="{{ route('user.change-password') }}">Ubah Password</a></li>
@@ -63,16 +63,16 @@
       </div>
   </div>
   
-  <div class="headerheim muntjul" style="background-color:#f58634 !important;">
+  <!-- <div class="headerheim muntjul" style="background-color:#f58634 !important;">
       <div class="container">
           <ul>
               <li><a href="index.html">Home</a></li>
-              <li><a href="blankenheim-products.html">Products</a></li>
-              <li><a href="about-blankenheim.html">About</a></li>
-              <li><a href="http://bit.ly/halloblankenheim1"><i class="fa fa-whatsapp" aria-hidden="true"></i> Chat on Whatsapp</a></li>
+              <li><a href="blankenheim-products.html">Produk</a></li>
+              <li><a href="about-blankenheim.html">Tentang Kami</a></li>
+              <li><a href="http://bit.ly/halloblankenheim1"><i class="fa fa-whatsapp" aria-hidden="true"></i> Chat di Whatsapp</a></li>
           </ul>
       </div>
-  </div>
+  </div> -->
   
   
   <!-- //header -->
@@ -96,11 +96,11 @@
                   <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav menu__list">
                       <li class="menu__item"><a class="menu__link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a></li>
-                      <li class="menu__item"><a class="menu__link" href="{{ route('product') }}">Endless Products</a></li>
-                      <li class="menu__item"><a class="menu__link" href="{{ route('about') }}">About</a></li>
-                      <li class="menu__item"><a class="menu__link" href="{{ route('gallery') }}">Gallery</a></li>
+                      <li class="menu__item"><a class="menu__link" href="{{ route('product') }}">Endless Produk</a></li>
+                      <li class="menu__item"><a class="menu__link" href="{{ route('about') }}">Tentang Kami</a></li>
+                      <li class="menu__item"><a class="menu__link" href="{{ route('gallery') }}">Galeri</a></li>
                       <li class="menu__item"><a class="menu__link" href="{{ route('faq') }}">FAQ</a></li>
-                      <li class="menu__item"><a class="menu__link" href="{{ route('contact') }}">Contact</a></li>
+                      <li class="menu__item"><a class="menu__link" href="{{ route('contact') }}">Kontak</a></li>
                     </ul>
                   </div>
                 </div>
