@@ -76,12 +76,21 @@ class PaymentController extends Controller
                 'quantity'  => (int)$item->qty,
                 'name'      => $item->name
             );
+
             //Parameter for Kredivo
+            $attr_product = \DB::table('products')
+                                ->select('products_slug','categories_name')
+                                ->join('products_to_categories', 'products.products_id','=','products_to_categories.products_id')
+                                ->join('categories_description', 'categories_description.categories_id','=','products_to_categories.categories_id')
+                                ->where('products.products_id',$item->id)
+                                ->first();
             $products_kredivo[] = array(
                 'id'        => $item->id,
                 'price'     => (int)$item->price,
                 'quantity'  => (int)$item->qty,
-                'name'      => $item->name
+                'name'      => $item->name,
+                'url'       => 'https://www.endlessos.co.id/product/'.$attr_product->products_slug,
+                'type'      => $attr_product->categories_name
             );
             $gross_total = ((int)$item->price + $shipping_peritem + $code_referal) * Cart::count();
         }
