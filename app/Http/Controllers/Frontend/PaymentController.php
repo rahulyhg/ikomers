@@ -13,6 +13,7 @@ use Cart;
 use Session;
 use Carbon\Carbon;
 use App\Jobs\SendOrderEmail;
+use App\Jobs\SendPaymentConfirmationEmail;
 use PaymentInfo;
 use App\Http\Controllers\Admin\AdminSiteSettingController;
 
@@ -57,7 +58,7 @@ class PaymentController extends Controller
         return view('frontend.payment-method', compact('methods', 'banks', 'invoice_number','config','shipping_cost','total'));
     }
 
-    public function postPayment(Request $request) {
+    public function postPaymentMethod(Request $request) {
         $cart = Cart::content();
         $order = Session::get('shipping');
         $shipping_cost = round(Session::get('shipping')['shipping_cost']);
@@ -208,6 +209,10 @@ class PaymentController extends Controller
         }
     }
 
+    public function postPayment() {
+        return redirect()->route('payment');
+    }
+
     public function payment($status='') {
         $cart = Cart::content();
         $order_session = Session::get('shipping');
@@ -322,8 +327,9 @@ class PaymentController extends Controller
                 $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->get();
                 $vt = new Veritrans;
                     
-                $payment_info = PaymentInfo::getInfo($order_session['invoice_number']);
-                dispatch(new SendOrderEmail($order_user, $order_product, $payment_info));
+                $payment_info = "<strong>Pembayaran melalui Midtrans berhasil.</strong>";
+                $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
+                dispatch(new SendPaymentConfirmationEmail($order_user, $payment_info));
             }
         }
 
@@ -463,10 +469,9 @@ class PaymentController extends Controller
             ]);
         }
     
-        $payment_info = "<strong>Terimakasih pesanan sudah dilakukan melalui Kredivo</strong>";
+        $payment_info = "<strong>Pembayaran melalui Kredivo berhasil.</strong>";
         $order_user = \DB::table('orders')->where('orders_id', $order->orders_id)->first();
-        $order_product = \DB::table('orders_products')->where('orders_id', $order->orders_id)->get();
-        dispatch(new SendOrderEmail($order_user, $order_product, $payment_info));
+        dispatch(new SendPaymentConfirmationEmail($order_user, $payment_info));
 
         Cart::destroy();
         Session::forget('shipping');
@@ -506,6 +511,10 @@ class PaymentController extends Controller
         } else {
             $payment = Payment::insert($input);
         }
+
+        $payment_info = "<strong>Pembayaran menggunakan Transfer Bank berhasil.</strong>";
+        $order_user = \DB::table('orders')->where('orders_id', $request->orders_id)->first();
+        dispatch(new SendPaymentConfirmationEmail($order_user, $payment_info));
 
         return redirect()->back()->with('message', 'Terima kasih telah menyelesaikan transaksi di Endless Store.');
     }

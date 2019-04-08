@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 return [
 
@@ -13,83 +13,83 @@ return [
     |
     */
 		
-	'bannerLabel1'=>'Free Shipping',
+	'bannerLabel1'=>'Bebas biaya kirim',
 		
-	'bannerLabel1Text'=>'On order over $99',
+	'bannerLabel1Text'=>'Untuk pesanan lebih dari $ 99',
 		
-	'bannerLabel2'=>'Money Return',
+	'bannerLabel2'=>'Pengembalian Uang',
 		
-	'bannerLabel2Text'=>'30 Days money return',
+	'bannerLabel2Text'=>'Pengembalian uang dalam 30 hari',
 		
-	'bannerLabel3'=>'Support 24/7',
+	'bannerLabel3'=>'Bantuan 24/7',
 		
 	'hotline'=>'Hotline',
 	
-	'bannerLabel4'=>'Safe Payment',
+	'bannerLabel4'=>'Pembayaran Aman ',
 		
-	'bannerLabel4Text'=>'Protect online payment',
+	'bannerLabel4Text'=>'Lindungi pembayaran online',
 		
-	'TopSales'=>'Top Sales',
+	'TopSales'=>'Penjualan Tertinggi',
 		
-	'Special'=>'Special',
+	'Special'=>'Spesial',
 		
-	'MostLiked'=>'Most Liked',
+	'MostLiked'=>'Paling Disukai',
 		
-	'New'=>'New',
+	'New'=>'Baru',
 		
-	'Likes'=>'Likes',
+	'Likes'=>'Suka',
 		
-	'Welcome to our Store'=>'Welcome to our Store',
+	'Welcome to our Store'=>'Selamat Datang di toko kami',
 		
-	'Orders'=>'Orders',
+	'Orders'=>'Pesanan',
 		
-	'All Categories'=>'All Categories',
+	'All Categories'=>'Semua Kategori',
 		
-	'Search entire store here'=>'Search entire store here',
+	'Search entire store here'=>'Cari seluruh toko di sini ',
 		
-	'Profile'=>'Profile',
+	'Profile'=>'Profil',
 		
-	'Logout'=>'Logout',
+	'Logout'=>'Keluar',
 		
-	'Login/Register'=>'Login/Register',
+	'Login/Register'=>'Login / Daftar ',
 		
-	'item(s)'=>'item(s)',
+	'item(s)'=>'item',
 		
-	'Quantity'=>'Quantity',
+	'Quantity'=>'Kuantitas',
 		
-	'Total Items'=>'Total Items',
+	'Total Items'=>'Total Item',
 		
-	'Total Price'=>'Total Price',
+	'Total Price'=>'Total Harga',
 		
-	'View Cart'=>'View Cart',
+	'View Cart'=>'Lihat Keranjang',
 		
 	'Checkout'=>'Checkout',
 		
 	'Menu'=>'Menu',	
 		
-	'My Cart'=>'My Cart',
+	'My Cart'=>'Keranjangku',
 		
 	'footer text'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel nulla eros. Sed dui magna, faucibus et enim vel, auctor dapibus ante. Nullam in sem ultrices, efficitur arcu quis, fermentum mi.',
 		
-	'Helpful Links'=>'Helpful Links',
+	'Helpful Links'=>'Tautan Bermanfaat',
 		
-	'Terms'=>'Terms',
+	'Terms'=>'Ketentuan',
 		
-	'Privacy'=>'Privacy',
+	'Privacy'=>'Privasi',
 		
-	'Discount'=>'Discount',
+	'Discount'=>'Diskon',
 		
-	'About Us'=>'About Us',
+	'About Us'=>'Tentang Kami',
 		
-	'Contact Us'=>'Contact Us',
+	'Contact Us'=>'Hubungi kami',
 		
-	'Terms & Condtions'=>'Terms & Condtions',
+	'Terms & Condtions'=>'Syarat & Ketentuan',
 		
-	'Wishlist'=>'Wishlist',
+	'Wishlist'=>'Daftar Keinginan ',
 		
-	'Shopping Cart'=>'Shopping Cart',
+	'Shopping Cart'=>'Keranjang Belanja',
 		
-	'Privacy Policy'=>'Privacy Policy',
+	'Privacy Policy'=>'Rahasia pribadi',
 		
 	'Phone'=>'Phone',
 		
@@ -97,150 +97,149 @@ return [
 		
 	'Copy Rights'=>'2017 Company, Inc',
 		
-	'From our News'=>'From our News',
+	'From our News'=>'Dari Berita kami',
 		
-	'View All News'=>'View All News',
+	'View All News'=>'Lihat Semua Berita ',
 		
-	'Readmore'=>'Readmore',
+	'Readmore'=>'Baca lebih lajut',
 		
-	'Weekly'=>'Weekly',
+	'Weekly'=>'Mingguan',
 		
-	'banner saving text'=>'Saving up to 50% off all online store items this week.',
+	'banner saving text'=>'Menghemat hingga 50% dari semua item toko online minggu ini. ',
 		
-	'Shop now'=>'Shop now',
+	'Shop now'=>'Belanja Sekarang',
 		
-	'Sale'=>'Sale',
+	'Sale'=>'Obral',
 		
-	'Top Selling of the Week'=>'Top Selling of the Week',
+	'Top Selling of the Week'=>'Penjualan Tertinggi Minggu Ini',
 		
-	'View Detail'=>'View Detail',
+	'View Detail'=>'Lihat lebih jelas',
 		
-	'Newest Products'=>'Newest Products',
+	'Newest Products'=>'Produk Terbaru',
 		
-	'View All'=>'View All',
+	'View All'=>'Lihat Semua',
 	
-	'Special'=>'Special',
+	'Special'=>'Spesial',
 		
 	'items'=>'Item(s)',
 	'item'=>'Item',	
 		
 	'SubTotal'=>'Sub Total',		
 		
-	'Couponisappliedsuccessfully'=>'Coupon is applied successfully!',
+	'Couponisappliedsuccessfully'=>'Kupon berhasil diterapkan!',
 		
-	'You are not allowed to use this coupon'=>'You are not allowed to use this coupon.',
+	'You are not allowed to use this coupon'=>'Anda tidak diizinkan menggunakan kupon ini. ',
 		
-	'This coupon has been reached to its maximum usage limit'=>'This coupon has been reached to its maximum usage limit.',
+	'This coupon has been reached to its maximum usage limit'=>'Kupon ini telah mencapai batas penggunaan maksimum.',
 		
-	'coupon is used limit'=>'Coupon is used limit',
+	'coupon is used limit'=>'Kupon menggunakan batas',
 		
-	'Coupon amount limit is low than minimum price'=>'Coupon amount limit is low than minimum price.',
+	'Coupon amount limit is low than minimum price'=>'Batas jumlah kupon lebih rendah dari harga minimum.',
 		
-	'Coupon amount limit is exceeded than maximum price'=>'Coupon amount limit is exceeded than maximum price.',
+	'Coupon amount limit is exceeded than maximum price'=>'Batas jumlah kupon terlebih dari harga maksimum.',
 		
-	'Coupon cannot be applied this product is in sale'=>'Coupon cannot be applied this product is in sale.',
+	'Coupon cannot be applied this product is in sale'=>'Kupon tidak dapat diterapkan saat produk ini diobral.',
 		
-	'Coupon amount is greater than total price'=>'Coupon amount is greater than total price.',
+	'Coupon amount is greater than total price'=>'Jumlah kupon lebih besar dari harga total.',
 		
-	'Coupon amount is greater than product price'=>'Coupon amount is greater than product price.',
+	'Coupon amount is greater than product price'=>'Jumlah kupon lebih besar dari harga produk.',
 		
-	'Coupon does not exist'=>'Coupon does not exist or invalid coupon code.',
+	'Coupon does not exist'=>'Kupon tidak ada atau kode kupon tidak valid. ',
 		
-	'Please enter a valid coupon code'=>'Please enter a valid coupon code',
+	'Please enter a valid coupon code'=>'Silakan masukkan kode kupon yang valid',
 		
-	'Coupon is already applied'=>'Coupon is already applied',
+	'Coupon is already applied'=>'Kupon sudah diterapkan',
 		
-	'Cart item has been deleted successfully'=>'Cart item has been deleted successfully!',
+	'Cart item has been deleted successfully'=>'Item keranjang berhasil dihapus!',
 		
-	'Coupon has been removed successfully'=>'Coupon has been removed successfully!',
+	'Coupon has been removed successfully'=>'Kupon telah berhasil dihapus! ',
 		
-	'Cart has been updated successfully'=>'Cart has been updated successfully!',
+	'Cart has been updated successfully'=>'Keranjang berhasil diperbarui!',
 		
-	'Coupon can not be apllied to empty cart'=>'Coupon can not be apllied to empty cart.',
+	'Coupon can not be apllied to empty cart'=>'Kupon tidak dapat diterapkan ke keranjang kosong.',
 		
-	'cartEmptyText'=>'You have no items in your shopping cart.<br>Click <a href="shop">here</a> to continue shopping.',
+	'cartEmptyText'=>'Anda tidak memiliki barang di keranjang belanja Anda. <br> Klik <a href="shop"> di sini </a> untuk melanjutkan belanja.',
 		
 	'Home'=>'Home',
 		
-	'Shopping cart'=>'Shopping cart',
+	'Shopping cart'=>'Keranjang Belanja',
 		
-	'Poducts'=>'Poducts',
+	'Poducts'=>'Poduk',
 		
 	'Detail'=>'Detail',
 		
-	'Quantity'=>'Quantity',
+	'Quantity'=>'Kuantitas',
 		
-	'Unit Price'=>'Unit Price',
+	'Unit Price'=>'Harga Unit',
 		
-	'Item Total'=>'Item Total',
+	'Item Total'=>'Total Item',
 		
-	'Special'=>'Special',
+	'Special'=>'Spesial',
 		
-	'Coupon Code'=>'Coupon Code',
+	'Coupon Code'=>'Kode Kupon',
 		
 	'Checkout'=>'Checkout',
 		
-	'Update Cart'=>'Update Cart',
+	'Update Cart'=>'Perbarui Keranjang',
 		
-	'Back To Shopping'=>'Back To Shopping',
+	'Back To Shopping'=>'Kembali Belanja',
 		
 	'Total'=>'Total',
 		
-	'Discount(Coupon)'=>'Discount (Coupon)',
+	'Discount(Coupon)'=>'Diskon (Kupon)',
 		
-	'Order Summary'=>'Order Summary',
+	'Order Summary'=>'Ringkasan Pesanan',
 		
 	'Subtotal'=>'Subtotal',
 		
-	'Apply'=>'Apply',
+	'Apply'=>'Menerapkan',
 		
-	'Please enter your first name'=>'Please enter your first name.',
+	'Please enter your first name'=>'Silakan masukkan nama depan Anda.',
 		
-	'Please enter your last name'=>'Please enter your last name.',
+	'Please enter your last name'=>'Silakan masukkan nama belakang Anda.',
 		
 	'Login'=>'Login',
 		
-	'Create An Account'=>'Create an Account',
+	'Create An Account'=>'Buat Akun',
 		
-	'Personal Information'=>'Personal Information',
+	'Personal Information'=>'Informasi pribadi',
 		
 	'Error'=>'Error',
 		
-	'Success'=>'Success',
+	'Success'=>'Berhasil',
 		
-	'First Name'=>'First Name',
+	'First Name'=>'Nama depan',
 		
-	'Last Name'=>'Last Name',
+	'Last Name'=>'Nama Belakang',
 		
-	'Email Adrress'=>'Email Adrress',
+	'Email Adrress'=>'Alamat Email',
 		
-	'Please enter your valid email address'=>'Please enter your valid email address.',
+	'Please enter your valid email address'=>'Silakan masukkan alamat email Anda yang valid. ',
+	'Gender'=>'Jenis Kelamin',
 		
-	'Gender'=>'Gender',
+	'Please select your gender'=>'Silakan pilih jenis kelamin Anda.',
 		
-	'Please select your gender'=>'Please select your gender.',
+	'Picture'=>'Gambar',
 		
-	'Picture'=>'Picture',
+	'Password'=>'Kata Sandi',
 		
-	'Password'=>'Password',
+	'Please enter your password'=>'Silakan masukkan kata sandi Anda.',
 		
-	'Please enter your password'=>'Please enter your password.',
+	'Confirm Password'=>'Konfirmasi sandi',
 		
-	'Confirm Password'=>'Confirm Password',
+	'Please re-enter your password'=>'Harap masukkan kembali kata sandi Anda. ',
 		
-	'Please re-enter your password'=>'Please re-enter your password.',
+	'Password does not match the confirm password'=>'Kata sandi tidak cocok dengan kata sandi konfirmasi. ',
 		
-	'Password does not match the confirm password'=>'Password does not match the confirm password.',
+	'Creating an account means you are okay with our'=>'Membuat akun berarti Anda setuju dengan kami',
 		
-	'Creating an account means you are okay with our'=>'Creating an account means you are okay with our',
+	'Terms and Services'=>'Ketentuan dan Layanan',
 		
-	'Terms and Services'=>'Terms and Services',
+	'Privacy Policy'=>'Rahasia pribadi',
 		
-	'Privacy Policy'=>'Privacy Policy',
+	'Refund Policy'=>'Kebijakan pengembalian',
 		
-	'Refund Policy'=>'Refund Policy',
-		
-	'Please accept our terms and conditions'=>'Please accept our terms and conditions',
+	'Please accept our terms and conditions'=>'Silakan terima syarat dan ketentuan kami ',
 		
 	'Sign Up'=>'Sign Up',
 		
@@ -268,426 +267,426 @@ return [
 		
 	'Checkout'=>'Checkout',
 		
-	'Shopping cart'=>'Shopping cart',
+	'Shopping cart'=>'Keranjang Belanja',
 		
-	'Billing Address'=>'Billing Address',
+	'Billing Address'=>'Alamat tagihan',
 		
 	
 		
-	'Payment Methods'=>'Payment Methods',
+	'Payment Methods'=>'Metode Pembayaran',
 		
-	'Order Detail'=>'Order Detail',
+	'Order Detail'=>'Detail pesanan',
 		
-	'Company'=>'Company',
+	'Company'=>'Perusahaan',
 		
-	'Address'=>'Address',
+	'Address'=>'Alamat',
 		
-	'Country'=>'Country',
+	'Country'=>'Negara',
 		
-	'State'=>'State',
+	'State'=>'Negara Bagian',
 		
-	'City'=>'City',
+	'City'=>'Kota',
 		
-	'Zip/Postal Code'=>'Zip/Postal Code',
+	'Zip/Postal Code'=>'Kode Pos/Zip',
 		
-	'Continue'=>'Continue',
+	'Continue'=>'Lanjut',
 		
-	'Please enter your company name'=>'Please enter your company name.',
+	'Please enter your company name'=>'Silakan masukkan nama perusahaan Anda.',
 		
-	'Please enter your address'=>'Please enter your address.',
+	'Please enter your address'=>'Silakan masukkan alamat Anda.',
 		
-	'Please select your country'=>'Please select your country.',
+	'Please select your country'=>'Silakan pilih negara Anda.',
 		
-	'Please select your state'=>'Please select your state.',
+	'Please select your state'=>'Silakan pilih negara bagian Anda.',
 		
-	'Please enter your city'=>'Please enter your city.',
+	'Please enter your city'=>'Silakan masukkan kota Anda. ',
 		
-	'Please enter your Zip/Postal Code'=>'Please enter your Zip/Postal Code.',
+	'Please enter your Zip/Postal Code'=>'Silakan masukkan Kode Pos / Zip',
 		
-	'Update'=>'Update',
+	'Update'=>'Perbarui',
 		
-	'Add Address'=>'Add Address',
+	'Add Address'=>'Tambah Alamat',
 		
-	'Your address has been deteled successfully'=>'Your address has been deteled successfully!',
+	'Your address has been deteled successfully'=>'Alamat Anda telah berhasil dihapus! ',
 		
-	'Your address has been chnaged successfully'=>'Your address has been chnaged successfully!',
+	'Your address has been chnaged successfully'=>'Alamat Anda telah berhasil diubah! ',
 		
 	'Default'=>'Default',
 		
-	'Address Info'=>'Address Info',
+	'Address Info'=>'Info Alamat',
 		
-	'Action'=>'Action',
+	'Action'=>'Aksi',
 		
-	'Your address has been updated successfully'=>'Your address has been updated successfully!',
+	'Your address has been updated successfully'=>'Alamat Anda telah berhasil diperbarui! ',
 		
-	'Same shipping and billing address'=>'Same shipping and billing address.',
+	'Same shipping and billing address'=>'Alamat pengiriman dan penagihan yang sama.',
 		
-	'Select Country'=>'Select Country',
+	'Select Country'=>'Pilih Negara',
+
+	'Select State'=>'Pilih Negara Bagian',
 		
-	'Select State'=>'Select State',
+	'Other'=> 'Lainnya',
 		
-	'Other'=>'Other',
+	'Shipping Methods'=>'Metode Pengiriman',
 		
-	'Shipping Methods'=>'Shipping Methods',
+	'Confirm Order'=> 'Konfirmasi Pesanan',
 		
-	'Confirm Order'=>'Confirm Order',
+	'Order Now'=>'Pesan Sekarang',
 		
-	'Order Now'=>'Order Now',
+	'Please select a prefered shipping method to use on this order'=>'Silakan pilih metode pengiriman yang disukai untuk digunakan pada pesanan ini.',
 		
-	'Please select a prefered shipping method to use on this order'=>'Please select a prefered shipping method to use on this order.',
+	'My Orders'=>'Pesanan Saya',
 		
-	'My Orders'=>'My Orders',
+	'No order is placed yet'=>'Belum ada pesanan.',
 		
-	'No order is placed yet'=>'No order is placed yet.',
+	'Order ID'=>'ID Pesanan',
 		
-	'Order ID'=>'Order ID',
+	'Quantity'=>'Kuantitas',
 		
-	'Quantity'=>'Quantity',
+	'Order Date'=> 'Tanggal Pemesanan',
 		
-	'Order Date'=>'Order Date',
+	'Price'=>'Harga',
 		
-	'Price'=>'Price',
-		
-	'View Order'=>'View Order',
+	'View Order'=> 'Lihat Pesanan',
 		
 	'Status'=>'Status',
 		
-	'Order information'=>'Order information',
+	'Order information'=> 'Informasi pemesanan',
 		
-	'Please select a prefered shipping method to use on this order'=>'Please select a prefered shipping method to use on this order.',
+	'Please select a prefered shipping method to use on this order'=>'Silakan pilih metode pengiriman yang disukai untuk digunakan pada pesanan ini.',
 		
-	'Customer Detail'=>'Customer Detail',
+	'Customer Detail'=>'Detail Pelanggan',
 		
-	'Admin Comments'=>'Admin Comments',
+	'Admin Comments'=>'Komentar Admin',
 		
-	'Order Comments'=>'Order Comments',
+	'Order Comments'=>'Komentar Pesanan',
 		
-	'Comments'=>'Comments',
+	'Comments'=>'Komentar',
 		
-	'Shipping Cost'=>'Shipping Cost',
+	'Shipping Cost'=>'Biaya Pengiriman',
 		
-	'Tax'=>'Tax',
+	'Tax'=>'Pajak',
 		
-	'Payment Method'=>'Payment Method',
+	'Payment Method'=>'Metode Pembayaran',
 		
-	'Shipping Method'=>'Shipping Method',
+	'Shipping Method'=>'Metode Pengiriman',
 		
-	'Payment/Shipping Method'=>'Payment/Shipping Method',
+	'Payment/Shipping Method'=>'Metode Pembayaran / Pengiriman',
 		
-	'Billing Detail'=>'Billing Detail',
+	'Billing Detail'=>'Detail Tagihan',
 		
-	'Shipping Detail'=>'Shipping Detail',
+	'Shipping Detail'=>'Detail Pengiriman',
 		
-	'Pay'=>'Pay',
+	'Pay'=>'Bayar',
 		
-	'Your location does not support this'=>'Your location does not support ',
+	'Your location does not support this'=>'Lokasi Anda tidak mendukung',
 		
-	'Please select your shipping method'=>'Please select your shipping method.',
+	'Please select your shipping method'=> 'Silakan pilih metode pengiriman Anda.',
 		
-	'Please select a prefered payment method to use on this order'=>'Please select a prefered payment method to use on this order.',
+	'Please select a prefered payment method to use on this order'=>'Silakan pilih metode pembayaran yang disukai untuk digunakan pada pesanan ini.',
 		
-	'Please select your payment method'=>'Please select your payment method.',
+	'Please select your payment method'=> 'Silakan pilih metode pembayaran Anda.',
 		
-	'BrainTree Payment'=>'BrainTree Payment',
+	'BrainTree Payment'=>'Pembayaran BrainTree',
 		
-	'Card number'=>'Card number',
+	'Card number'=>'Nomor kartu',
 		
-	'Expiration'=>'Expiration',
+	'Expiration'=>'Kedaluwarsa',
 		
 	'CVC'=>'CVC',
 		
-	'Payment successful'=>'Payment successful',
+	'Payment successful'=>'Pembayaran berhasil',
 		
-	'Thanks You Your payment has been processed successfully'=>'Thanks You! Your payment has been processed successfully.',
+	'Thanks You Your payment has been processed successfully'=>'Terima Kasih! Pembayaran Anda telah berhasil diproses. ',
 		
-	'Edit Cart'=>'Edit Cart',
+	'Edit Cart'=>'Edit Keranjang',
 		
-	'Full Name'=>'Full Name',
+	'Full Name'=>'Nama Lengkap',
 		
 	'Email'=>'Email',
 		
-	'Message'=>'Message',
+	'Message'=>'Pesan',
 		
-	'Our Address'=>'Our Address',
+	'Our Address'=>'Alamat Kami',
 		
-	'contact us message'=>'Thank you for contact us. We will contact with you within three business days.',
+	'contact us message'=>'Terima kasih telah menghubungi kami. Kami akan menghubungi Anda dalam waktu tiga hari kerja. ',
 		
-	'Subject'=>'Subject',
+	'Subject'=>'Subjek',
 		
-	'Send'=>'Send',
+	'Send'=>'Kirim',
 	
-	'News Detail'=>'News Detail',
-	'Date'=>'Date',
+	'News Detail'=>'Detail Berita',
+	'Date'=>'Tanggal',
 		
-	'News'=>'News',
+	'News'=>'Berita',
 		
-	'All News'=>'All News',
+	'All News'=>'Semua Berita',
 		
 	'Sort'=>'Sort',
 		
-	'Shop'=>'Shop',
+	'Shop'=>'Belanja',
 		
-	'Newest'=>'Newest',
+	'Newest'=>'Terbaru',
 		
-	'Price: High To Low'=>'Price: High To Low',
+	'Price: High To Low'=>'Harga: Tinggi Ke Rendah',
 		
-	'Price: Low To High'=>'Price: Low To High',
+	'Price: Low To High'=>'Harga: Rendah Ke Tinggi',
 		
-	'Top Seller'=>'Top Seller',
+	'Top Seller'=>'Penjual Terbaik',
 		
-	'Special Products'=>'Special Products',
+	'Special Products'=>'Produk Spesial',
 		
-	'Most Liked'=>'Most Liked',
+	'Most Liked'=> 'Paling Disukai',
 		
-	'Display'=>'Display',
+	'Display'=>'Tampilan',
 		
-	'Limit'=>'Limit',
+	'Limit'=>'Batas',
 		
-	'No record found'=>'No record found!',
+	'No record found'=>'Tidak ada catatan yang ditemukan!',
 		
-	'All products are loaded.'=>'All products are loaded.',
+	'All products are loaded.'=>'Semua produk dimuat.',
 		
-	'All news are loaded'=>'All news are loaded.',
+	'All news are loaded'=>'Semua berita dimuat.',
 		
-	'Load More'=>'Load More',
+	'Load More'=> 'Muat Lebih Banyak',
 		
-	'Oldest'=>'Oldest',
+	'Oldest'=>'Tertua',
 		
-	'News Categories'=>'News Categories',
+	'News Categories'=>'Kategori Berita',
 		
 	'A - Z'=>'A - Z',
 		
 	'Z - A'=>'Z - A',
 		
-	'Edit Address'=>'Edit Address',
+	'Edit Address'=>'Edit Alamat',
 		
-	'Add Address'=>'Add Address',
+	'Add Address'=>'Tambah Alamat',
 		
-	'All products are loaded'=>'All products are loaded.',
+	'All products are loaded'=>'Semua produk dimuat.',
 		
-	'Related Products'=>'Related Products',
+	'Related Products'=>'Produk Terkait',
 		
-	'Products Description'=>'Products Description',
+	'Products Description'=>'Deskripsi Produk',
 		
-	'Order(s)'=>'Order(s)',
+	'Order(s)'=>'Pesanan',
 		
-	'Login Or Create An Account'=>'Login Or Create an Account',
+	'Login Or Create An Account'=>'Masuk Atau Buat Akun',
 		
-	'New Customers'=>'New Customers',
+	'New Customers'=>'Pelanggan Baru',
 		
-	'login page text for customer'=>'By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.',
+	'login page text for customer'=>'Dengan membuat akun di toko kami, Anda akan dapat bergerak melalui proses checkout lebih cepat, menyimpan beberapa alamat pengiriman, melihat dan melacak pesanan Anda di akun Anda dan banyak lagi.',
 		
-	'Dont have account'=>'Don\'t have account?',
+	'Dont have account'=> 'Tidak punya akun?',
 		
-	'or Sign in with'=>'or Sign in with',
+	'or Sign in with'=>'atau Masuk dengan',
+
+	'Login with Facebook'=> 'Masuk dengan Facebook',
 		
-	'Login with Facebook'=>'Login with Facebook',
+	'Login with Google'=>'Masuk dengan Google',
 		
-	'Login with Google'=>'Login with Google',
+	'Registered Customers'=>'Pelanggan Terdaftar',
 		
-	'Registered Customers'=>'Registered Customers',
+	'If you have an account with us, please log in'=>'Jika Anda memiliki akun di kami, silakan masuk',
 		
-	'If you have an account with us, please log in'=>'If you have an account with us, please log in',
+	'This field is required'=>'Bidang ini wajib diisi.',
 		
-	'This field is required'=>'This field is required.',
+	'Forgot Password'=>'Lupa Kata Sandi?',
 		
-	'Forgot Password'=>'Forgot Password?',
+	'Please enter your password and should be at least 6 characters long'=>'Silakan masukkan kata sandi Anda dan panjangnya minimal 6 karakter.',
 		
-	'Please enter your password and should be at least 6 characters long'=>'Please enter your password and should be at least 6 characters long.',
+	'New Password'=>'Kata Sandi Baru',
 		
-	'New Password'=>'New Password',
+	'Current Password'=>'Kata Sandi Saat Ini',
 		
-	'Current Password'=>'Current Password',
+	'Please enter current password'=>'Silakan masukkan kata sandi saat ini.',
 		
-	'Please enter current password'=>'Please enter current password.',
+	'Please enter your valid phone number'=>'Silakan masukkan nomor telepon Anda yang valid.',
 		
-	'Please enter your valid phone number'=>'Please enter your valid phone number.',
+	'Phone Number'=>'Nomor Telepon',
 		
-	'Phone Number'=>'Phone Number',
+	'Please enter your date of birth'=>'Silakan masukkan tanggal lahir Anda.',
 		
-	'Please enter your date of birth'=>'Please enter your date of birth.',
+	'Date of Birth'=>'Tanggal Lahir',
 		
-	'Date of Birth'=>'Date of Birth',
+	'Female'=>'Wanita',
 		
-	'Female'=>'Female',
+	'Male'=>'Pria',
 		
-	'Male'=>'Male',
-		
-	'Gender'=>'Gender',
+	'Gender'=>'Jenis Kelamin',
 		
 	'Ecommerce'=>'Ecommerce',
 		
-	'Featured'=>'Featured',
+	'Featured'=>'Fitur',
 		
-	'Filters'=>'Filters',
+	'Filters'=>'Filter',
 		
-	'Apply'=>'Apply',
+	'Apply'=>'Menerapkan',
 		
-	'Reset'=>'Reset',
+	'Reset'=>'Setel Ulang',
 		
-	'Subscribe'=>'Subscribe!',
+	'Subscribe'=>'Berlangganan!',
 		
-	'Shipping Address'=>'Shipping Address',
+	'Shipping Address'=>'Alamat Pengiriman',
 		
-	'Returned all products'=>'Returned all products.',
+	'Returned all products'=>'Mengembalikan semua produk.',
 		
-	'Search results empty'=>'Search results empty.',
+	'Search results empty'=>'Hasil pencarian kosong.',
 		
-	'Categories'=>'Categories',
+	'Categories'=>'Kategori',
 		
-	'Product Detail'=>'Product Detail',
+	'Product Detail'=>'Detail Produk',
 		
-	'Returned all filters successfully'=>'Returned all filters successfully.',
+	'Returned all filters successfully'=>'Berhasil mengembalikan semua filter.',
 		
-	'Filter is empty for this category'=>'Filter is empty for this category.',
+	'Filter is empty for this category'=> 'Filter kosong untuk kategori ini.',
 		
-	'Select Zone'=>'Select Zone',
+	'Select Zone'=>'Pilih Daerah',
 		
-	'select Country'=>'Select Country',
+	'select Country'=>'Pilih Negara',
 		
-	'All Products'=>'All Products',
+	'All Products'=>'Semua Produk',
 		
-	'Product is added'=>'Product is added!',
+	'Product is added'=>'Produk ditambahkan!',
 		
-	'Special products of the Week'=>'Special Products of the Week',
+	'Special products of the Week'=>'Produk Khusus dalam Satu Minggu',
 		
-	'Forgot Password'=>'Forgot Password',
+	'Forgot Password'=>'Lupa Kata Sandi',
 		
-	'Please Enter your email to recover your password'=>'Please Enter your email to recover your password.',
+	'Please Enter your email to recover your password'=>'Silakan Masukkan email Anda untuk memulihkan kata sandi Anda.',
 		
 	'Qty'=>'Qty',
 		
-	'You have no items in your shopping cart'=>'You have no items in your shopping cart.',
+	'You have no items in your shopping cart'=>'Anda tidak punya barang di keranjang belanja Anda.',
 		
-	'Password has been sent to your email address'=>'Password has been sent to your email address.',
+	'Password has been sent to your email address'=>'Kata sandi telah dikirim ke alamat email Anda.',
 		
-	'Email address does not exist'=>'Email address does not exist.',
+	'Email address does not exist'=>'Alamat email tidak ada.',
 		
-	'Add to Cart'=>'Add to Cart',
+	'Add to Cart'=>'Tambah ke Keranjang',
 		
-	'Added'=>'Added!',
+	'Added'=>'Ditambahkan!',
 		
-	'Subscribe for Newsletter'=>'Subscribe for Newsletter',
+	'Subscribe for Newsletter'=>'Berlangganan Newsletter',
 		
-	'Your email address here'=>'Your email address here...',
+	'Your email address here'=>'Alamat email Anda di sini ...',
 		
-	'Subscribe'=>'Subscribe!',
+	'Subscribe'=>'Berlangganan!',
 		
-	'About Store'=>'About Store',
+	'About Store'=>'Tentang Toko',
 		
-	'Our Services'=>'Our Services',
+	'Our Services'=>'Layanan Kami',
 		
-	'Information'=>'Information',
+	'Information'=>'Informasi',
 		
-	'Popular Categories'=>'Popular Categories',
+	'Popular Categories'=>'Kategori Populer',
 		
-	'Error while placing order'=>'Error while placing order.',
+	'Error while placing order'=>'Kesalahan saat melakukan pemesanan.',
 		
-	'Payment has been processed successfully'=>'Payment has been processed successfully!',
+	'Payment has been processed successfully'=>'Pembayaran telah berhasil diproses!',
 		
-	'Your order has been placed'=>'Your order has been placed',
+	'Your order has been placed'=>'Pesanan Anda telah ditempatkan',
 		
-	'Email or password is incorrect'=>'Email or password is incorrect!',
+	'Email or password is incorrect'=>'Email atau kata sandi salah!',
 		
-	'something is wrong'=>'something is wrong!',
+	'something is wrong'=>'ada sesuatu yang salah!',
 		
-	'Email already exist'=>'Email already exist!',
+	'Email already exist'=>'Email sudah ada!',
 		
 		
-	'ApplyCoupon'=>'Apply Coupon',
+	'ApplyCoupon'=>'Terapkan Kupon',
 		
-	'proceedToCheckout'=>'Proceed To Checkout',
+	'proceedToCheckout'=>'Lanjutkan Ke Checkout',
 		
-	'orderNotes'=>'Order Notes',
+	'orderNotes'=>'Pesan Pemesanan',
 	
-	'Previous'=>'Previous',
-	'Next'=>'Next',
+	'Previous'=>'Sebelumnya',
+	'Next'=>'Selanjutnya',
 		
-	'Out of Stock'=>'Out of Stock',
+	'Out of Stock'=>'Kehabisan persediaan',
 		
-	'In stock'=>'In stock',
+	'In stock'=>'Stok',
 		
-	'Low in Stock'=>'Low in Stock',
+	'Low in Stock'=>'Stok Rendah',
 		
 	'Edit'=>'Edit',
 		
-	'Remove Item'=>'Remove Item',
+	'Remove Item'=>'Hapus Item',
 		
-	'per page'=>'per page',
+	'per page'=>'per halaman',
 		
-	'orderNotesandSummary'=>'Order Notes & Summary',
+	'orderNotesandSummary'=>'Pesan & Ringkasan Pesan',
 		
 	'Signup'=>'Signup',
 		
-	'myProfile'=>'My Profile',
+	'myProfile'=>'Profil Saya',
 		
-	'orderID'=>'Order ID #',
+	'orderID'=>'ID Pesanan #',
 		
-	'orderStatus'=>'Order Status',
+	'orderStatus'=>'Status Pemesanan',
 		
-	'Please enter your name'=>'Please enter your name.',
+	'Please enter your name'=>'Silakan masukkan nama Anda.',
 		
-	'Please enter your message'=>'Please enter your message.',
+	'Please enter your message'=>'Silakan masukkan pesan Anda.',
 		
-	'Prfile has been updated successfully'=>'Prfile has been updated successfully!',
+	'Prfile has been updated successfully'=>'Profil telah berhasil diperbarui!',
 		
-	'Change Password'=>'Change Password',
+	'Change Password'=>'Ubah Kata Sandi',
 		
-	'infoPages'=>'Info Pages',
+	'infoPages'=>'Info Halaman',
 		
-	'homePages'=>'Home Pages',
+	'homePages'=>'Halaman Beranda',
 		
-	'homePage1'=>'Home Page 1',
-	'homePage2'=>'Home Page 2',
-	'homePage3'=>'Home Page 3',
-	'homePage4'=>'Home Page 4',
-	'homePage5'=>'Home Page 5',
+	'homePage1'=>'Halaman Beranda 1',
+	'homePage2'=>'Halaman Beranda 2',
+	'homePage3'=>'Halaman Beranda 3',
+	'homePage4'=>'Halaman Beranda 4',
+	'homePage5'=>'Halaman Beranda 5',
 		
-	'collection'=>'Collection',
+	'collection'=>'Koleksi',
 		
 	'hot'=>'Hot',
 		
-	'new in Stores'=>'New in Stores',
+	'new in Stores'=>'Baru di Toko',
 		
-	'categroies'=>'Categroies',
+	'categroies'=>'Kategori',
 		
-	'Call Us Free'=>'Call Us Free',
+	'Call Us Free'=>'Hubungi Kami Gratis',
 		
-	'Featured News'=>'Featured News',
+	'Featured News'=>'Berita Pilihan',
 		
-	'Upload Profile Photo'=>'Upload Profile Photo',
+	'Upload Profile Photo'=>'Unggah Foto Profil',
 		
-	'Choose...'=>'Choose...',
+	'Choose...'=>'Pilih...',
 		
-	'Showing'=>'Showing 1–',
+	'Showing'=>'Menampilkan 1–',
 		
-	'of'=>'of',
+	'of'=>'dari',
 		
-	'results'=>'results.',
+	'results'=>'hasil.',
 		
-	'Password has been updated successfully'=>'Password has been updated successfully!',
+	'Password has been updated successfully'=>'Kata sandi telah berhasil diperbarui!',
 		
-	'Record not found'=>'Record not found!',
-	'contact us title'=>'Ecommerce Contact Us',
-	'Follow Us'=>'Follow Us',
+	'Record not found'=>'Catatan tidak ditemukan!',
+	'contact us title'=>'Ecommerce Hubungi Kami',
+	'Follow Us'=>'Ikuti Kami',
 		
-	'Shipping addresses are not added yet'=>'Shipping addresses are not added yet.',
+	'Shipping addresses are not added yet'=>'Alamat pengiriman belum ditambahkan.',
 		
-	'product is not added to your wish list'=>'Product is not added to your wishlist.',
+	'product is not added to your wish list'=>'Produk tidak ditambahkan ke daftar keinginan Anda.',
 		
-	'Search result for'=>'Search result for',
+	'Search result for'=>'Hasil pencarian untuk',
 		
-	'item found'=>'item found.',
-	'cancel'=>'cancel',
+	'item found'=>'item ditemukan.',
+	'cancel'=>'batal',
 	
-	'Please write notes of your order'=>'Please write notes of your order',
-	'Coupon Applied'=>'Coupon Applied',
+	'Please write notes of your order'=>'Tolong tulis catatan pesanan Anda',
+	'Coupon Applied'=>'Kupon Diterapkan',
 	
 	//new
-	'Welcome'=>'Welcome',
-	'Welcome Guest!'=>'Welcome Guest!',
+	'Welcome'=>'Selamat datang',
+	'Welcome Guest!'=>'Selamat Datang Pengunjung!',
 	'Worldwide Express Plus'=>'Worldwide Express Plus',
-	'Standard'=>'Standard',
+	'Standard'=>'Standar',
 	'Worldwide Expedited'=>'Worldwide Expedited',
 	'Worldwide Express'=>'Worldwide Express',
 	'2nd Day Air A.M.'=>'2nd Day Air A.M.',
@@ -701,25 +700,25 @@ return [
 	'Info Pages'=>'Info Pages',
 	'Dummy Text'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum velit est, et semper massa pulvinar ut. Aliquam sagittis augue at lobortis hendrerit. Vestibulum sit amet posuere quam. Vivamus consectetur tortor eu sollicitudin ullamcorper. Sed dignissim scelerisque enim, sit amet fermentum velit imperdiet eu. Phasellus varius tincidunt nibh, sed ornare felis porttitor quis.',
 	
-	'Product is unliked'=>'Product is unliked.',
-	'Please login first to like this product'=>'Please login first to like this product.',
-	'Product is liked'=>'Product is liked.',
-	'Product is disliked'=>'Product is disliked.',
-	'Password has been updated successfully'=>'Password has been updated successfully.',
-	'Empty Site Name'=>'Empty Site Name',
-	'Instamojo Payment'=>'Instamojo Payment',
-	'External Link'=>'External Link',
+	'Product is unliked'=>'Produk tidak disukai.',
+	'Please login first to like this product'=> 'Silakan masuk dulu untuk menyukai produk ini.',
+	'Product is liked'=>'Produk disukai.',
+	'Product is disliked'=>'Produk tidak disukai.',
+	'Password has been updated successfully'=>'Kata sandi telah berhasil diperbarui.',
+	'Empty Site Name'=>'Kosong Nama Situs',
+	'Instamojo Payment'=>'Pembayaran Instamojo',
+	'External Link'=>'Link Eksternal',
 	'Flash Sale'=>'Flash Sale',
-	'cancel order'=>'Cancel Order',
-	'cancelled'=>'Cancelled',
-	'Are you sure you want to cancel this order?'=>'Are you sure you want to cancel this order?',
+	'cancel order'=>'Batalkan Pesanan',
+	'cancelled'=>'Dibatalkan',
+	'Are you sure you want to cancel this order?'=>'Apakah Anda yakin ingin membatalkan pesanan ini?',
 	'Flash Sale'=>'Flash Sale',
-	'UP COMMING'=>'UP COMMING',
-	'Min Order Limit:'=>'Min Order Limit:',
-	'Return'=>'Return',
-	'Are you sure you want to return this order?'=>'Are you sure you want to return this order?',
-	'return order'=>'Return Order',
-	'Avail free shpping on'=>'Avail free shpping on'
+	'UP COMING'=>'MENDATANG',
+	'Min Order Limit:'=>'Batas minimum pesanan:',
+	'Return'=>'Kembali',
+	'Are you sure you want to return this order?'=>'Apakah Anda yakin ingin mengembalikan pesanan ini?',
+	'return order'=>'Pesanan Kembali',
+	'Avail free shpping on'=>'Tidak ada biaya kirim pada'
 		
 	
 ];

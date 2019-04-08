@@ -7,9 +7,9 @@
                     <i class="fa fa-gift" aria-hidden="true"></i>
                 </div>
                 <div class="w3layouts_mail_grid_left2">
-                    <h3>PROMO CODE</h3>
+                    <h3>KODE PROMO</h3>
                     <p></p>
-                    <p>stay tuned on our website and social media accounts to get promo code notifications</p>
+                    <p>Tetap pantau situs web dan akun media sosial kami untuk mendapatkan pemberitahuan kode promo</p>
                     <p></p>
                 </div>
             </div>
@@ -19,9 +19,9 @@
                     <i class="fa fa-whatsapp" aria-hidden="true"></i>
                 </div>
                 <div class="w3layouts_mail_grid_left2">
-                    <h3>ORDER  BY ONLINE SHOP</h3>
+                    <h3>PESANAN DENGAN TOKO ONLINE</h3>
                     <p></p>
-                    <p>get some special price in our online shop in Tokopedia and Shopee</p>
+                    <p>Dapatkan harga spesial di toko online kami di Tokopedia dan Shopee</p>
                     <p></p>
                 </div>
             </div>
@@ -31,9 +31,9 @@
                     <i class="fa fa fa-headphones" aria-hidden="true"></i>
                 </div>
                 <div class="w3layouts_mail_grid_left2">
-                    <h3>CUSTOMER SUPPORT</h3>
+                    <h3>DUKUNGAN PELANGGAN</h3>
                     <p></p>
-                    <p>we provide online customer support from Monday to Saturday 08.00 a.m until 17.00 p.m</p>
+                    <p>Kami menyediakan dukungan pelanggan online dari Senin hingga Sabtu pukul 08.00 pagi hingga 17.00 malam</p>
                     <p></p>
                 </div>
             </div>
@@ -43,9 +43,9 @@
                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                 </div>
                 <div class="w3layouts_mail_grid_left2">
-                    <h3>LIFE TIME GUARANTEE</h3>
+                    <h3>GARANSI SEUMUR HIDUP</h3>
                     <p></p>
-                    <p>we guarantee Endless OS in any products with life time guarantee</p>
+                    <p>Kami menjamin Endless OS dalam produk apa pun dengan garansi seumur hidup</p>
                     <p></p>
                 </div>
             </div>
@@ -59,7 +59,7 @@
     <div class="footer_agile_inner_info_w3l">
         <div class="col-md-3 footer-left">
             <a href="index.php"><img src="{!! asset('resources/views/frontend/images/logo/endless.png') !!}" class="img-responsive" /></a>
-            <p>Follow our social media to see our event, new information, and update promotion.</p>
+            <p>Ikuti media sosial kami untuk melihat acara kami, informasi baru, dan promosi terbaru.</p>
             <div class="w3-address">
                 <div class="w3-address-grid">
                     <div class="w3-address-left">
@@ -86,23 +86,23 @@
                     <h4>Information </h4>
                     <ul>
                         <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('about') }}">About</a></li>
-                        <li><a href="{{ route('how-to-buy') }}">How to buy</a></li>
+                        <li><a href="{{ route('about') }}">Tentang Kami</a></li>
+                        <li><a href="{{ route('how-to-buy') }}">Cara Membeli</a></li>
                         <li><a href="{{ route('faq') }}">FAQ</a></li>
-                        <li><a href="{{ route('payment-confirmation') }}">Payment confirmation</a></li>
-                        <li><a href="{{ route('home') }}">Track your order</a></li>
+                        <li><a href="{{ route('payment-confirmation') }}">Konfirmasi Pembayaran</a></li>
+                        <li><a href="{{ route('home') }}">Track Order</a></li>
                     </ul>
                 </div>
 
                 <div class="col-md-4 sign-gd-two">
-                    <h4>Customer Support</h4>
+                    <h4>Dukungan Pelanggan</h4>
                     <div class="w3-address">
                         <div class="w3-address-grid">
                             <div class="w3-address-left">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
                             </div>
                             <div class="w3-address-right">
-                                <h6>Phone number</h6>
+                                <h6>Nomor telepon</h6>
                                 <p>{{ App\Models\Setting::getAttr('phone_no') }}</p>
                             </div>
                             <div class="clearfix"> </div>
@@ -112,7 +112,7 @@
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                             </div>
                             <div class="w3-address-right">
-                                <h6>Email address</h6>
+                                <h6>Alamat email</h6>
                                 <p><a href="mailto:{{ App\Models\Setting::getAttr('contact_us_email') }}"> {{ App\Models\Setting::getAttr('contact_us_email') }}</a></p>
                             </div>
                             <div class="clearfix"> </div>
@@ -121,7 +121,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 sign-gd flickr-post">
-                    <h4>Location</h4>
+                    <h4>Lokasi</h4>
                     <div class="w3-address-grid">
                         <div class="w3-address-left">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -140,7 +140,7 @@
         </div>
         <div class="clearfix"></div>
         <div class="text-right">
-            <p class="copy-right">Term of use | Privacy Policy | Endless OS  Redistribution Policy</p>
+            <p class="copy-right">Ketentuan Penggunaan | Rahasia Pribadi | Endless OS  Kebijakan Redistribusi</p>
         </div>
     </div>
 </div>

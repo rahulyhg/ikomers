@@ -134,7 +134,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{ route('post-payment') }}" method="POST">
+                <form action="{{ route('post-payment-method') }}" method="POST">
                     <section id="accordion" class="m-t-30">
                         @foreach ($methods as $item)
                             <div>
